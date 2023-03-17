@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>5 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="create model https:&#x2F;&#x2F;blog.csdn.net&#x2F;MengYa_Dream&#x2F;article&#x2F;details&#x2F;126690336-主要参考 The model architectures included come from a wide variety of sources. Sources, including papers, original impl (“referenc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2023/03/18/5.model/index.html">
+<meta property="og:title" content="5">
+<meta property="og:url" content="http://example.com/2023/03/18/5/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="create model https:&#x2F;&#x2F;blog.csdn.net&#x2F;MengYa_Dream&#x2F;article&#x2F;details&#x2F;126690336-主要参考 The model architectures included come from a wide variety of sources. Sources, including papers, original impl (“referenc">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-17T16:23:43.348Z">
-<meta property="article:modified_time" content="2023-03-14T11:21:20.787Z">
+<meta property="article:published_time" content="2023-03-17T16:26:22.000Z">
+<meta property="article:modified_time" content="2023-03-17T16:27:21.226Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,15 +73,25 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-5.model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/03/18/5.model/" class="article-date">
-  <time class="dt-published" datetime="2023-03-17T16:23:43.348Z" itemprop="datePublished">2023-03-18</time>
+    <a href="/2023/03/18/5/" class="article-date">
+  <time class="dt-published" datetime="2023-03-17T16:26:22.000Z" itemprop="datePublished">2023-03-18</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      5
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -107,7 +117,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_model</span>(<span class="params">model_name</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; Check if a model name exists</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> model_name <span class="keyword">in</span> _model_entrypoints</span><br></pre></td></tr></table></figure>
 
 <p>model_entrypoint 函数从 <code>_model_entrypoints</code> 内部得到模型的构造函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">model_entrypoint</span>(<span class="params">model_name</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Fetch a model entrypoint for specified model name</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> _model_entrypoints[model_name]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints)</span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints.keys())</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出是下面这样子的，太多了，只贴出来一点</span></span><br><span class="line"><span class="string">&#123;&#x27;vit_tiny_patch16_224&#x27;: &lt;function vit_tiny_patch16_224 at 0x000002450498A048&gt;, &#x27;vit_tiny_patch16_384&#x27;: &lt;function vit_tiny_patch16_384 at 0x000002450498A0D0&gt;, &#x27;vit_small_patch32_224&#x27;: &lt;function vit_small_patch32_224 at 0x000002450498A158&gt;, &#x27;vit_small_patch32_384&#x27;: &lt;function vit_small_patch32_384 at 0x000002450498A1E0&gt;&#125;</span></span><br><span class="line"><span class="string">可以看到是个字典，key是模型名称，value是模型的构造函数，</span></span><br><span class="line"><span class="string">以vit为例，vit_base_patch16_224模型的构造函数，他存在于timm.models.vision_trasnformer.py</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">create_fn = model_entrypoint(model_name)</span></span><br><span class="line"><span class="string">#以model_name =  &#x27;xception71&#x27; 为例</span></span><br><span class="line"><span class="string">#&lt;function xception71 at 0x7fc0cba0eca0&gt;</span></span><br><span class="line"><span class="string">#&lt;function timm.models.xception_aligned.xception71(pretrained=False, **kwargs)&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">model_entrypoint</span>(<span class="params">model_name</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Fetch a model entrypoint for specified model name</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> _model_entrypoints[model_name]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints)</span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints.keys())</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出是下面这样子的，太多了，只贴出来一点</span></span><br><span class="line"><span class="string">&#123;&#x27;vit_tiny_patch16_224&#x27;: &lt;function vit_tiny_patch16_224 at 0x000002450498A048&gt;, &#x27;vit_tiny_patch16_384&#x27;: &lt;function vit_tiny_patch16_384 at 0x000002450498A0D0&gt;, &#x27;vit_small_patch32_224&#x27;: &lt;function vit_small_patch32_224 at 0x000002450498A158&gt;, &#x27;vit_small_patch32_384&#x27;: &lt;function vit_small_patch32_384 at 0x000002450498A1E0&gt;&#125;</span></span><br><span class="line"><span class="string">可以看到是个字典，key是模型名称，value是模型的构造函数，</span></span><br><span class="line"><span class="string">以vit为例，vit_base_patch16_224模型的构造函数，他存在于timm.models.vision_trasnformer.py</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">create_fn = model_entrypoint(model_name)</span></span><br><span class="line"><span class="string">#以model_name =  &#x27;xception71&#x27; 为例</span></span><br><span class="line"><span class="string">#&lt;function xception71 at 0x7fc0cba0eca0&gt;</span></span><br><span class="line"><span class="string">#&lt;function timm.models.xception_aligned.xception71(pretrained=False, **kwargs)&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="timm-models-vision-trasnformer模块"><a href="#timm-models-vision-trasnformer模块" class="headerlink" title="timm.models.vision_trasnformer模块"></a>timm.models.vision_trasnformer模块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@register_model</span><br><span class="line">def vit_base_patch16_224(pretrained=False, **kwargs):</span><br><span class="line">    &quot;&quot;&quot; ViT-Base (ViT-B/16) from original paper (https://arxiv.org/abs/2010.11929).</span><br><span class="line">    ImageNet-1k weights fine-tuned from in21k @ 224x224, source https://github.com/google-research/vision_transformer.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    model_kwargs = dict(patch_size=16, embed_dim=768, depth=12, num_heads=12, **kwargs)</span><br><span class="line">    model = _create_vision_transformer(&#x27;vit_base_patch16_224&#x27;, pretrained=pretrained, **model_kwargs)</span><br><span class="line">    return model</span><br></pre></td></tr></table></figure>
 
@@ -172,6 +182,7 @@ def register_model(fn):
   </code></pre>
 </details>
 
+
 <p>重点是这一句</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model_name = fn.__name__</span><br><span class="line"></span><br><span class="line">_model_entrypoints[model_name] = fn</span><br></pre></td></tr></table></figure>
 
@@ -205,7 +216,7 @@ def register_model(fn):
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/18/5.model/" data-id="clfcr7mm00000c4u5hccu61hz" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/03/18/5/" data-id="clfcr7mm40001c4u56cazfp0n" data-title="5" class="article-share-link">Share</a>
       
       
       
@@ -215,19 +226,10 @@ def register_model(fn):
     
 <nav id="article-nav">
   
-    <a href="/2023/03/18/5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          5
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/11/18/%E7%B3%BB%E5%88%97%E6%96%87%E6%A1%A3%E6%B1%87%E6%80%BB/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/03/18/5.model/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">文档汇总</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
