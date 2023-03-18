@@ -763,6 +763,80 @@ def register_model(fn):
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/02/19/hexo2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/19/hexo2/" class="post-title-link" itemprop="url">hexotips</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-18 17:16:54" itemprop="dateCreated datePublished" datetime="2022-02-18T17:16:54Z">2022-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-18 09:23:01" itemprop="dateModified" datetime="2023-03-18T09:23:01Z">2023-03-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-hexo-new"><a href="#1-hexo-new" class="headerlink" title="1.hexo new"></a>1.hexo new</h1><p>当我们使用命令 <code>hexo new &quot;title&quot;</code> 创建文章时，Hexo 会根据 <code>/scaffolds/post.md</code> 对新文章进行初始化</p>
+<p>换言之，<code>/scaffolds/post.md</code> 就是新文章的 <strong>模板</strong>，所以我们可以修改它来适应自己的写作习惯</p>
+<p>每次生成后头部</p>
+<p><code>--- title: &#123;&#123; title &#125;&#125; date: &#123;&#123; date &#125;&#125; tags: categories: ---</code></p>
+<p><code>categories</code>与<code>tags</code>分别是分类与标签</p>
+<p>以tags为例语法是<code>tags: [tag1,tag2,tag3...tagn]</code></p>
+<p>categories: category</p>
+<h1 id="2-精简首页显示"><a href="#2-精简首页显示" class="headerlink" title="2.精简首页显示"></a>2.精简首页显示</h1><p>在利用 Hexo 框架搭建的博客网站中，首页会显示文章的内容，且默认显示文章的全部内容</p>
+<p>如果当文章太长的时候就会显得十分冗余，所以我们有必要对其进行精简</p>
+<p>这时，我们只需在文章中使用 <code>&lt;!--more--&gt;</code> 标志即可，表示只会显示标志前面的内容</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/02/19/hexo1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1055,7 +1129,7 @@ def register_model(fn):
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
