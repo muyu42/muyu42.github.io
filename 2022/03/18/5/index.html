@@ -334,7 +334,7 @@ def register_model(fn):
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44966641/article/details/121364784">https://blog.csdn.net/weixin_44966641/article/details/121364784</a></p>
 <p>在 timm 内部，有一个字典称为 <code>_model_entrypoints</code> 包含了所有的模型名称和他们各自的函数。比如说，我们可以通过 <code>model_entrypoint</code> 函数从 <code>_model_entrypoints</code> 内部得到 <code>xception71</code> 模型的构造函数。</p>
 <p>如我们所见，在 <code>timm.models.xception_aligned</code> 模块中有一个函数称为 <code>xception71</code> 。类似的，timm 中的每一个模型都有着一个这样的构造函数。事实上，内部的 <code>_model_entrypoints</code> 字典大概长这个样子：</p>
-<details style="background-color:#f9f2f4"> <summary><font color="#c7254e" size="3px"> view code</font></summary>  不适合放代码，都锁在一起了  </details>
+<details style='background-color:#f9f2f4'> <summary><font color='#c7254e' size='3px'> view code</font></summary>  不适合放代码，都锁在一起了  </details>
 
 
 <p>在 timm 对应的模块中，每个模型都有一个构造器。比如说 ResNets 系列模型被定义在 <code>timm.models.resnet</code> 模块中。因此，实际上我们有两种方式来创建一个 <code>resnet34</code> 模型</p>
@@ -439,14 +439,14 @@ def register_model(fn):
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

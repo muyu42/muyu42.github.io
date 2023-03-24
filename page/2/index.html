@@ -168,6 +168,384 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/18/0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/18/0/" class="post-title-link" itemprop="url">0</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-18 14:15:09 / 修改时间：06:34:27" itemprop="dateCreated datePublished" datetime="2023-03-18T14:15:09Z">2023-03-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="timm库（CV利器）的入门教程"><a href="#timm库（CV利器）的入门教程" class="headerlink" title="timm库（CV利器）的入门教程"></a>timm库（CV利器）的入门教程</h1><blockquote>
+<p>你是否想过用深度学习来解决一些视觉问题，比如图像分类、目标检测、人脸识别等？</p>
+<p>你是否觉得深度学习的模型太多太复杂，不知道该如何选择和使用？</p>
+<p>你是否曾经为了复现一篇论文的结果而苦苦寻找代码和权重，却发现官方没有提供或者提供的不完整？</p>
+</blockquote>
+<p><strong>如果你有以上的困惑，那么我要向你推荐一个神奇的库：timm。</strong></p>
+<h2 id="啥是timm？"><a href="#啥是timm？" class="headerlink" title="啥是timm？"></a>啥是timm？</h2><p>timm 是 PyTorch Image Models 的缩写，它是一个巨大的 PyTorch 代码集合，包括了一系列：</p>
+<ul>
+<li>image models</li>
+<li>layers</li>
+<li>utilities</li>
+<li>optimizers</li>
+<li>schedulers</li>
+<li>data-loaders / augmentations</li>
+<li>training / validation scripts</li>
+</ul>
+<p>timm 库实现了最新的几乎所有的具有影响力的视觉模型，它不仅提供了模型的权重，还提供了一个很棒的分布式训练和评估的代码框架，方便后人开发。更难能可贵的是它还在不断地更新迭代新的训练方法，新的视觉模型和优化代码。</p>
+<p>timm 库是由 Ross Wightman 开发和维护的，在此向大佬致敬！他是一位来自加拿大温哥华的自由职业者，在 GitHub 上分享了他对各种视觉模型和技术的理解和实现，并且欢迎大家给他反馈和赞助。当然，timm 库现在归属于抱脸了，这个我们之后再说。</p>
+<h2 id="写文原因："><a href="#写文原因：" class="headerlink" title="写文原因："></a>写文原因：</h2><p>我之所以写这篇文章，主要是出于以下几点：</p>
+<ol>
+<li><p>深度学习大势所趋。随着计算机技术和数据量的增长，深度学习已经成为了人工智能领域最前沿和最活跃的分支之一。它在各个领域都取得了令人惊叹的成就，比如自然语言处理、计算机视觉、AIGC等。作为一个对人工智能感兴趣并且想要从事相关工作或研究的人，我认为有必要掌握深度学习相关知识，并且跟进最新进展。</p>
+</li>
+<li><p>互联网共享精神。互联网是一个开放、自由、平等、协作、创新、分享、进步 的平台。在这里我们可以获取海量信息资源，并且与志同道合者交流互动。我非常欣赏并支持开源社区中那种无私奉献、相互帮助、共同成长的氛围。我也希望通过我的文章来分享我所学到或者感兴趣的东西，并且与读者们交流心得。</p>
+</li>
+<li><p>我入门时费尽辛苦。当我刚开始接触深度学习时，我遇到了很多困难和挫折。比如找不到合适的教程，网上信息良莠不齐，解决一个问题要搞好久。虽然我现在也还是菜鸡hh，但是我想把自己的学习经历和心得分享给那些想要入门CV的小白们，希望能够对你们有所帮助。同时，也欢迎各位大佬或者有兴趣的同学给我提出宝贵的意见和建议，让我们一起进步。</p>
+</li>
+<li><p>本来是想写完发，但是可能又会拖延，就先发出来一点，欢迎大家监督。可以加我的QQ：7914675，一起交流入门心得</p>
+</li>
+<li><p>还有一个原因，不过先容我卖个关子，等到这个timm的系列完结再说。</p>
+</li>
+</ol>
+<h2 id="本系列的目录结构和跳转链接"><a href="#本系列的目录结构和跳转链接" class="headerlink" title="本系列的目录结构和跳转链接"></a>本系列的目录结构和跳转链接</h2><p>如下：</p>
+<p>0.引言</p>
+<p>1.简单的使用</p>
+<p>分为几个大块，入门，提高，源码解析系列</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/03/18/5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/18/5/" class="post-title-link" itemprop="url">【白菜】timm篇五：创建模型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-18 14:15:19" itemprop="dateCreated datePublished" datetime="2022-03-18T14:15:19Z">2022-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-18 07:57:22" itemprop="dateModified" datetime="2023-03-18T07:57:22Z">2023-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>create model</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/MengYa_Dream/article/details/126690336-%E4%B8%BB%E8%A6%81%E5%8F%82%E8%80%83">https://blog.csdn.net/MengYa_Dream/article/details/126690336-主要参考</a></p>
+<p>The model architectures included come from a wide variety of sources. Sources, including papers, original impl (“reference code”) that Ross rewrote / adapted, and PyTorch impl that he leveraged directly (“code”) are listed below.</p>
+<p>Most included models have pretrained weights. The weights are either:</p>
+<p>from their original sources<br>ported by myself from their original impl in a different framework (e.g. Tensorflow models)<br>trained from scratch using the included training script<br>The validation results for the pretrained weights can be found here.</p>
+<p>最近一年 Vision Transformer 及其相关改进的工作层出不穷，在他们开源的代码中，大部分都用到了这样一个库：timm。各位炼丹师应该已经想必已经对其无比熟悉了，本文将介绍其中最关键的函数之一：create_model 函数</p>
+<p>create_model 函数是用来创建一个网络模型（如 ResNet、ViT 等），timm 库本身可供直接调用的模型已有接近400个，用户也可以自己实现一些模型并注册进 timm （这一部分内容将在下一小节着重介绍），供自己调用</p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="create-model"><a href="#create-model" class="headerlink" title="create_model"></a>create_model</h2><p>该<code>create_model</code>函数是用来在里面创建数百个模型的<code>timm</code>。它还期望一堆<code>**kwargs</code>诸如<code>features_only</code>和<code>out_indices</code>并将这两个传递<code>**kwargs</code>给<code>create_model</code>函数来创建一个特征提取器。让我们看看如何？</p>
+<p>该<code>create_model</code>函数本身只有大约 50 行代码。所以所有的神奇的事情都必须在其他地方发生。您可能已经知道，其中的每个模型名称<code>timm.list_models()</code>实际上都是一个函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#model_name:模型的名字</span></span><br><span class="line"><span class="comment">#pretrained:是否加载预训练模型</span></span><br><span class="line"><span class="comment">#checkpoint_path:加载预训练模型的路径</span></span><br><span class="line"><span class="comment">#scriptable:是否使用脚本化</span></span><br><span class="line"><span class="comment">#exportable:是否使用导出</span></span><br><span class="line"><span class="comment">#no_jit:是否使用jit</span></span><br><span class="line"><span class="comment">#**kwargs:其他参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#首先通过split_model_name函数将模型名字分割成两部分，一部分是模型的来源，一部分是模型的名字</span></span><br><span class="line"><span class="comment">#然后通过is_model函数判断模型是否存在</span></span><br><span class="line"><span class="comment">#如果存在，通过model_entrypoint函数获取模型的入口函数</span></span><br><span class="line"><span class="comment">#然后通过set_layer_config函数设置层的配置</span></span><br><span class="line"><span class="comment">#最后通过load_checkpoint函数加载预训练模型</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_model</span>(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">        model_name,</span></span></span><br><span class="line"><span class="params"><span class="function">        pretrained=<span class="literal">False</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        checkpoint_path=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        scriptable=<span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        exportable=<span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        no_jit=<span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        **kwargs</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Create a model</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        model_name (str): name of model to instantiate</span></span><br><span class="line"><span class="string">        pretrained (bool): load pretrained ImageNet-1k weights if true</span></span><br><span class="line"><span class="string">        checkpoint_path (str): path of checkpoint to load after model is initialized</span></span><br><span class="line"><span class="string">        scriptable (bool): set layer config so that model is jit scriptable (not working for all models yet)</span></span><br><span class="line"><span class="string">        exportable (bool): set layer config so that model is traceable / ONNX exportable (not fully impl/obeyed yet)</span></span><br><span class="line"><span class="string">        no_jit (bool): set layer config so that model doesn&#x27;t utilize jit scripted layers (so far activations only)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Keyword Args:</span></span><br><span class="line"><span class="string">        drop_rate (float): dropout rate for training (default: 0.0)</span></span><br><span class="line"><span class="string">        global_pool (str): global pool type (default: &#x27;avg&#x27;)</span></span><br><span class="line"><span class="string">        **: other kwargs are model specific</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    source_name, model_name = split_model_name(model_name)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># handle backwards compat with drop_connect -&gt; drop_path change</span></span><br><span class="line">    drop_connect_rate = kwargs.pop(<span class="string">&#x27;drop_connect_rate&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">    <span class="keyword">if</span> drop_connect_rate <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span> <span class="keyword">and</span> kwargs.get(<span class="string">&#x27;drop_path_rate&#x27;</span>, <span class="literal">None</span>) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;WARNING: &#x27;drop_connect&#x27; as an argument is deprecated, please use &#x27;drop_path&#x27;.&quot;</span></span><br><span class="line">              <span class="string">&quot; Setting drop_path to %f.&quot;</span> % drop_connect_rate)</span><br><span class="line">        kwargs[<span class="string">&#x27;drop_path_rate&#x27;</span>] = drop_connect_rate</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Parameters that aren&#x27;t supported by all models or are intended to only override model defaults if set</span></span><br><span class="line">    <span class="comment"># should default to None in command line args/cfg. Remove them if they are present and not set so that</span></span><br><span class="line">    <span class="comment"># non-supporting models don&#x27;t break and default args remain in effect.</span></span><br><span class="line">    kwargs = &#123;k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> kwargs.items() <span class="keyword">if</span> v <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> source_name == <span class="string">&#x27;hf_hub&#x27;</span>:</span><br><span class="line">        <span class="comment"># For model names specified in the form `hf_hub:path/architecture_name#revision`,</span></span><br><span class="line">        <span class="comment"># load model weights + default_cfg from Hugging Face hub.</span></span><br><span class="line">        hf_default_cfg, model_name = load_model_config_from_hf(model_name)</span><br><span class="line">        kwargs[<span class="string">&#x27;external_default_cfg&#x27;</span>] = hf_default_cfg  <span class="comment"># FIXME revamp default_cfg interface someday</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> is_model(model_name):</span><br><span class="line">        create_fn = model_entrypoint(model_name)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&#x27;Unknown model (%s)&#x27;</span> % model_name)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> set_layer_config(scriptable=scriptable, exportable=exportable, no_jit=no_jit):</span><br><span class="line">        model = create_fn(pretrained=pretrained, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> checkpoint_path:</span><br><span class="line">        load_checkpoint(model, checkpoint_path)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="timm-models-registry模块"><a href="#timm-models-registry模块" class="headerlink" title="timm.models.registry模块"></a>timm.models.registry模块</h2><p>代码中有这样一行</p>
+<p>create_fn = model_entrypoint(model_name)</p>
+<p>函数获取模型的入口函数</p>
+<p>那么他是如何实现的呢，他的运行主要依赖于timm.models.registry模块</p>
+<p>有一个字典_model_entrypoints = {}  # mapping of model names to entrypoint fns</p>
+<p>包含了所有的模型名称和他们各自的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_model</span>(<span class="params">model_name</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; Check if a model name exists</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> model_name <span class="keyword">in</span> _model_entrypoints</span><br></pre></td></tr></table></figure>
+
+<p>model_entrypoint 函数从 <code>_model_entrypoints</code> 内部得到模型的构造函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">model_entrypoint</span>(<span class="params">model_name</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Fetch a model entrypoint for specified model name</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> _model_entrypoints[model_name]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints)</span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints.keys())</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出是下面这样子的，太多了，只贴出来一点</span></span><br><span class="line"><span class="string">&#123;&#x27;vit_tiny_patch16_224&#x27;: &lt;function vit_tiny_patch16_224 at 0x000002450498A048&gt;, &#x27;vit_tiny_patch16_384&#x27;: &lt;function vit_tiny_patch16_384 at 0x000002450498A0D0&gt;, &#x27;vit_small_patch32_224&#x27;: &lt;function vit_small_patch32_224 at 0x000002450498A158&gt;, &#x27;vit_small_patch32_384&#x27;: &lt;function vit_small_patch32_384 at 0x000002450498A1E0&gt;&#125;</span></span><br><span class="line"><span class="string">可以看到是个字典，key是模型名称，value是模型的构造函数，</span></span><br><span class="line"><span class="string">以vit为例，vit_base_patch16_224模型的构造函数，他存在于timm.models.vision_trasnformer.py</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">create_fn = model_entrypoint(model_name)</span></span><br><span class="line"><span class="string">#以model_name =  &#x27;xception71&#x27; 为例</span></span><br><span class="line"><span class="string">#&lt;function xception71 at 0x7fc0cba0eca0&gt;</span></span><br><span class="line"><span class="string">#&lt;function timm.models.xception_aligned.xception71(pretrained=False, **kwargs)&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="timm-models-vision-trasnformer模块"><a href="#timm-models-vision-trasnformer模块" class="headerlink" title="timm.models.vision_trasnformer模块"></a>timm.models.vision_trasnformer模块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@register_model</span><br><span class="line">def vit_base_patch16_224(pretrained=False, **kwargs):</span><br><span class="line">    &quot;&quot;&quot; ViT-Base (ViT-B/16) from original paper (https://arxiv.org/abs/2010.11929).</span><br><span class="line">    ImageNet-1k weights fine-tuned from in21k @ 224x224, source https://github.com/google-research/vision_transformer.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    model_kwargs = dict(patch_size=16, embed_dim=768, depth=12, num_heads=12, **kwargs)</span><br><span class="line">    model = _create_vision_transformer(&#x27;vit_base_patch16_224&#x27;, pretrained=pretrained, **model_kwargs)</span><br><span class="line">    return model</span><br></pre></td></tr></table></figure>
+
+<p>注释写了出处，模型的原论文</p>
+<p>model_kwargs把我这个模型的独特参数和传进来的**kwargs一起打包成参数字典，传给<code>_create_vision_transformer</code>函数</p>
+<p>这个函数写在文件的开头，vit的模型都是他生成的，区别就是架构参数不一样，比如层数，注意力头数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_create_vision_transformer</span>(<span class="params">variant, pretrained=<span class="literal">False</span>, **kwargs</span>):</span></span><br><span class="line">    <span class="keyword">if</span> kwargs.get(<span class="string">&#x27;features_only&#x27;</span>, <span class="literal">None</span>):</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&#x27;features_only not implemented for Vision Transformer models.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;flexi&#x27;</span> <span class="keyword">in</span> variant:</span><br><span class="line">        <span class="comment"># FIXME Google FlexiViT pretrained models have a strong preference for bilinear patch / embed</span></span><br><span class="line">        <span class="comment"># interpolation, other pretrained models resize better w/ anti-aliased bicubic interpolation.</span></span><br><span class="line">        _filter_fn = partial(checkpoint_filter_fn, interpolation=<span class="string">&#x27;bilinear&#x27;</span>, antialias=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        _filter_fn = checkpoint_filter_fn</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> build_model_with_cfg(</span><br><span class="line">        VisionTransformer, variant, pretrained,</span><br><span class="line">        pretrained_filter_fn=_filter_fn,</span><br><span class="line">        **kwargs,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>挖坑提高，星星是什么</p>
+<p>variant 变种，就是模型的名字，比如在vit类上生成的vit-base</p>
+<p>函数之中，会再调用 build_model_with_cfg 函数并将一个构造器类 VisionTransformer、变量名 resnet34、一个 default_cfg 和一些 **kwargs 传入其中。</p>
+<p> **kwargs就是之前打包的模型参数和  **kwargs</p>
+<h2 id="build-model-with-cfg"><a href="#build-model-with-cfg" class="headerlink" title="build_model_with_cfg"></a>build_model_with_cfg</h2><p>这个 build_model_with_cfg 函数负责：</p>
+<ul>
+<li>真正地实例化一个模型类来创建一个模型</li>
+<li>若 pruned=True，对模型进行剪枝</li>
+<li>若 pretrained=True，加载预训练模型参数</li>
+<li>若 features_only=True，将模型转换为特征提取器</li>
+</ul>
+<h2 id="register-model装饰器"><a href="#register-model装饰器" class="headerlink" title="register_model装饰器"></a>register_model装饰器</h2><p>以上就是读者在使用 timm 库时的基本方法，其实到这里你应该已经能够使用它训练自己的分类模型了。但是如果还想进一步搞清楚它的框架原理，并在它的基础上做修改，本节可能会帮到你。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/361837010">https://zhuanlan.zhihu.com/p/361837010</a></p>
+<p>但是问题来了，这个字典怎么来的，我写好代码之后一个一个添加进去的吗？（也不是不行hh</p>
+<p>但是太麻烦，这时候就用到我们的 <code>register_model</code> 装饰器，它可以不断地像其中添加模型名称和它对应的构造函数，一开始的字典是空的，是装饰器自动添加的，其源码如下</p>
+<p>2.5 sys.modules<br>该属性是一个字典，包含的是各种已加载的模块的模块名到模块具体位置的映射。</p>
+<p>通过手动修改这个字典，可以重新加载某些模块；但要注意，切记不要大意删除了一些基本的项，否则可能会导致 Python 整个儿无法运行。</p>
+<p>mod = sys.modules[fn.__module__]</p>
+<p>这里我print一下fn.__module__ 应该是xxx.xxx.vit_base</p>
+<p>模型名称就是vit_base</p>
+<pre><code>module_name_split = fn.__module__.split(&#39;.&#39;)
+module_name = module_name_split[-1] if len(module_name_split) else &#39;&#39;
+</code></pre>
+<p>还是打印一下，我有点分不清module_name和model_name</p>
+<p>  _model_to_module[model_name] = module_name</p>
+<p>  _module_to_models[module_name].add(model_name)</p>
+<details>
+  <summary>展开查看</summary>
+  <pre><code>
+def register_model(fn):
+    # lookup containing module
+    mod = sys.modules[fn.__module__]
+    module_name_split = fn.__module__.split('.')
+    module_name = module_name_split[-1] if len(module_name_split) else ''
+    # add model to __all__ in module
+    model_name = fn.__name__
+    if hasattr(mod, '__all__'):
+        mod.__all__.append(model_name)
+    else:
+        mod.__all__ = [model_name]
+    # add entries to registry dict/sets
+    _model_entrypoints[model_name] = fn
+    _model_to_module[model_name] = module_name
+    _module_to_models[module_name].add(model_name)
+    has_pretrained = False  # check if model has a pretrained url to allow filtering on this
+    if hasattr(mod, 'default_cfgs') and model_name in mod.default_cfgs:
+        # this will catch all models that have entrypoint matching cfg key, but miss any aliasing
+        # entrypoints or non-matching combos
+        has_pretrained = 'url' in mod.default_cfgs[model_name] and 'http' in mod.default_cfgs[model_name]['url']
+        _model_default_cfgs[model_name] = deepcopy(mod.default_cfgs[model_name])
+    if has_pretrained:
+        _model_has_pretrained.add(model_name)
+    return fn
+  </code></pre>
+</details>
+
+
+<p>重点是这一句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model_name = fn.__name__</span><br><span class="line"></span><br><span class="line">_model_entrypoints[model_name] = fn</span><br></pre></td></tr></table></figure>
+
+<p>它将给定的 <code>fn</code> 添加到 <code>_model_entrypoints</code> 其键名为 <code>fn.__name__</code></p>
+<p>查看模型定义文件</p>
+<p>我们会发现 timm 中的每个模型都有一个 @register_model</p>
+<p>例如vit-base</p>
+<p>代码很简单明了，但是我还是不懂他怎么发生作用的</p>
+<p>他是什么时候开始把构造函数加进那个空字典的？</p>
+<p>我要自己注册函数应该如何做？</p>
+<p>挖坑拓展，import</p>
+<h2 id="modelconfig"><a href="#modelconfig" class="headerlink" title="modelconfig"></a>modelconfig</h2><p>timm 中所有的模型都有一个默认的配置，包括指向它的预训练权重参数的URL、类别数、输入图像尺寸、池化尺寸等。</p>
+<p>此默认配置与其他参数（如构造函数类和一些模型参数）一起传递给 <code>build_model_with_cfg</code> 函数</p>
+<h1 id="下载pretrained"><a href="#下载pretrained" class="headerlink" title="下载pretrained"></a>下载pretrained</h1><h3 id="pretrained"><a href="#pretrained" class="headerlink" title="pretrained"></a>pretrained</h3><p>如果我们传入 <code>pretrained=True</code>，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。</p>
+<p>True:timm直接根据对应的URL下载模型权重参数并加载到模型，注意，只有本地没有对应模型参数时才会下载，也就是说，通常在第一次运行时下载对应模型参数，之后会直接从本地加载模型权重参数。（报错经验：这里容易出现的报错，就是第一次下载时，可能因为网络等原因，下载不完全，因此，有时需要删除对应文件，重新下载）</p>
+<p>model = timm.create_model(‘resnet34’, pretrained=True)</p>
+<p>Downloading: “<a target="_blank" rel="noopener" href="https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;">https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;</a> to /home/song/.cache/torch/hub/checkpoints/resnet34-43635321.pth</p>
+<h1 id="yuanli"><a href="#yuanli" class="headerlink" title="yuanli"></a>yuanli</h1><h2 id="registry"><a href="#registry" class="headerlink" title="registry"></a>registry</h2><p>在了解了 <code>create_model</code> 函数的基本使用之后，我们来深入探索一下 <code>create_model</code> 函数的源码，看一下究竟是怎样实现从模型到特征提取器的转换的</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44966641/article/details/121364784">https://blog.csdn.net/weixin_44966641/article/details/121364784</a></p>
+<p>在 timm 内部，有一个字典称为 <code>_model_entrypoints</code> 包含了所有的模型名称和他们各自的函数。比如说，我们可以通过 <code>model_entrypoint</code> 函数从 <code>_model_entrypoints</code> 内部得到 <code>xception71</code> 模型的构造函数。</p>
+<p>如我们所见，在 <code>timm.models.xception_aligned</code> 模块中有一个函数称为 <code>xception71</code> 。类似的，timm 中的每一个模型都有着一个这样的构造函数。事实上，内部的 <code>_model_entrypoints</code> 字典大概长这个样子：</p>
+<details style='background-color:#f9f2f4'> <summary><font color='#c7254e' size='3px'> view code</font></summary>  不适合放代码，都锁在一起了  </details>
+
+
+<p>在 timm 对应的模块中，每个模型都有一个构造器。比如说 ResNets 系列模型被定义在 <code>timm.models.resnet</code> 模块中。因此，实际上我们有两种方式来创建一个 <code>resnet34</code> 模型</p>
+<p>import timm from timm.models.resnet import resnet34 <em># 使用 create_model</em> m = timm.create_model(‘resnet34’) <em># 直接调用构造函数</em> m = resnet34()</p>
+<p>但使用上，我们无须调用构造函数。所用模型都可以通过 <code>create_model</code> 函数来将创建。</p>
+<h1 id="画图，话一个相互之间构成联系的图"><a href="#画图，话一个相互之间构成联系的图" class="headerlink" title="画图，话一个相互之间构成联系的图"></a>画图，话一个相互之间构成联系的图</h1><p>whiteboard</p>
+<p>boardmix</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/02/19/hexo2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/19/hexo2/" class="post-title-link" itemprop="url">hexotips</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-18 17:16:54" itemprop="dateCreated datePublished" datetime="2022-02-18T17:16:54Z">2022-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-18 10:26:51" itemprop="dateModified" datetime="2023-03-18T10:26:51Z">2023-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/" itemprop="url" rel="index"><span itemprop="name">hexo搭建自己的blog</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-hexo-new"><a href="#1-hexo-new" class="headerlink" title="1.hexo new"></a>1.hexo new</h1><p>当我们使用命令 <code>hexo new &quot;title&quot;</code> 创建文章时，Hexo 会根据 <code>/scaffolds/post.md</code> 对新文章进行初始化</p>
+<p>换言之，<code>/scaffolds/post.md</code> 就是新文章的 <strong>模板</strong>，所以我们可以修改它来适应自己的写作习惯</p>
+<p>每次生成后头部</p>
+<p><code>--- title: &#123;&#123; title &#125;&#125; date: &#123;&#123; date &#125;&#125; tags: categories: ---</code></p>
+<p><code>categories</code>与<code>tags</code>分别是分类与标签</p>
+<p>以tags为例语法是<code>tags: [tag1,tag2,tag3...tagn]</code></p>
+<p>categories: category</p>
+<p>分类和标签需要区别一下，分类具有顺序性和层次性；而标签没有顺序和层次。</p>
+<h1 id="2-精简首页显示"><a href="#2-精简首页显示" class="headerlink" title="2.精简首页显示"></a>2.精简首页显示</h1><p>在利用 Hexo 框架搭建的博客网站中，首页会显示文章的内容，且默认显示文章的全部内容</p>
+<p>如果当文章太长的时候就会显得十分冗余，所以我们有必要对其进行精简</p>
+<p>这时，我们只需在文章中使用 <code>&lt;!--more--&gt;</code> 标志即可，表示只会显示标志前面的内容</p>
+<h1 id="3-在Hexo中对文章md文件分类"><a href="#3-在Hexo中对文章md文件分类" class="headerlink" title="3.在Hexo中对文章md文件分类"></a>3.在Hexo中对文章md文件分类</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/maosidiaoxian/article/details/85220394">https://blog.csdn.net/maosidiaoxian/article/details/85220394</a></p>
+<h1 id="4-others"><a href="#4-others" class="headerlink" title="4.others"></a>4.others</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029">https://blog.csdn.net/sinat_37781304/article/details/82729029</a></p>
+<p>next</p>
+<p><a target="_blank" rel="noopener" href="https://tding.top/archives/42c38b10.html">https://tding.top/archives/42c38b10.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://tding.top/archives/2bd6d82.html">https://tding.top/archives/2bd6d82.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wsmrzx/p/9439470.html">https://www.cnblogs.com/wsmrzx/p/9439470.html</a></p>
+<p>git</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/blbyu/article/details/126700179">https://blog.csdn.net/blbyu/article/details/126700179</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/blbyu/article/details/126704948">https://blog.csdn.net/blbyu/article/details/126704948</a></p>
+<h1 id="5-yufa"><a href="#5-yufa" class="headerlink" title="5.yufa"></a>5.yufa</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Sakura_Logic/article/details/103980420">https://blog.csdn.net/Sakura_Logic/article/details/103980420</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wsmrzx/p/9439490.html">https://www.cnblogs.com/wsmrzx/p/9439490.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/02/19/hexo1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -463,14 +841,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
