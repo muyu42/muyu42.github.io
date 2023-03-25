@@ -168,6 +168,209 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/02/28/start5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/28/start5/" class="post-title-link" itemprop="url">配环境之cuda、cudnn下载和安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-27 20:50:26" itemprop="dateCreated datePublished" datetime="2022-02-27T20:50:26Z">2022-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-25 07:58:49" itemprop="dateModified" datetime="2023-03-25T07:58:49Z">2023-03-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%AC%E4%B8%80%E6%AD%A5/" itemprop="url" rel="index"><span itemprop="name">第一步</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>哈哈</p>
+<h1 id="cuda"><a href="#cuda" class="headerlink" title="cuda"></a>cuda</h1><h2 id="选好版本（重要"><a href="#选好版本（重要" class="headerlink" title="选好版本（重要"></a>选好版本（重要</h2><p>综合考虑，谋定而后动</p>
+<h3 id="与显卡驱动"><a href="#与显卡驱动" class="headerlink" title="与显卡驱动"></a>与显卡驱动</h3><p>命令行输入nvidia-smi</p>
+<p>显示Driver Version是驱动的版本，CUDA Version是当前驱动支持的最高版本</p>
+<p><strong>之后可以根据英伟达官网上的对照表选择CUDA的版本 【<a href="https://link.zhihu.com/?target=https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html">CUDA Toolkit Documentation</a>】</strong></p>
+<img src="start5/image-20230322150503958.png" alt="image-20230322150503958" style="zoom:50%;" />
+
+<h3 id="与pytorch"><a href="#与pytorch" class="headerlink" title="与pytorch"></a>与pytorch</h3><p>版本对照图如下：</p>
+<p><img src="start5/image-20230322145005507-1679728160895-1.png" alt="image-20230322145005507"></p>
+<p>一般来说高版本的pytorch能兼容低版本cuda</p>
+<p>再通俗点，就是pytorch版本选高了没事；但是低了，就只能再降低cuda版本了</p>
+<p>ps：官方推荐的cuda版本为10.2和11.3，这两种 cuda 支持大多数的 pytorch 版本。</p>
+<p>不过一般人都是根据cuda装pytorch，谁没事指定pytorch版本反装cuda啊，哦是复现baseline啊，那没事了</p>
+<h2 id="进入虚拟环境中"><a href="#进入虚拟环境中" class="headerlink" title="进入虚拟环境中"></a>进入虚拟环境中</h2><p>（我创立了一个python3.9的环境叫p3.9g），接下来我们要在该环境中配置pytorch</p>
+<h2 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h2><p>将下载好的文件执行以下操作：</p>
+<p>先将安装包复制到服务器上，能找得到的地方。</p>
+<p>然后进入到该目录下，使用chmod 755 cuda_10.2.89_440.33.01_linux.run更改文件的执行权限。</p>
+<p>由于我们不是管理员用户，因此无法使用sudo安装，因此直接执行以下命令即可 sh cuda_10.2.89_440.33.01_linux.run</p>
+<p>命令行输入 <code>nvcc -V</code> 查看cuda版本，如果符合预期，则安装成功</p>
+<h2 id="非root用户与软连接切换"><a href="#非root用户与软连接切换" class="headerlink" title="非root用户与软连接切换"></a>非root用户与软连接切换</h2><h1 id="cudnn"><a href="#cudnn" class="headerlink" title="cudnn"></a>cudnn</h1><p>很简单</p>
+<p>1.安装对应的cudnn。根据cuda版本选择对应的cudnn进行安装</p>
+<p>2.将解压后的lib和include这两个目录拷贝到cuda的对应bin和include目录下，即是所谓插入式设计，把cuDNN数据库添加CUDA里，cuDNN是CUDA的扩展计算库，不会对CUDA造成其他影响。</p>
+<p>cp -r ./lib/* /homeB/liangxiaoyu/.local/cuda-11.3/bin/</p>
+<p>cp -r ./include/* /homeB/liangxiaoyu/.local/cuda-11.3/include/</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/02/25/start4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/25/start4/" class="post-title-link" itemprop="url">配环境之conda下载和安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-24 16:16:25" itemprop="dateCreated datePublished" datetime="2022-02-24T16:16:25Z">2022-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-25 07:58:13" itemprop="dateModified" datetime="2023-03-25T07:58:13Z">2023-03-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%AC%E4%B8%80%E6%AD%A5/" itemprop="url" rel="index"><span itemprop="name">第一步</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>隔了好久，太难写了</p>
+<h1 id="anaconda"><a href="#anaconda" class="headerlink" title="anaconda"></a>anaconda</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>直接下载可能下载失败，或者太慢了，所以选择本地下载后上传</p>
+<p>1.下载安装包</p>
+<p>可以选择在官网下载，上传到服务器</p>
+<p>2.安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash /public/software/Anaconda3-2022.10-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>一路enter+yes，接受licence、指定安装路径和init之后安装完成</p>
+<p>anaconda在linux下默认安装在文件夹./anaconda3 ，如果安装过程中出现任何问题，删除anaconda3文件夹即可重新开始</p>
+<h2 id="简单使用conda"><a href="#简单使用conda" class="headerlink" title="简单使用conda"></a>简单使用conda</h2><p>创建环境</p>
+<p>删除环境</p>
+<p>环境列表</p>
+<h2 id="设置默认环境"><a href="#设置默认环境" class="headerlink" title="设置默认环境"></a>设置默认环境</h2><p>安装完conda后，进入终端显示(base)</p>
+<p>方法一：</p>
+<p>每次在命令行通过<code>conda deactivate</code>退出base环境回到系统自带的环境</p>
+<p>方法二：</p>
+<p>通过配置auto_activate_base关闭自动进入conda基础环境：</p>
+<p><code>conda config --set auto_activate_base false</code></p>
+<p>想要重新开启就设为true就行了</p>
+<p><code>conda config --set auto_activate_base true</code></p>
+<h2 id="修改下载源"><a href="#修改下载源" class="headerlink" title="修改下载源"></a>修改下载源</h2><h2 id="复制环境依赖"><a href="#复制环境依赖" class="headerlink" title="复制环境依赖"></a>复制环境依赖</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/440548295">Linux-Anaconda安装和虚拟环境配置 - 知乎 (zhihu.com)</a></p>
+<p>这个方法一般是在复现相同环境时使用，一键快捷省心。例如更换服务器、复现git开源工程等。</p>
+<p>①conda</p>
+<p>conda导出已有的环境，保存在myenv.yaml文件中。</p>
+<p>conda env export &gt; myenv.yaml</p>
+<p>根据yaml文件导入并安装环境</p>
+<p>conda env create -f myenv.yaml</p>
+<p>注：.yaml文件移植过来的环境只是原来环境里用conda install命令安装的包，pip安装的库可能不会移植过来，需要重新安装。</p>
+<p>②pip</p>
+<p>把环境中的依赖写入 requirement.txt 中</p>
+<p>pip freeze &gt;requirements.txt</p>
+<p>安装环境依赖</p>
+<p>pip install -r requirement.txt</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/02/19/hexo2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -449,7 +652,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-24 15:54:32" itemprop="dateModified" datetime="2023-03-24T15:54:32Z">2023-03-24</time>
+                <time title="修改时间：2023-03-25 02:12:11" itemprop="dateModified" datetime="2023-03-25T02:12:11Z">2023-03-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -472,7 +675,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>新人如何debug呢，本地我们都会，那么vscode远程到服务器之后怎么办呢？<br>print大法好（x</p>
+          <p>新人如何debug呢，本地我们都会，那么vscode远程到服务器之后怎么办呢？</p>
+<blockquote>
+<p>print大法好（x</p>
+</blockquote>
 <p>vscode和pycharm，Jupyter Notebook不一样，区别我们以后再说<br>vscode他的debug需要我们配置一些东西，不难，但是网上没有很系统的教程</p>
 <p>下面请看我一点一点讲</p>
 <h1 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h1><h2 id="A-下载包pdb（python-debugger简称）"><a href="#A-下载包pdb（python-debugger简称）" class="headerlink" title="A.下载包pdb（python debugger简称）"></a>A.下载包pdb（python debugger简称）</h2><p>安装ipdb：pip install ipdb</p>
@@ -832,7 +1038,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
