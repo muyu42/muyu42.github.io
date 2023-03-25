@@ -23,14 +23,14 @@
   <meta name="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
 <meta property="og:type" content="website">
 <meta property="og:title" content="cabbage">
-<meta property="og:url" content="https://muyu42.github.io/page/2/index.html">
+<meta property="og:url" content="https://muyu42.github.io/default-index/page/2/index.html">
 <meta property="og:site_name" content="cabbage">
 <meta property="og:description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="muyu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://muyu42.github.io/page/2/">
+<link rel="canonical" href="https://muyu42.github.io/default-index/page/2/">
 
 
 <script id="page-configurations">
@@ -113,7 +113,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-fa fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -168,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/18/1/">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/03/26/project4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +182,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/03/18/1/" class="post-title-link" itemprop="url">【白菜】timm篇一：简单使用</a>
+            <a href="/2022/03/26/project4/" class="post-title-link" itemprop="url">project4</a>
         </h2>
 
         <div class="post-meta">
@@ -191,17 +191,23 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-03-18 14:15:14 / 修改时间：07:54:08" itemprop="dateCreated datePublished" datetime="2023-03-18T14:15:14Z">2023-03-18</time>
+              <time title="创建时间：2022-03-25 16:09:08" itemprop="dateCreated datePublished" datetime="2022-03-25T16:09:08Z">2022-03-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-25 08:23:37" itemprop="dateModified" datetime="2023-03-25T08:23:37Z">2023-03-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
                 </span>
             </span>
 
@@ -216,23 +222,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="新手友好的深度学习CV入门教程-timm篇"><a href="#新手友好的深度学习CV入门教程-timm篇" class="headerlink" title="新手友好的深度学习CV入门教程-timm篇"></a>新手友好的深度学习CV入门教程-timm篇</h1><p>本文介绍一下简单的使用</p>
-<h1 id="简单常用用途"><a href="#简单常用用途" class="headerlink" title="简单常用用途"></a>简单常用用途</h1><p><a target="_blank" rel="noopener" href="https://timm.fast.ai/training">https://timm.fast.ai/training</a><br>基础介绍，了解有关 timm 内部结构的更多信息</p>
-<h1 id="查看模型信息"><a href="#查看模型信息" class="headerlink" title="查看模型信息"></a>查看模型信息</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model_list = timm.list_models()<span class="comment">#返回一个包含所有模型名称的list</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(model_list))<span class="comment">#目前是739个</span></span><br><span class="line">pretrain_model_list = timm.list_models(pretrained = <span class="literal">True</span>)<span class="comment">#筛洗出自带预训练模型的</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(pretrain_model_list))<span class="comment">#目前是592个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##使用通配符字符串来列出可用的不同 ResNet 变体</span></span><br><span class="line">resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span>)</span><br><span class="line">pretrain_resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span> , pretrained = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="创建模型"><a href="#创建模型" class="headerlink" title="创建模型"></a>创建模型</h1><p>创建模型的最简单方法是使用<code>create_model</code>; 一个可用于在 timm 库中创建任何模型的工厂函数（factory function）。这个函数各个参数有什么用，具体怎么实现的，怎么玩出花来先不用管，挖坑进阶提高</p>
-<p>model_resnet34 = timm.create_model(‘resnet34’, pretrained=True)<br>model_resnet34#打印出模型结构<br>model_resnet34.default_cfg#访问它的配置，其中包含诸如应该用于规范化输入数据的统计信息、输出类的数量和网络分类部分的名称等信息.</p>
-<p>timm 模型有方法<code>get_classifier</code> ，我们可以使用它来检索分类头，而无需查找模块名称</p>
-<h1 id="微调模型-自己运行跑一跑resnet34"><a href="#微调模型-自己运行跑一跑resnet34" class="headerlink" title="微调模型-自己运行跑一跑resnet34"></a>微调模型-自己运行跑一跑resnet34</h1><p>我的模型，用不了，维度不匹配<br>比如说我在resnet34模型传入cifar10和imagenet，分类类别不一样，输入的图片大小不一样<br>0.正常运行<br><strong>torch.randn:用来生成随机数字的tensor，这些随机数字满足标准正态分布（0~1）</strong><br>使用随机张量表示单通道图像，我们可以看到模型已经处理了图像并返回了预期的输出形状。</p>
-<p>import torch<br>x = torch.randn([1, 3, 224, 224])<br>model_resnet50 = timm.create_model(‘resnet50’, pretrained=True)<br>out = model_resnet50(x)<br>print(out.shape)# Results: torch.Size([1, 1000])</p>
-<p>1.输入维度：改变输入通道数：in_chans<br>挖坑引申进阶提高<a target="_blank" rel="noopener" href="https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights">https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights</a>?</p>
-<p>这些来自torchvision的预训练权重不能用于单通道输入图像。作为解决方案，大多数从业者通过复制单通道像素来创建3通道图像，从而将其单通道输入图像转换为3通道图像。</p>
-<p>timm has a way to handle these exceptions</p>
-<p>通过将in_chans_参数传递给 来指定输入图像的通道数<br>通道数改变后，对应的权重参数会进行相应的处理，此处不作详细说明，<br>可参照：<a target="_blank" rel="noopener" href="https://fastai.github.io/timmdocs/models%E6%88%96%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81">https://fastai.github.io/timmdocs/models或直接查看源代码</a><br>x = torch.randn([1, 1, 224, 224])<br>feature_extractor = timm.create_model(‘resnet50’,pretrained=True, in_chans=1)</p>
-<p>2.改变输出类别数目，微调模型：num_classes</p>
-<p>如果设置num_classes，表示重设全连接层，该操作通常用于迁移学习</p>
-<p>model_resnet50_finetune = timm.create_model(‘resnet50’, pretrained=True, num_classes=10)<br>out = model_resnet50_finetune (x)<br>print(out.shape)# Results: torch.Size([1, 10])</p>
-
+          
       
     </div>
 
@@ -251,7 +241,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/18/0/">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/03/26/project2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -265,7 +255,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/03/18/0/" class="post-title-link" itemprop="url">0</a>
+            <a href="/2022/03/26/project2/" class="post-title-link" itemprop="url">project2</a>
         </h2>
 
         <div class="post-meta">
@@ -274,9 +264,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-03-18 14:15:09 / 修改时间：06:34:27" itemprop="dateCreated datePublished" datetime="2023-03-18T14:15:09Z">2023-03-18</time>
+              <time title="创建时间：2022-03-25 16:08:58" itemprop="dateCreated datePublished" datetime="2022-03-25T16:08:58Z">2022-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-25 08:23:16" itemprop="dateModified" datetime="2023-03-25T08:23:16Z">2023-03-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
+                </span>
             </span>
 
           
@@ -290,42 +295,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="timm库（CV利器）的入门教程"><a href="#timm库（CV利器）的入门教程" class="headerlink" title="timm库（CV利器）的入门教程"></a>timm库（CV利器）的入门教程</h1><blockquote>
-<p>你是否想过用深度学习来解决一些视觉问题，比如图像分类、目标检测、人脸识别等？</p>
-<p>你是否觉得深度学习的模型太多太复杂，不知道该如何选择和使用？</p>
-<p>你是否曾经为了复现一篇论文的结果而苦苦寻找代码和权重，却发现官方没有提供或者提供的不完整？</p>
-</blockquote>
-<p><strong>如果你有以上的困惑，那么我要向你推荐一个神奇的库：timm。</strong></p>
-<h2 id="啥是timm？"><a href="#啥是timm？" class="headerlink" title="啥是timm？"></a>啥是timm？</h2><p>timm 是 PyTorch Image Models 的缩写，它是一个巨大的 PyTorch 代码集合，包括了一系列：</p>
-<ul>
-<li>image models</li>
-<li>layers</li>
-<li>utilities</li>
-<li>optimizers</li>
-<li>schedulers</li>
-<li>data-loaders / augmentations</li>
-<li>training / validation scripts</li>
-</ul>
-<p>timm 库实现了最新的几乎所有的具有影响力的视觉模型，它不仅提供了模型的权重，还提供了一个很棒的分布式训练和评估的代码框架，方便后人开发。更难能可贵的是它还在不断地更新迭代新的训练方法，新的视觉模型和优化代码。</p>
-<p>timm 库是由 Ross Wightman 开发和维护的，在此向大佬致敬！他是一位来自加拿大温哥华的自由职业者，在 GitHub 上分享了他对各种视觉模型和技术的理解和实现，并且欢迎大家给他反馈和赞助。当然，timm 库现在归属于抱脸了，这个我们之后再说。</p>
-<h2 id="写文原因："><a href="#写文原因：" class="headerlink" title="写文原因："></a>写文原因：</h2><p>我之所以写这篇文章，主要是出于以下几点：</p>
-<ol>
-<li><p>深度学习大势所趋。随着计算机技术和数据量的增长，深度学习已经成为了人工智能领域最前沿和最活跃的分支之一。它在各个领域都取得了令人惊叹的成就，比如自然语言处理、计算机视觉、AIGC等。作为一个对人工智能感兴趣并且想要从事相关工作或研究的人，我认为有必要掌握深度学习相关知识，并且跟进最新进展。</p>
-</li>
-<li><p>互联网共享精神。互联网是一个开放、自由、平等、协作、创新、分享、进步 的平台。在这里我们可以获取海量信息资源，并且与志同道合者交流互动。我非常欣赏并支持开源社区中那种无私奉献、相互帮助、共同成长的氛围。我也希望通过我的文章来分享我所学到或者感兴趣的东西，并且与读者们交流心得。</p>
-</li>
-<li><p>我入门时费尽辛苦。当我刚开始接触深度学习时，我遇到了很多困难和挫折。比如找不到合适的教程，网上信息良莠不齐，解决一个问题要搞好久。虽然我现在也还是菜鸡hh，但是我想把自己的学习经历和心得分享给那些想要入门CV的小白们，希望能够对你们有所帮助。同时，也欢迎各位大佬或者有兴趣的同学给我提出宝贵的意见和建议，让我们一起进步。</p>
-</li>
-<li><p>本来是想写完发，但是可能又会拖延，就先发出来一点，欢迎大家监督。可以加我的QQ：7914675，一起交流入门心得</p>
-</li>
-<li><p>还有一个原因，不过先容我卖个关子，等到这个timm的系列完结再说。</p>
-</li>
-</ol>
-<h2 id="本系列的目录结构和跳转链接"><a href="#本系列的目录结构和跳转链接" class="headerlink" title="本系列的目录结构和跳转链接"></a>本系列的目录结构和跳转链接</h2><p>如下：</p>
-<p>0.引言</p>
-<p>1.简单的使用</p>
-<p>分为几个大块，入门，提高，源码解析系列</p>
-
+          
       
     </div>
 
@@ -1153,7 +1123,7 @@ def register_model(fn):
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/default-index/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/default-index/">1</a><span class="page-number current">2</span><a class="page-number" href="/default-index/page/3/">3</a><a class="extend next" rel="next" href="/default-index/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
