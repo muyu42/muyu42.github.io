@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"muyu42.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+<meta property="og:type" content="website">
+<meta property="og:title" content="cabbage">
+<meta property="og:url" content="https://muyu42.github.io/page/3/index.html">
+<meta property="og:site_name" content="cabbage">
+<meta property="og:description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="muyu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://muyu42.github.io/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cabbage</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">cabbage</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜鸟写给小白的教程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/01/26/start2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/26/start2/" class="post-title-link" itemprop="url">vscode在远程服务器上debug</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-25 22:03:23" itemprop="dateCreated datePublished" datetime="2022-01-25T22:03:23Z">2022-01-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-25 02:12:11" itemprop="dateModified" datetime="2023-03-25T02:12:11Z">2023-03-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%AC%E4%B8%80%E6%AD%A5/" itemprop="url" rel="index"><span itemprop="name">第一步</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>新人如何debug呢，本地我们都会，那么vscode远程到服务器之后怎么办呢？</p>
+<blockquote>
+<p>print大法好（x</p>
+</blockquote>
+<p>vscode和pycharm，Jupyter Notebook不一样，区别我们以后再说<br>vscode他的debug需要我们配置一些东西，不难，但是网上没有很系统的教程</p>
+<p>下面请看我一点一点讲</p>
+<h1 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h1><h2 id="A-下载包pdb（python-debugger简称）"><a href="#A-下载包pdb（python-debugger简称）" class="headerlink" title="A.下载包pdb（python debugger简称）"></a>A.下载包pdb（python debugger简称）</h2><p>安装ipdb：pip install ipdb</p>
+<p>在xxx.py文件中在需要中断的地方插入代码进行debug</p>
+<p>个人并不建议使用，感觉很麻烦，而且破坏了程序源代码的完整性，改来改去就晕了。</p>
+<h2 id="B-使用vscode本身的debug（推荐）"><a href="#B-使用vscode本身的debug（推荐）" class="headerlink" title="B.使用vscode本身的debug（推荐）"></a>B.使用vscode本身的debug（推荐）</h2><p>使用vscode进行一些json文件设置，让我们在远程连接服务器与在本地上一样可以轻松调试</p>
+<h3 id="1-生成配置文件"><a href="#1-生成配置文件" class="headerlink" title="1.生成配置文件"></a>1.生成配置文件</h3><p>launch.json文件存放在你项目的根目录(workspace)的.vscode文件夹中</p>
+<p>我们先在你工作区下找到.vscode文件夹，这里往往会有一个叫launch.json的文件</p>
+<p>没有的话点击debug创建一个，教程如下</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16587307/article/details/106593867">https://blog.csdn.net/qq_16587307/article/details/106593867</a></p>
+<h3 id="2-编写配置文件"><a href="#2-编写配置文件" class="headerlink" title="2.编写配置文件"></a>2.编写配置文件</h3><p>强烈建议去看官方文档<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/debugging">https://code.visualstudio.com/docs/editor/debugging</a></p>
+<p>编写配置文件的一些参数和注释，并在后面给出我的配置文件供参考</p>
+<p><strong>必须参数</strong></p>
+<ul>
+<li>“type”:是你用的debugger类型。我们这里用python调试器</li>
+<li>“request:”调试的模式。launch调试新启动进程，attach调试运行中进程。我们这里用launch</li>
+<li>“name”:是你配置的名字,随便取。run debug的时候点你配置文件的名字</li>
+</ul>
+<p><strong>可选参数（通用）</strong></p>
+<p> presentation…</p>
+<p><strong>可选参数（大部分调试器支持）</strong></p>
+<p>”program:“ 在启动调试器的时候选择要执行的文件地址<br>“args”:传递给program调试的参数，和命令行输入效果是一样的，搭配argparse使用<br>”env“环境变量，分布式的时候用哪个卡<br>”cwd“:工作目录<br>”port“:当attach一个正在运行的程序时的端口号<br>“console“:使用哪种控制台，例如integratedTerminal, or externalTerminal</p>
+<p><strong>变量替换</strong></p>
+<p>**${workspaceFolder}:**给出工作区(workspace)文件夹的根路径</p>
+<p><strong>${file}:</strong> 在活动编辑器中打开的文件</p>
+<p><strong>${env:name}:</strong> ’Name‘的环境变量</p>
+<h3 id="3-我的配置文件"><a href="#3-我的配置文件" class="headerlink" title="3.我的配置文件"></a>3.我的配置文件</h3><p>照抄即可，只需替换一下 “python”: 用你python解释器位置，剩下几乎不用改</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 我的工作区在~/23w0323 所以配置文件也在这个下面的.vscode</span></span><br><span class="line">    <span class="comment">// 使用 IntelliSense 了解相关属性。 </span></span><br><span class="line">    <span class="comment">// 悬停以查看现有属性的描述。</span></span><br><span class="line">    <span class="comment">// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Python: Current File&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;python&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;$&#123;file&#125;&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;python&quot;</span>: <span class="string">&quot;/homeB/liangxiaoyu/anaconda3/envs/p3.9g/bin/python&quot;</span>,  <span class="comment">// 你python解释器位置</span></span><br><span class="line">            <span class="attr">&quot;console&quot;</span>: <span class="string">&quot;integratedTerminal&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;fileDirname&#125;&quot;</span>, <span class="comment">// 主要是这个修改为文件所在目录，不写就默认是工作区根目录</span></span><br><span class="line">            <span class="attr">&quot;justMyCode&quot;</span>: <span class="literal">true</span>,<span class="comment">//如果需要进入第三方库进行debug，需要设置justMyCode为false</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;--lr&quot;</span>,               <span class="string">&quot;0.4&quot;</span>,</span><br><span class="line">                <span class="string">&quot;--n_epochs&quot;</span>,            <span class="string">&quot;30&quot;</span>,</span><br><span class="line">                <span class="string">&quot;--net&quot;</span>,            <span class="string">&quot;vit&quot;</span>,</span><br><span class="line">              ], <span class="comment">//传入的参数，搭配argparse一起用，</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-然后运行就可以愉快debug了"><a href="#4-然后运行就可以愉快debug了" class="headerlink" title="4.然后运行就可以愉快debug了"></a>4.然后运行就可以愉快debug了</h3><p>完结撒花，有不懂的欢迎评论交流</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/01/19/start1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/19/start1/" class="post-title-link" itemprop="url">vscode远程连接服务器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-18 21:03:08" itemprop="dateCreated datePublished" datetime="2022-01-18T21:03:08Z">2022-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-24 14:37:40" itemprop="dateModified" datetime="2023-03-24T14:37:40Z">2023-03-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%AC%E4%B8%80%E6%AD%A5/" itemprop="url" rel="index"><span itemprop="name">第一步</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>vscode连接远程服务器</p>
+<h1 id="ssh-remote"><a href="#ssh-remote" class="headerlink" title="ssh-remote"></a>ssh-remote</h1><p>vscode下载ssh插件并连接的教程已经有很多了，例如：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/470592903">https://zhuanlan.zhihu.com/p/470592903</a></p>
+<p>但是一般会在安装过程遇到问题</p>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>vscode卡在Setting up SSH Host XX:Copying VS Code Server to host with scp</p>
+<p>本以为等一下就好了，结果十几分钟还没好</p>
+<h2 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h2><p>远程服务器不能连外网，home/.vscode-server/bin/commit_id/vscode-servlet.tar.gz 没有下载下来（注意你路径，一般是在你自己根目录下）</p>
+<p>commit_id是一串数字，很重要，先记下来之后要用</p>
+<h2 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h2><p>我用自己电脑手动下载，然后再上传到服务器<br>1.进行下载vscode-servlet.tar.gz。通过下面的连接进行下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://update.code.visualstudio.com/commit:$&#123;commit_id&#125;/server-linux-x64/stable</span><br></pre></td></tr></table></figure>
+
+<p>注意把:${commit_id}替换成你的id</p>
+<p>比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://update.code.visualstudio.com/commit:123456789/server-linux-x64/stable</span><br></pre></td></tr></table></figure>
+
+<p>3.运行下面这行命令。把 /home/.vscode-server/bin目录下的东西删除干净</p>
+<p>（注意你路径，一般是在你自己根目录下）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm /home/.vscode-server/bin/* -rf</span><br></pre></td></tr></table></figure>
+
+<p>4.将下载好的压缩包vscode-server-linux-x64.tar.gz放在 /home/.vscode-server/bin目录下<br>5.运行下面这三行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /home/.vscode-server/bin </span><br><span class="line">移动到目录</span><br><span class="line">tar -zxf vscode-server-linux-x64.tar.gz</span><br><span class="line">解压</span><br><span class="line">mv vscode-server-linux-x64 $&#123;commit_id&#125;</span><br><span class="line">改名，其中$&#123;commit_id&#125;需要替换成之前记下来的commit_id.</span><br></pre></td></tr></table></figure>
+
+<p>6.重新打开vscode就ok了~</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2021/11/19/%E7%B3%BB%E5%88%97%E6%96%87%E6%A1%A3%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/19/%E7%B3%BB%E5%88%97%E6%96%87%E6%A1%A3%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">文档汇总</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-18 16:13:37" itemprop="dateCreated datePublished" datetime="2021-11-18T16:13:37Z">2021-11-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-18 07:59:01" itemprop="dateModified" datetime="2023-03-18T07:59:01Z">2023-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9B%AE%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">目录</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>timm</p>
+<p>git</p>
+<p>设计模式</p>
+<p>机器学习基础知识</p>
+<p>论文阅读</p>
+<p>项目经验</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2021/11/18/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/18/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-18 05:22:57" itemprop="dateCreated datePublished" datetime="2021-11-18T05:22:57Z">2021-11-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">muyu</p>
+  <div class="site-description" itemprop="description">菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muyu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
