@@ -393,7 +393,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 11:01:00" itemprop="dateModified" datetime="2023-03-31T11:01:00Z">2023-03-31</time>
+                <time title="修改时间：2023-03-31 11:08:37" itemprop="dateModified" datetime="2023-03-31T11:08:37Z">2023-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -418,9 +418,15 @@
       
           <p>create model</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/MengYa_Dream/article/details/126690336-%E4%B8%BB%E8%A6%81%E5%8F%82%E8%80%83">https://blog.csdn.net/MengYa_Dream/article/details/126690336-主要参考</a></p>
+<blockquote>
 <p>The model architectures included come from a wide variety of sources. Sources, including papers, original impl (“reference code”) that Ross rewrote / adapted, and PyTorch impl that he leveraged directly (“code”) are listed below.</p>
+</blockquote>
+<blockquote>
 <p>Most included models have pretrained weights. The weights are either:</p>
+</blockquote>
+<blockquote>
 <p>from their original sources<br>ported by myself from their original impl in a different framework (e.g. Tensorflow models)<br>trained from scratch using the included training script<br>The validation results for the pretrained weights can be found here.</p>
+</blockquote>
 <p>最近一年 Vision Transformer 及其相关改进的工作层出不穷，在他们开源的代码中，大部分都用到了这样一个库：timm。各位炼丹师应该已经想必已经对其无比熟悉了，本文将介绍其中最关键的函数之一：create_model 函数</p>
 <p>create_model 函数是用来创建一个网络模型（如 ResNet、ViT 等），timm 库本身可供直接调用的模型已有接近400个，用户也可以自己实现一些模型并注册进 timm （这一部分内容将在下一小节着重介绍），供自己调用</p>
 <h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="create-model"><a href="#create-model" class="headerlink" title="create_model"></a>create_model</h2><p>该<code>create_model</code>函数是用来在里面创建数百个模型的<code>timm</code>。它还期望一堆<code>**kwargs</code>诸如<code>features_only</code>和<code>out_indices</code>并将这两个传递<code>**kwargs</code>给<code>create_model</code>函数来创建一个特征提取器。让我们看看如何？</p>
