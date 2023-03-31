@@ -348,7 +348,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-25 08:11:56" itemprop="dateModified" datetime="2023-03-25T08:11:56Z">2023-03-25</time>
+                <time title="修改时间：2023-03-29 15:02:16" itemprop="dateModified" datetime="2023-03-29T15:02:16Z">2023-03-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -371,7 +371,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>词2077分析<br>拼图</p>
+          <p>词2077分析<br>拼图 预测拼图完成时间</p>
+<h1 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h1><p>数据格式是2k分辨率图像的url，以及拼好所用的时间（64块，100块）</p>
+<p>初步筛掉公司提供的有缺失值的数据</p>
+<p>剩下1w张图像，时间对</p>
+<h1 id="特征提取（模型训练"><a href="#特征提取（模型训练" class="headerlink" title="特征提取（模型训练"></a>特征提取（模型训练</h1><h2 id="模型主体"><a href="#模型主体" class="headerlink" title="模型主体"></a>模型主体</h2><p>resnet34，效果不好，</p>
+<p>用vit</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>一开始选用mseloss</p>
+<p>但是训练效果很差</p>
+<p>发现是异常值有点多</p>
+<h3 id="mseloss均方误差-又称MSE、L2损失"><a href="#mseloss均方误差-又称MSE、L2损失" class="headerlink" title="mseloss均方误差(又称MSE、L2损失)"></a>mseloss均方误差(又称MSE、L2损失)</h3><p>回归问题中最常见的损失函数。如果对所有样本点只给出一个预测值，那么这个值就是所有目标值的平均值。</p>
+<p>优点：</p>
+<ul>
+<li>计算方便，逻辑清晰，衡量误差较准确。</li>
+<li>MSE 曲线的特点是光滑连续、可导，便于使用梯度下降算法。梯度随着误差增大或减小，收敛效果好</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>对异常点会赋予较大的权重，如果异常点不属于考虑范围，是由于某种错误导致的，则此函数指导方向将出现偏差。模型会更加偏向于惩罚较大的点，赋予其更大的权重，忽略掉较小的点的作用，无法避免离群点可能导致的梯度爆炸问题。如果样本中存在离群点，MSE 会给离群点赋予更高的权重，但是却是以牺牲其他正常数据点的预测效果为代价，因此会导致降低模型的整体性能。</li>
+</ul>
+<h3 id="平均绝对值误差-又称MAE，L1损失"><a href="#平均绝对值误差-又称MAE，L1损失" class="headerlink" title="平均绝对值误差(又称MAE，L1损失)"></a>平均绝对值误差(又称MAE，L1损失)</h3><p>优点：</p>
+<ul>
+<li>对异常值具有较好鲁棒性</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>梯度不变是个严重问题，MAE训练中梯度始终很大，且在0点连续但不可导，这意味着即使对于小的损失值，其梯度也是大的。这不利于函数的收敛和模型的学习，模型学习速度慢，同时也会导致使用梯度下降训练模型时，在结束时可能会遗漏全局最小值。</li>
+</ul>
+<p>解决办法，可变lr与warmup</p>
+<p>容易受离群点影响，也可能是过拟合了，加正则化</p>
+<h2 id="lr"><a href="#lr" class="headerlink" title="lr"></a>lr</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/524650878">https://zhuanlan.zhihu.com/p/524650878</a></p>
+<p>可变学习率</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37085158/article/details/122536201">https://blog.csdn.net/qq_37085158/article/details/122536201</a></p>
+<p>pytorch中优化器optimizer.param_groups[0]是什么</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36670529/article/details/107531773">https://blog.csdn.net/weixin_36670529/article/details/107531773</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/378822530">https://zhuanlan.zhihu.com/p/378822530</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI1MjQ2OTQ3Ng==&amp;mid=2247582694&amp;idx=1&amp;sn=d8ec63b98581155f90963d4414892b37&amp;chksm=e9e08a6dde97037bdec0781a4481959d94fe8bc961ea57573c22edd41afd1f2ce963e1a53cc8&amp;scene=27">https://mp.weixin.qq.com/s?__biz=MzI1MjQ2OTQ3Ng==&amp;mid=2247582694&amp;idx=1&amp;sn=d8ec63b98581155f90963d4414892b37&amp;chksm=e9e08a6dde97037bdec0781a4481959d94fe8bc961ea57573c22edd41afd1f2ce963e1a53cc8&amp;scene=27</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45085051/article/details/127308481">https://blog.csdn.net/weixin_45085051/article/details/127308481</a></p>
+<p><img src="project1/image-20230329222008475.png" alt="image-20230329222008475"></p>
 
       
     </div>
@@ -1107,7 +1144,7 @@ def register_model(fn):
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-24 15:55:34" itemprop="dateModified" datetime="2023-03-24T15:55:34Z">2023-03-24</time>
+                <time title="修改时间：2023-03-30 04:18:12" itemprop="dateModified" datetime="2023-03-30T04:18:12Z">2023-03-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1131,6 +1168,29 @@ def register_model(fn):
 
       
           <p>一个卡跑的好慢，看着剩下的7张3090陷入沉思，计算力就是财富，对于一个刚入门的小白，又该如何利用分布式来加速你的训练呢？<br>本教程使用DDP框架<br>想使用其他框架比如DP，multiprossing之类的可以去其他地方找资料</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>为什么使用分布式训练</p>
+<p>第一种是模型在一块GPU上放不下，两块或多块GPU上就能运行完整的模型（如早期的AlexNet）</p>
+<p>第二种是多块GPU并行计算可以达到加速训练的效果</p>
+<h1 id="不同方式"><a href="#不同方式" class="headerlink" title="不同方式"></a>不同方式</h1><p><strong>nn.DataParallel</strong>单进程控制多 GPU</p>
+<p><strong>torch.distributed 加速并行训练</strong></p>
+<p><strong>使用 torch.multiprocessing 取代启动器</strong></p>
+<p><strong>使用 apex 再加速</strong></p>
+<ul>
+<li>DataParallel是单进程多线程的，仅仅能工作在单机中。而DistributedDataParallel是多进程的，可以工作在单机或多机器中。</li>
+<li>DataParallel通常会慢于DistributedDataParallel。所以目前主流的方法是DistributedDataParallel。</li>
+</ul>
+<h1 id="ddp使用方法"><a href="#ddp使用方法" class="headerlink" title="ddp使用方法"></a>ddp使用方法</h1><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>pytorch 为我们提供了 torch.distributed.launch 启动器，用于在命令行分布式地执行 python 文件。</p>
+<p>虽然现在建议用run。但是好多论文sota都用的launch，也不是不能用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=0,1,2 python -m torch.distributed.launch --nproc_per_node=3 main.py</span><br></pre></td></tr></table></figure>
+
+
+
+<p>手动使用 torch.multiprocessing 进行多进程控制。绕开 torch.distributed.launch 自动控制开启和退出进程的一些小毛病</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>启动器会将当前进程的index 参数传递给程序</p>
+<p>使用 init_process_group 设置GPU 之间通信使用的后端和端口</p>
+<p>包装数据集</p>
+<p>包装模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer</span><br></pre></td></tr></table></figure>
 
       
     </div>
