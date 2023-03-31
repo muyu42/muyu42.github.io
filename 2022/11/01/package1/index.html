@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<a target="_blank" rel="noopener" href="https://github.com/muyu42" class="github-corner" target = "_blank" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; z-index: 1033; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"muyu42.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="tqdm Tqdm 是一个快速，可扩展的Python进度条，可以在 Python 长循环中添加一个进度提示信息，用户只需要封装任意的迭代器 tqdm(iterator)。 安装与导入pip install tqdm 我们能发现使用的核心是tqdm和trange这两个函数,导入这两个 from tqdm import tqdm from tqdm import trange 其实：trange&#x3D;tq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="package1">
+<meta property="og:url" content="https://muyu42.github.io/2022/11/01/package1/index.html">
+<meta property="og:site_name" content="cabbage">
+<meta property="og:description" content="tqdm Tqdm 是一个快速，可扩展的Python进度条，可以在 Python 长循环中添加一个进度提示信息，用户只需要封装任意的迭代器 tqdm(iterator)。 安装与导入pip install tqdm 我们能发现使用的核心是tqdm和trange这两个函数,导入这两个 from tqdm import tqdm from tqdm import trange 其实：trange&#x3D;tq">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://muyu42.github.io/2022/11/01/package1/package1/image-20230328122422753.png">
+<meta property="article:published_time" content="2022-10-31T18:34:05.000Z">
+<meta property="article:modified_time" content="2023-03-31T10:40:32.422Z">
+<meta property="article:author" content="muyu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://muyu42.github.io/2022/11/01/package1/package1/image-20230328122422753.png">
+
+<link rel="canonical" href="https://muyu42.github.io/2022/11/01/package1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>package1 | cabbage</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">cabbage</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜鸟写给小白的教程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/11/01/package1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          package1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-31 18:34:05" itemprop="dateCreated datePublished" datetime="2022-10-31T18:34:05Z">2022-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 10:40:32" itemprop="dateModified" datetime="2023-03-31T10:40:32Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/package/" itemprop="url" rel="index"><span itemprop="name">package</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="tqdm"><a href="#tqdm" class="headerlink" title="tqdm"></a>tqdm</h1><p> Tqdm 是一个快速，<strong>可扩展的Python进度条</strong>，可以在 Python 长循环中添加一个进度提示信息，用户只需要封装任意的迭代器 tqdm(iterator)。</p>
+<h2 id="安装与导入"><a href="#安装与导入" class="headerlink" title="安装与导入"></a>安装与导入</h2><p><code>pip install tqdm</code></p>
+<p>我们能发现使用的核心是tqdm和trange这两个函数,导入这两个</p>
+<p><code>from tqdm import tqdm</code></p>
+<p><code>from tqdm import trange</code></p>
+<p>其实：<code>trange=tqdm(range())</code></p>
+<h2 id="4种使用方式"><a href="#4种使用方式" class="headerlink" title="4种使用方式"></a>4种使用方式</h2><p><code>tqdm</code>是非常通用的，并且可以以多种方式使用。下面给出三个主要部分。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># 方法1</span><br><span class="line">for i in tqdm(可迭代对象):</span><br><span class="line">	pass</span><br><span class="line"></span><br><span class="line"># 方法2</span><br><span class="line">for idx, i in enumerate(tqdm(可迭代对象)):</span><br><span class="line">	pass</span><br><span class="line">for idx, i in tqdm(enumerate(可迭代对象)):</span><br><span class="line">	pass	</span><br><span class="line"></span><br><span class="line"># 方法3 而如果想要在迭代过程中变更说明文字，还可以预先实例化进度条对象，在需要刷新说明文字的时候执行相应的程序</span><br><span class="line">p = tqdm(可迭代对象)</span><br><span class="line">for idx, i in enumerate(p):</span><br><span class="line">	pass</span><br><span class="line"># 方法4	手动控制更新</span><br><span class="line">with tqdm.tqdm(total=10) as bar:  # total为进度条总的迭代次数</span><br><span class="line">    # 操作1</span><br><span class="line">    time.sleep(1)</span><br><span class="line">    # 更新进度条</span><br><span class="line">    bar.update(1)  # bar.update()里面的数表示更新的次数，和optimizer.step方法类似</span><br><span class="line">    </span><br><span class="line">    # 操作2</span><br><span class="line">    time.sleep(2)</span><br><span class="line">    # 更新进度条</span><br><span class="line">    bar.update(3)</span><br><span class="line">    </span><br><span class="line">    # 操作3</span><br><span class="line">    time.sleep(1)</span><br><span class="line">    # 更新进度条</span><br><span class="line">    bar.update(6)  # 建议不要超过total</span><br><span class="line">    </span><br><span class="line">with tqdm(total=100) as pbar:</span><br><span class="line">    for i in range(10):</span><br><span class="line">        pbar.update(10)</span><br><span class="line"># 也可以这样</span><br><span class="line">pbar = tqdm(total=100)</span><br><span class="line">for i in range(10):</span><br><span class="line">    pbar.update(10)</span><br><span class="line">pbar.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>而如果想要在迭代过程中变更说明文字，还可以预先实例化进度条对象，在需要刷新说明文字的时候执行相应的程序：</p>
+<p>tqdm提供了两个个方法：</p>
+<ol>
+<li><code>set_description()</code></li>
+<li><code>set_postfix()</code></li>
+</ol>
+<p>这两个方法就类似于print，可以在进度条中显示一些变动的信息，在使用set_description()和set_postfix()时一般会创建一个tqdm.tqdm()对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pbar = tqdm.tqdm(range(epochs), ncols=100)  # ncols设置进度条显示的字符长度，小了就显示不全了</span><br><span class="line"></span><br><span class="line">for idx, element in enumerate(pbar):</span><br><span class="line">    time.sleep(0.01)</span><br><span class="line">    pbar.set_description(f&quot;Epoch &#123;idx&#125;/&#123;epochs&#125;&quot;)</span><br><span class="line">    pbar.set_postfix(&#123;&quot;class&quot;: element&#125;, loss=random.random(), cost_time = random.randrange(0, 100))</span><br></pre></td></tr></table></figure>
+
+<img src="package1/image-20230328122422753.png" alt="image-20230328122422753" style="zoom:50%;" />
+
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><p>tqdm()的返回值是一个可迭代对象，迭代的每一个元素就是iterable的每一个参数。该返回值可以修改进度条信息。示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with tqdm(range(100), desc=&#x27;Test&#x27;) as tbar:</span><br><span class="line">    for i in tbar:</span><br><span class="line">        tbar.set_postfix(loss=i/100, x=i)</span><br><span class="line">        tbar.update()  # 默认参数n=1，每update一次，进度+n</span><br><span class="line">        time.sleep(0.2)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@staticmethod</span><br><span class="line">def format_meter(n, total, elapsed, ncols=None, prefix=&#x27;&#x27;, ascii=False, unit=&#x27;it&#x27;,</span><br><span class="line">                 unit_scale=False, rate=None, bar_format=None, postfix=None,</span><br><span class="line">                 unit_divisor=1000, initial=0, colour=None, **extra_kwargs):</span><br></pre></td></tr></table></figure>
+
+<p>iterable: 可迭代的对象, 在手动更新时不需要进行设置<br>desc: 字符串,左边进度条描述,作为进度条标题<br>total: 预期的迭代次数。一般不填，默认为<code>iterable</code>的长度。<br>leave: bool值, 迭代完成后是否保留进度条。默认保留。<br>file: 输出指向位置, 默认是终端, ⼀般不需要设置<br>ncols: 调整进度条宽度, 默认是根据环境⾃动调节长度, 如果设置为0, 就没有进度条, 只有输出的信息<br>unit: 描述处理项⽬的⽂字, 默认是it, 例如: 100 it/s, 处理照⽚的话设置为img ,则为 100 img/s<br>unit_scale: ⾃动根据国际标准进⾏项⽬处理速度单位的换算, 例如 100000 it/s &gt;&gt; 100k it/s</p>
+<p>postfix进度条后缀信息以字典形式传入详细信息</p>
+<p>colour: 进度条颜色</p>
+<p>还有一个复杂的格式参数bar_formmat，见下一节</p>
+<h2 id="进度条含义解释与自定义"><a href="#进度条含义解释与自定义" class="headerlink" title="进度条含义解释与自定义"></a>进度条含义解释与自定义</h2><p>其中<code>xxxit/s</code>表示每秒迭代的次数,it=iteration(一次迭代）</p>
+<p>进度百分比|进度条| 当前迭代数/总迭代个数，[消耗时间&lt;剩余时间，迭代的速度]</p>
+<p>其会在每一轮从可迭代对象中取得一个值之后，打印遍历进度条，然后再执行循环中的程序。最后面的速度表示执行一个循环所耗费的时间。</p>
+<p><strong>复杂参数bar_formmat</strong></p>
+<p>默认格式：<code>&#39;&#123;l_bar&#125;&#123;bar&#125;&#123;r_bar&#125;&#39;</code></p>
+<p><code>l_bar</code>：进度条左边的文字<br><code>bar</code>: 进度条图形部分<br><code>r_bar</code>: 进度条右边的文字</p>
+<pre><code>bar_format  : str, optional
+    Specify a custom bar string formatting. May impact performance.
+    [default: &#39;&#123;l_bar&#125;&#123;bar&#125;&#123;r_bar&#125;&#39;], where
+    l_bar=&#39;&#123;desc&#125;: &#123;percentage:3.0f&#125;%|&#39; and
+    r_bar=&#39;| &#123;n_fmt&#125;/&#123;total_fmt&#125; [&#123;elapsed&#125;&lt;&#123;remaining&#125;, &#123;rate_fmt&#125;&#123;postfix&#125;]&#39;
+Possible vars: l_bar, bar, r_bar, n, n_fmt, total, total_fmt,
+    percentage, elapsed, elapsed_s, ncols, desc, unit,
+    rate, rate_fmt, rate_noinv, rate_noinv_fmt,
+    rate_inv, rate_inv_fmt, postfix, unit_divisor,
+    remaining, remaining_s.
+    Note that a trailing &quot;: &quot; is automatically removed after &#123;desc&#125;
+    if the latter is empty.
+</code></pre>
+<p>其具体为：{desc}: 100%|███████████| 10/10 [00:05&lt;00:00, 1.98it/s,{postfix}]</p>
+<p>desc、postfix默认为空；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i in tqdm(range(10), bar_format=&#x27;&#123;desc&#125;|&#123;bar&#125;|&#123;percentage:3.0f&#125;%&#x27;):</span><br><span class="line">    time.sleep(.5)</span><br></pre></td></tr></table></figure>
+
+<p>|█████████████████████|100%</p>
+<h2 id="others"><a href="#others" class="headerlink" title="others"></a>others</h2><h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tqdm还支持在循环中嵌套使用进度条，例如在for循环中嵌套while循环：</span><br><span class="line">from tqdm import tqdm</span><br><span class="line">for i in tqdm(range(10)):</span><br><span class="line">    for j in tqdm(range(100), leave=False):</span><br><span class="line">        # do something</span><br></pre></td></tr></table></figure>
+
+<p>这样就会在外层循环中显示一个进度条，在内层循环中显示另一个进度条。参数leave用于控制内层进度条是否在外层进度条完成后消失。</p>
+<h3 id="在多线程和多进程中使用"><a href="#在多线程和多进程中使用" class="headerlink" title="在多线程和多进程中使用"></a>在多线程和多进程中使用</h3><p>可以通过设置参数desc来给每个进程或线程命名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from tqdm import tqdm</span><br><span class="line">import multiprocessing</span><br><span class="line"></span><br><span class="line">def worker(num):</span><br><span class="line">    for i in tqdm(range(1000000), desc=f&#x27;Worker &#123;num&#125;&#x27;):</span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    with multiprocessing.Pool(4) as p:</span><br><span class="line">        p.map(worker, [1, 2, 3, 4])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样就会在每个进程的进度条上显示进度，并显示进程的名称。</p>
+<h3 id="结合pandas的使用"><a href="#结合pandas的使用" class="headerlink" title="结合pandas的使用"></a>结合pandas的使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import  pandas as pd</span><br><span class="line">import numpy as  np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(np.random.randint(0, 100, (10000000, 6)))</span><br><span class="line">tqdm.pandas(desc=&quot;my bar！&quot;)</span><br><span class="line">df.progress_apply(lambda x: x**2)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tqdm对pandas中的apply也提供了支持，用法是：</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">from tqdm.notebook import tqdm</span><br><span class="line"># 每个单独的porgress_apply运行之前一定要先执行tqdm.pandas()</span><br><span class="line">tqdm.pandas()</span><br><span class="line"></span><br><span class="line">df=pd.DataFrame(&#123;&#x27;a&#x27;, range(10)&#125;)</span><br><span class="line">x = df.progress_apply(lambda x: time.sleep(0.2))</span><br></pre></td></tr></table></figure>
+
+<h3 id="减少tqdm进度条在日志文件中的打印频率？"><a href="#减少tqdm进度条在日志文件中的打印频率？" class="headerlink" title="减少tqdm进度条在日志文件中的打印频率？"></a>减少tqdm进度条在日志文件中的打印频率？</h3><p>可以使用嵌套循环，其中包含tqdm的循环和内部循环只是一个简单的for循环</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> outer <span class="keyword">in</span> tqdm(range(<span class="number">0</span>,<span class="number">1e5</span>,<span class="number">1e4</span>)):</span><br><span class="line">    <span class="keyword">for</span> inner <span class="keyword">in</span> range(<span class="number">1e4</span>):</span><br><span class="line">        print(outer+inner)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>cankao</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44878336/article/details/124894210">https://blog.csdn.net/weixin_44878336/article/details/124894210</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/KuanLez/p/15974970.html">https://www.cnblogs.com/KuanLez/p/15974970.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42475060/article/details/121661840">https://blog.csdn.net/weixin_42475060/article/details/121661840</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41554005/article/details/117297861">https://blog.csdn.net/qq_41554005/article/details/117297861</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/winter2121/article/details/111356587">https://blog.csdn.net/winter2121/article/details/111356587</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/378474516">https://zhuanlan.zhihu.com/p/378474516</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/19/5/" rel="prev" title="【白菜】timm篇五：创建模型">
+      <i class="fa fa-chevron-left"></i> 【白菜】timm篇五：创建模型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/12/02/package4/" rel="next" title="package4">
+      package4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tqdm"><span class="nav-number">1.</span> <span class="nav-text">tqdm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%AF%BC%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">安装与导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">4种使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">1.2.1.</span> <span class="nav-text">3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">1.2.2.</span> <span class="nav-text">4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%90%AB%E4%B9%89%E8%A7%A3%E9%87%8A%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="nav-number">1.4.</span> <span class="nav-text">进度条含义解释与自定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#others"><span class="nav-number">1.5.</span> <span class="nav-text">others</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97"><span class="nav-number">1.5.1.</span> <span class="nav-text">嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.2.</span> <span class="nav-text">在多线程和多进程中使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E5%90%88pandas%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.3.</span> <span class="nav-text">结合pandas的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E5%B0%91tqdm%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%9C%A8%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%93%E5%8D%B0%E9%A2%91%E7%8E%87%EF%BC%9F"><span class="nav-number">1.5.4.</span> <span class="nav-text">减少tqdm进度条在日志文件中的打印频率？</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">muyu</p>
+  <div class="site-description" itemprop="description">菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muyu42" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muyu42" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:7914675@qq.com" title="E-Mail → mailto:7914675@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/weixin_48076759" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_48076759" rel="noopener" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muyu</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<a target="_blank" rel="noopener" href="https://github.com/muyu42" class="github-corner" target = "_blank" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; z-index: 1033; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"muyu42.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53345829&#x2F;article&#x2F;details&#x2F;124308515 pytorch加载图片数据集有两种方法。 orch能处理的数据只能是torch.Tensor，所以有必要将其他数据转换为torch.Tensor。 常见的有几种数据： np.ndarrayPIL.Image https:&#x2F;&#x2F;blog.csdn.net&#x2F;a19990412&#x2F;arti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dataloader">
+<meta property="og:url" content="https://muyu42.github.io/2022/12/25/package6/index.html">
+<meta property="og:site_name" content="cabbage">
+<meta property="og:description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_53345829&#x2F;article&#x2F;details&#x2F;124308515 pytorch加载图片数据集有两种方法。 orch能处理的数据只能是torch.Tensor，所以有必要将其他数据转换为torch.Tensor。 常见的有几种数据： np.ndarrayPIL.Image https:&#x2F;&#x2F;blog.csdn.net&#x2F;a19990412&#x2F;arti">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-25T08:44:20.000Z">
+<meta property="article:modified_time" content="2023-03-31T10:51:49.414Z">
+<meta property="article:author" content="muyu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://muyu42.github.io/2022/12/25/package6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>dataloader | cabbage</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">cabbage</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜鸟写给小白的教程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/12/25/package6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          dataloader
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-12-25 08:44:20" itemprop="dateCreated datePublished" datetime="2022-12-25T08:44:20Z">2022-12-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 10:51:49" itemprop="dateModified" datetime="2023-03-31T10:51:49Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%B0%E4%BA%BA%E5%85%A5%E9%97%A8/" itemprop="url" rel="index"><span itemprop="name">新人入门</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53345829/article/details/124308515">https://blog.csdn.net/qq_53345829/article/details/124308515</a></p>
+<p>pytorch加载图片数据集有两种方法。</p>
+<p>orch能处理的数据只能是torch.Tensor，所以有必要将其他数据转换为torch.Tensor。</p>
+<p>常见的有几种数据：</p>
+<p>np.ndarray<br>PIL.Image</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a19990412/article/details/105402341/">https://blog.csdn.net/a19990412/article/details/105402341/</a></p>
+<p>创建自己的数据集需要继承父类torch.utils.data.Dataset，同时需要重载两个私有成员函数：def <strong>len</strong>(self)和def <strong>getitem</strong>(self, index) 。 def <strong>len</strong>(self)应该返回数据集的大小；def <strong>getitem</strong>(self, index)接收一个index，然后返回图片数据和标签，这个index通常指的是一个list的index，这个list的每个元素就包含了图片数据的路径和标签信息。如何制作这个list呢，通常的方法是将图片的路径和标签信息存储在一个txt中，然后从该txt中读取。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Vertira/article/details/127482001">https://blog.csdn.net/Vertira/article/details/127482001</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38683460/article/details/123306447">https://blog.csdn.net/qq_38683460/article/details/123306447</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zwy_697198/article/details/123561769">https://blog.csdn.net/zwy_697198/article/details/123561769</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41140138/article/details/127084076">https://blog.csdn.net/qq_41140138/article/details/127084076</a></p>
+<p>Image.open(ImgPath)</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43723625/article/details/108158375">https://blog.csdn.net/weixin_43723625/article/details/108158375</a></p>
+<h2 id="3-DataLoader"><a href="#3-DataLoader" class="headerlink" title="3.DataLoader"></a>3.DataLoader</h2><p>提供对<code>Dataset</code>的操作，操作如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.utils.data.DataLoader(dataset,batch_size,shuffle,drop_last，num_workers)</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>参数含义如下：</p>
+<ul>
+<li>d a t a s e t \color{HotPink}{dataset}<em>d<strong>a</strong>t<strong>a</strong>se**t</em>： 加载torch.utils.data.Dataset对象数据</li>
+<li>b a t c h _ s i z e \color{HotPink}{batch_size}<em>ba<strong>t</strong>c**h</em>_<em>s<strong>i</strong>ze</em>： 每个batch的大小</li>
+<li>s h u f f l e \color{HotPink}{shuffle}<em>s<strong>h</strong>u<strong>ff</strong>l**e</em>：是否对数据进行打乱</li>
+<li>d r o p _ l a s t \color{HotPink}{drop_last}<em>d<strong>ro</strong>p</em>_<em>l<strong>a</strong>s**t</em>：是否对无法整除的最后一个datasize进行丢弃</li>
+<li>n u m _ w o r k e r s \color{HotPink}{num_workers}<em>n<strong>u</strong>m</em>_<em>w<strong>or</strong>k**ers</em>：表示加载的时候子进程数</li>
+</ul>
+<p>因此，在实现过程中我们测试如下（紧跟上述用例）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">datas = DataLoader(torch_data, batch_size=<span class="number">6</span>, shuffle=<span class="literal">True</span>, drop_last=<span class="literal">False</span>, num_workers=<span class="number">2</span>)</span><br><span class="line"><span class="number">1234</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，我们的数据已经加载完毕了，只需要在训练过程中使用即可。</p>
+<h2 id="4-查看数据"><a href="#4-查看数据" class="headerlink" title="4.查看数据"></a>4.查看数据</h2><p>我们可以通过迭代器<code>（enumerate）</code>进行输出数据，测试如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, data <span class="keyword">in</span> <span class="built_in">enumerate</span>(datas):</span><br><span class="line">	<span class="comment"># i表示第几个batch， data表示该batch对应的数据，包含data和对应的labels</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第 &#123;&#125; 个Batch \n&#123;&#125;&quot;</span>.<span class="built_in">format</span>(i, data))</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/12/03/package5/" rel="prev" title="package5">
+      <i class="fa fa-chevron-left"></i> package5
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/02/01/package7/" rel="next" title="optimzer">
+      optimzer <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DataLoader"><span class="nav-number">1.</span> <span class="nav-text">3.DataLoader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">4.查看数据</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">muyu</p>
+  <div class="site-description" itemprop="description">菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muyu42" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muyu42" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:7914675@qq.com" title="E-Mail → mailto:7914675@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/weixin_48076759" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_48076759" rel="noopener" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muyu</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
