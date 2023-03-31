@@ -171,6 +171,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/02/08/0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/08/0/" class="post-title-link" itemprop="url">【白菜】timm篇零：带你认识timm</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-08 14:15:09" itemprop="dateCreated datePublished" datetime="2023-02-08T14:15:09Z">2023-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 11:05:03" itemprop="dateModified" datetime="2023-03-31T11:05:03Z">2023-03-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="timm库（CV利器）的入门教程"><a href="#timm库（CV利器）的入门教程" class="headerlink" title="timm库（CV利器）的入门教程"></a>timm库（CV利器）的入门教程</h1><blockquote>
+<p>你是否想过用深度学习来解决一些视觉问题，比如图像分类、目标检测、人脸识别等？</p>
+<p>你是否觉得深度学习的模型太多太复杂，不知道该如何选择和使用？</p>
+<p>你是否曾经为了复现一篇论文的结果而苦苦寻找代码和权重，却发现官方没有提供或者提供的不完整？</p>
+</blockquote>
+<p><strong>如果你有以上的困惑，那么我要向你推荐一个神奇的库：timm。</strong></p>
+<h2 id="啥是timm？"><a href="#啥是timm？" class="headerlink" title="啥是timm？"></a>啥是timm？</h2><p>timm 是 PyTorch Image Models 的缩写，它是一个巨大的 PyTorch 代码集合，包括了一系列：</p>
+<ul>
+<li>image models</li>
+<li>layers</li>
+<li>utilities</li>
+<li>optimizers</li>
+<li>schedulers</li>
+<li>data-loaders / augmentations</li>
+<li>training / validation scripts</li>
+</ul>
+<p>timm 库实现了最新的几乎所有的具有影响力的视觉模型，它不仅提供了模型的权重，还提供了一个很棒的分布式训练和评估的代码框架，方便后人开发。更难能可贵的是它还在不断地更新迭代新的训练方法，新的视觉模型和优化代码。</p>
+<p>timm 库是由 Ross Wightman 开发和维护的，在此向大佬致敬！他是一位来自加拿大温哥华的自由职业者，在 GitHub 上分享了他对各种视觉模型和技术的理解和实现，并且欢迎大家给他反馈和赞助。当然，timm 库现在归属于抱脸了，这个我们之后再说。</p>
+<h2 id="写文原因："><a href="#写文原因：" class="headerlink" title="写文原因："></a>写文原因：</h2><p>我之所以写这篇文章，主要是出于以下几点：</p>
+<ol>
+<li><p>深度学习大势所趋。随着计算机技术和数据量的增长，深度学习已经成为了人工智能领域最前沿和最活跃的分支之一。它在各个领域都取得了令人惊叹的成就，比如自然语言处理、计算机视觉、AIGC等。作为一个对人工智能感兴趣并且想要从事相关工作或研究的人，我认为有必要掌握深度学习相关知识，并且跟进最新进展。</p>
+</li>
+<li><p>互联网共享精神。互联网是一个开放、自由、平等、协作、创新、分享、进步 的平台。在这里我们可以获取海量信息资源，并且与志同道合者交流互动。我非常欣赏并支持开源社区中那种无私奉献、相互帮助、共同成长的氛围。我也希望通过我的文章来分享我所学到或者感兴趣的东西，并且与读者们交流心得。</p>
+</li>
+<li><p>我入门时费尽辛苦。当我刚开始接触深度学习时，我遇到了很多困难和挫折。比如找不到合适的教程，网上信息良莠不齐，解决一个问题要搞好久。虽然我现在也还是菜鸡hh，但是我想把自己的学习经历和心得分享给那些想要入门CV的小白们，希望能够对你们有所帮助。同时，也欢迎各位大佬或者有兴趣的同学给我提出宝贵的意见和建议，让我们一起进步。</p>
+</li>
+<li><p>本来是想写完发，但是可能又会拖延，就先发出来一点，欢迎大家监督。可以加我的QQ：7914675，一起交流入门心得</p>
+</li>
+<li><p>还有一个原因，不过先容我卖个关子，等到这个timm的系列完结再说。</p>
+</li>
+</ol>
+<h2 id="本系列的目录结构和跳转链接"><a href="#本系列的目录结构和跳转链接" class="headerlink" title="本系列的目录结构和跳转链接"></a>本系列的目录结构和跳转链接</h2><p>如下：</p>
+<p>0.引言</p>
+<p>1.简单的使用</p>
+<p>分为几个大块，入门，提高，源码解析系列</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/02/01/package7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -932,105 +1031,6 @@ Possible vars: l_bar, bar, r_bar, n, n_fmt, total, total_fmt,
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41554005/article/details/117297861">https://blog.csdn.net/qq_41554005/article/details/117297861</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/winter2121/article/details/111356587">https://blog.csdn.net/winter2121/article/details/111356587</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/378474516">https://zhuanlan.zhihu.com/p/378474516</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2022/05/18/0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/18/0/" class="post-title-link" itemprop="url">【白菜】timm篇零：带你认识timm</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-18 14:15:09" itemprop="dateCreated datePublished" datetime="2022-05-18T14:15:09Z">2022-05-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:24:40" itemprop="dateModified" datetime="2023-03-31T10:24:40Z">2023-03-31</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="timm库（CV利器）的入门教程"><a href="#timm库（CV利器）的入门教程" class="headerlink" title="timm库（CV利器）的入门教程"></a>timm库（CV利器）的入门教程</h1><blockquote>
-<p>你是否想过用深度学习来解决一些视觉问题，比如图像分类、目标检测、人脸识别等？</p>
-<p>你是否觉得深度学习的模型太多太复杂，不知道该如何选择和使用？</p>
-<p>你是否曾经为了复现一篇论文的结果而苦苦寻找代码和权重，却发现官方没有提供或者提供的不完整？</p>
-</blockquote>
-<p><strong>如果你有以上的困惑，那么我要向你推荐一个神奇的库：timm。</strong></p>
-<h2 id="啥是timm？"><a href="#啥是timm？" class="headerlink" title="啥是timm？"></a>啥是timm？</h2><p>timm 是 PyTorch Image Models 的缩写，它是一个巨大的 PyTorch 代码集合，包括了一系列：</p>
-<ul>
-<li>image models</li>
-<li>layers</li>
-<li>utilities</li>
-<li>optimizers</li>
-<li>schedulers</li>
-<li>data-loaders / augmentations</li>
-<li>training / validation scripts</li>
-</ul>
-<p>timm 库实现了最新的几乎所有的具有影响力的视觉模型，它不仅提供了模型的权重，还提供了一个很棒的分布式训练和评估的代码框架，方便后人开发。更难能可贵的是它还在不断地更新迭代新的训练方法，新的视觉模型和优化代码。</p>
-<p>timm 库是由 Ross Wightman 开发和维护的，在此向大佬致敬！他是一位来自加拿大温哥华的自由职业者，在 GitHub 上分享了他对各种视觉模型和技术的理解和实现，并且欢迎大家给他反馈和赞助。当然，timm 库现在归属于抱脸了，这个我们之后再说。</p>
-<h2 id="写文原因："><a href="#写文原因：" class="headerlink" title="写文原因："></a>写文原因：</h2><p>我之所以写这篇文章，主要是出于以下几点：</p>
-<ol>
-<li><p>深度学习大势所趋。随着计算机技术和数据量的增长，深度学习已经成为了人工智能领域最前沿和最活跃的分支之一。它在各个领域都取得了令人惊叹的成就，比如自然语言处理、计算机视觉、AIGC等。作为一个对人工智能感兴趣并且想要从事相关工作或研究的人，我认为有必要掌握深度学习相关知识，并且跟进最新进展。</p>
-</li>
-<li><p>互联网共享精神。互联网是一个开放、自由、平等、协作、创新、分享、进步 的平台。在这里我们可以获取海量信息资源，并且与志同道合者交流互动。我非常欣赏并支持开源社区中那种无私奉献、相互帮助、共同成长的氛围。我也希望通过我的文章来分享我所学到或者感兴趣的东西，并且与读者们交流心得。</p>
-</li>
-<li><p>我入门时费尽辛苦。当我刚开始接触深度学习时，我遇到了很多困难和挫折。比如找不到合适的教程，网上信息良莠不齐，解决一个问题要搞好久。虽然我现在也还是菜鸡hh，但是我想把自己的学习经历和心得分享给那些想要入门CV的小白们，希望能够对你们有所帮助。同时，也欢迎各位大佬或者有兴趣的同学给我提出宝贵的意见和建议，让我们一起进步。</p>
-</li>
-<li><p>本来是想写完发，但是可能又会拖延，就先发出来一点，欢迎大家监督。可以加我的QQ：7914675，一起交流入门心得</p>
-</li>
-<li><p>还有一个原因，不过先容我卖个关子，等到这个timm的系列完结再说。</p>
-</li>
-</ol>
-<h2 id="本系列的目录结构和跳转链接"><a href="#本系列的目录结构和跳转链接" class="headerlink" title="本系列的目录结构和跳转链接"></a>本系列的目录结构和跳转链接</h2><p>如下：</p>
-<p>0.引言</p>
-<p>1.简单的使用</p>
-<p>分为几个大块，入门，提高，源码解析系列</p>
 
       
     </div>
