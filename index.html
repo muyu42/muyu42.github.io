@@ -171,654 +171,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/11/16/package3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/11/16/package3/" class="post-title-link" itemprop="url">package3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-11-15 21:34:14" itemprop="dateCreated datePublished" datetime="2023-11-15T21:34:14Z">2023-11-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:42:45" itemprop="dateModified" datetime="2023-03-31T10:42:45Z">2023-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">基础操作</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><table>
-<thead>
-<tr>
-<th>读写方式</th>
-<th>可否读写</th>
-<th>文件不存在</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>w</td>
-<td>覆盖写入</td>
-<td>创建</td>
-</tr>
-<tr>
-<td>w+</td>
-<td>覆盖写入、可读</td>
-<td>创建</td>
-</tr>
-<tr>
-<td>r</td>
-<td>可读</td>
-<td>报错</td>
-</tr>
-<tr>
-<td>r+</td>
-<td>覆盖写入、可读</td>
-<td>报错</td>
-</tr>
-<tr>
-<td>a</td>
-<td>附加写入</td>
-<td>创建</td>
-</tr>
-<tr>
-<td>a+</td>
-<td>附加写入、可读</td>
-<td>创建</td>
-</tr>
-</tbody></table>
-<h1 id="csv"><a href="#csv" class="headerlink" title="csv"></a>csv</h1><p>csv文件叫逗号分隔值文件</p>
-<p>每一行内容是通过逗号来区分出不同的列</p>
-<p>csv文件可以直接通过excel打开，以行列的形式保存和显示数据，但是相对excel文件，它只能存储数据，不能保存公式和函数</p>
-<p>使用时要<code>import csv</code></p>
-<h2 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h2><h3 id="1）创建打开csv文件"><a href="#1）创建打开csv文件" class="headerlink" title="1）创建打开csv文件"></a>1）创建打开csv文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">文件对象 = open()</span></span><br><span class="line"><span class="string">文件对象.close()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">with open() as 文件对象:</span></span><br><span class="line"><span class="string">    操作文件</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>举例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;file/电影.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2）创建reader获取文件内容"><a href="#2）创建reader获取文件内容" class="headerlink" title="2）创建reader获取文件内容"></a>2）创建reader获取文件内容</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">csv.reader(文件对象)        -   获取文件内容，并且以列表为单位返回每一行内容</span></span><br><span class="line"><span class="string">csv.DictReader(文件对象)    -   获取文件内容，并且以字典为单位返回第2行开始的每一行内容（字典的键是第一行内容）</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;file/电影.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">reader1 = csv.reader(f)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(reader1))</span><br><span class="line">reader2 = csv.DictReader(f)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(reader2))</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、csv文件写操作"><a href="#二、csv文件写操作" class="headerlink" title="二、csv文件写操作"></a>二、csv文件写操作</h2><h3 id="（一）打开文件"><a href="#（一）打开文件" class="headerlink" title="（一）打开文件"></a>（一）打开文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;./file/data.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>如果没有文件，则会自动创建</strong></p>
-<h3 id="（二）创建writer对象"><a href="#（二）创建writer对象" class="headerlink" title="（二）创建writer对象"></a>（二）创建writer对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">csv.writer(文件对象，delimiter)            -   创建writer对象，这个对象在写入数据的时候一行对应一个列表</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">delimiter 指定同一行每个字段的分隔字符。若不指定，默认以英文逗号(,)分隔，在csv文件中显示的是不同单元格，若以其他符号分隔，则显示在csv同一单元格中</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">csv.DictWriter(文件对象，键列表，delimiter)        -   创建writer对象，以字典为单位写入数据</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="1）以列表为单位写入一行内容"><a href="#1）以列表为单位写入一行内容" class="headerlink" title="1）以列表为单位写入一行内容"></a>1）以列表为单位写入一行内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer = csv.writer(f)</span><br></pre></td></tr></table></figure>
-
-<p><strong>一次写入一行内容</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">writer.writerow([<span class="string">&#x27;姓名&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>])</span><br><span class="line">writer.writerow([<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;2001&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;110&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<p><strong>一次写入多行内容</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">writer.writerows([</span><br><span class="line">    [<span class="string">&#x27;小花&#x27;</span>, <span class="string">&#x27;2001&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="string">&#x27;110&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;小华&#x27;</span>, <span class="string">&#x27;2001&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="string">&#x27;110&#x27;</span>]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-
-<h4 id="2）以字典为单位写入一行内容"><a href="#2）以字典为单位写入一行内容" class="headerlink" title="2）以字典为单位写入一行内容"></a>2）以字典为单位写入一行内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer = csv.DictWriter(f, [<span class="string">&#x27;姓名&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<p><strong>写入文件头（将字典的键写入到文件开头）</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.writeheader()</span><br></pre></td></tr></table></figure>
-
-<p><strong>一次写入一行内容</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.writerow(&#123;<span class="string">&#x27;姓名&#x27;</span>: <span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>: <span class="string">&#x27;2000-2-3&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>: <span class="string">&#x27;112&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><strong>一次写入多行内容</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">writer.writerows([</span><br><span class="line">    &#123;<span class="string">&#x27;姓名&#x27;</span>: <span class="string">&#x27;小花&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>: <span class="string">&#x27;2000-2-3&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>: <span class="string">&#x27;112&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;姓名&#x27;</span>: <span class="string">&#x27;小华&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>: <span class="string">&#x27;2000-2-3&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>: <span class="string">&#x27;112&#x27;</span>&#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/11/03/package2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/11/03/package2/" class="post-title-link" itemprop="url">package2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-11-02 20:34:09" itemprop="dateCreated datePublished" datetime="2023-11-02T20:34:09Z">2023-11-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:41:20" itemprop="dateModified" datetime="2023-03-31T10:41:20Z">2023-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/package/" itemprop="url" rel="index"><span itemprop="name">package</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>os</p>
-<h1 id="listdir"><a href="#listdir" class="headerlink" title="listdir()"></a>listdir()</h1><p>os.listdir() 函数用于返回指定目录下的文件和文件夹的名称列表。</p>
-<p>语法: os.listdir(path) 参数: path : 指定的目录。 返回值: 返回指定目录下的文件和文件夹的名称列表</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/09/01/6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/09/01/6/" class="post-title-link" itemprop="url">6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-31 18:31:56" itemprop="dateCreated datePublished" datetime="2023-08-31T18:31:56Z">2023-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:33:16" itemprop="dateModified" datetime="2023-03-31T10:33:16Z">2023-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="registry"><a href="#registry" class="headerlink" title="registry"></a>registry</h2><p>在了解了 <code>create_model</code> 函数的基本使用之后，我们来深入探索一下 <code>create_model</code> 函数的源码，看一下究竟是怎样实现从模型到特征提取器的转换的</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44966641/article/details/121364784">https://blog.csdn.net/weixin_44966641/article/details/121364784</a></p>
-<p>在 timm 内部，有一个字典称为 <code>_model_entrypoints</code> 包含了所有的模型名称和他们各自的函数。比如说，我们可以通过 <code>model_entrypoint</code> 函数从 <code>_model_entrypoints</code> 内部得到 <code>xception71</code> 模型的构造函数。</p>
-<p>如我们所见，在 <code>timm.models.xception_aligned</code> 模块中有一个函数称为 <code>xception71</code> 。类似的，timm 中的每一个模型都有着一个这样的构造函数。事实上，内部的 <code>_model_entrypoints</code> 字典大概长这个样子：</p>
-<details style='background-color:#f9f2f4'> <summary><font color='#c7254e' size='3px'> view code</font></summary>  不适合放代码，都锁在一起了  </details>
-
-
-<p>在 timm 对应的模块中，每个模型都有一个构造器。比如说 ResNets 系列模型被定义在 <code>timm.models.resnet</code> 模块中。因此，实际上我们有两种方式来创建一个 <code>resnet34</code> 模型</p>
-<p>import timm from timm.models.resnet import resnet34 <em># 使用 create_model</em> m = timm.create_model(‘resnet34’) <em># 直接调用构造函数</em> m = resnet34()</p>
-<p>但使用上，我们无须调用构造函数。所用模型都可以通过 <code>create_model</code> 函数来将创建。</p>
-<h1 id="画图，话一个相互之间构成联系的图"><a href="#画图，话一个相互之间构成联系的图" class="headerlink" title="画图，话一个相互之间构成联系的图"></a>画图，话一个相互之间构成联系的图</h1><p>whiteboard</p>
-<p>boardmix</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/07/21/4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/21/4/" class="post-title-link" itemprop="url">【白菜】timm篇四：待写</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-07-20 20:26:28" itemprop="dateCreated datePublished" datetime="2023-07-20T20:26:28Z">2023-07-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:26:23" itemprop="dateModified" datetime="2023-03-31T10:26:23Z">2023-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="d待写"><a href="#d待写" class="headerlink" title="d待写"></a>d待写</h1><p>dddd</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/07/10/3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/10/3/" class="post-title-link" itemprop="url">【白菜】timm篇三：获取数据集</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-07-10 14:15:24" itemprop="dateCreated datePublished" datetime="2023-07-10T14:15:24Z">2023-07-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:32:53" itemprop="dateModified" datetime="2023-03-31T10:32:53Z">2023-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>新手友好的深度学习CV入门教程-timm篇</p>
-<p>数据集很重要啊，</p>
-<p>预训练模型很省事啊</p>
-<p>那他们从哪里来呢？我所了解到的</p>
-<p>评论区也欢迎提供信息</p>
-<h1 id="下载pretrained"><a href="#下载pretrained" class="headerlink" title="下载pretrained"></a>下载pretrained</h1><h3 id="pretrained"><a href="#pretrained" class="headerlink" title="pretrained"></a>pretrained</h3><p>如果我们传入 <code>pretrained=True</code>，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。</p>
-<p>True:timm直接根据对应的URL下载模型权重参数并加载到模型，注意，只有本地没有对应模型参数时才会下载，也就是说，通常在第一次运行时下载对应模型参数，之后会直接从本地加载模型权重参数。（报错经验：这里容易出现的报错，就是第一次下载时，可能因为网络等原因，下载不完全，因此，有时需要删除对应文件，重新下载）</p>
-<p>model = timm.create_model(‘resnet34’, pretrained=True)</p>
-<p>Downloading: “<a target="_blank" rel="noopener" href="https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;">https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;</a> to /home/song/.cache/torch/hub/checkpoints/resnet34-43635321.pth</p>
-<h1 id="hugging-face"><a href="#hugging-face" class="headerlink" title="hugging face"></a>hugging face</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/06/23/2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/06/23/2/" class="post-title-link" itemprop="url">【白菜】timm篇二：获取模型运行过程中的特征</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-06-22 23:15:01" itemprop="dateCreated datePublished" datetime="2023-06-22T23:15:01Z">2023-06-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:25:39" itemprop="dateModified" datetime="2023-03-31T10:25:39Z">2023-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="新手友好的深度学习CV入门教程-timm篇2"><a href="#新手友好的深度学习CV入门教程-timm篇2" class="headerlink" title="新手友好的深度学习CV入门教程-timm篇2"></a>新手友好的深度学习CV入门教程-timm篇2</h1><p>获取模型运行过程中的特征</p>
-<p>+hook技术</p>
-<h2 id="获取特征-（一篇）"><a href="#获取特征-（一篇）" class="headerlink" title="获取特征 （一篇）"></a>获取特征 （一篇）</h2><p>可以通过多种方式获得倒数第二个模型层的特征，而无需进行模型手术（尽管可以随意进行手术）。人们必须首先决定他们是想要池化的还是非池化的特征。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41917697/article/details/115026308">https://blog.csdn.net/qq_41917697/article/details/115026308</a><br>获取分类层前（倒数第二层）的特征</p>
-<p>直接创建没有池化和分类层的模型，对于基于CNN的模型可以这样做<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn">https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn</a><br>检查分类器，我们可以看到 timm 已经用一个新的、未经训练的、具有所需类别数量的线性层替换了最后一层；准备微调我们的数据集！<br>如果我们想避免完全创建最后一层，我们可以将类的数量设置为 0，这将创建一个具有恒等函数的模型作为最后一层；这对于检查倒数第二层的输出很有用。<br>identity（）</p>
-<p>直接调用forward_features()函数<br>x = torch.randn([1, 3, 224, 224])<br>Backbone1 = timm.create_model(‘vit_base_patch16_224’)<br>Backbone2 = timm.create_model(‘resnet50’)<br>feature1 = Backbone1.forward_features(x)<br>feature2 = Backbone2.forward_features(x)<br>print(‘vit_feature:’, feature1.shape, ‘resnet_feature:’, feature2.shape)# Results: vit_feature: torch.Size([1, 768])    resnet_feature: torch.Size([1, 2048, 7, 7])<br>————————————————<br>版权声明：本文为CSDN博主「ZhangChen@BJTU」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823">https://blog.csdn.net/qq_42003943/article/details/118382823</a></p>
-<p>通过移除层来获得<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn">https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn</a></p>
-<p>获取中间层特征-注意并非所有model都有此选项<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn">https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn</a><br>可通过out_indices参数指定从哪个level获取feature</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn([1, 3, 224, 224])</span><br><span class="line">feature_extractor = timm.create_model(&#x27;resnet50&#x27;, features_only=True)  # 并非所有model都有此选项</span><br><span class="line">feature_list = feature_extractor(x)</span><br><span class="line">for a in feature_list:</span><br><span class="line">    print(a.shape)</span><br><span class="line"># Results:</span><br><span class="line"># torch.Size([1, 64, 112, 112])</span><br><span class="line"># torch.Size([1, 256, 56, 56])</span><br><span class="line"># torch.Size([1, 512, 28, 28])</span><br><span class="line"># torch.Size([1, 1024, 14, 14])</span><br><span class="line"># torch.Size([1, 2048, 7, 7])</span><br><span class="line"></span><br><span class="line">##可通过out_indices参数指定从哪个level获取feature</span><br><span class="line">feature_extractor = timm.create_model(&#x27;resnet50&#x27;, features_only=True, out_indices=[1, 3, 4])</span><br><span class="line">feature_list = feature_extractor(x)</span><br><span class="line">for a in feature_list:</span><br><span class="line">    print(a.shape)</span><br><span class="line"># Results:</span><br><span class="line"># torch.Size([1, 256, 56, 56])</span><br><span class="line"># torch.Size([1, 1024, 14, 14])</span><br><span class="line"># torch.Size([1, 2048, 7, 7])</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「ZhangChen@BJTU」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/qq_42003943/article/details/118382823</span><br></pre></td></tr></table></figure>
-
-
-
-<p>接下来我们来看一下这些特征提取器究竟是什么类型：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import timm</span><br><span class="line">feature_extractor = timm.create_model(&#x27;resnet34&#x27;, features_only=True, out_indices=[3])</span><br><span class="line"></span><br><span class="line">print(&#x27;type:&#x27;, type(feature_extractor))</span><br><span class="line">print(&#x27;len: &#x27;, len(feature_extractor))</span><br><span class="line">for item in feature_extractor:</span><br><span class="line">    print(item)</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「Adenialzz」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/weixin_44966641/article/details/121364784</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<p>type: &lt;class ‘timm.models.features.FeatureListNet’&gt;<br>len:  7<br>conv1<br>bn1<br>act1<br>maxpool<br>layer1<br>layer2<br>layer3</p>
-<p>可以看到，feature_extractor 其实也是一个神经网络，在 timm 中称为 FeatureListNet，而我们通过 out_indices 参数来指定截取到哪一层特征。</p>
-<p>需要注意的是，ViT 模型并不支持 features_only 选项（0.4.12版本）。</p>
-<p>extractor = timm.create_model(‘vit_base_patch16_224’, features_only=True)<br>1<br>输出：</p>
-<p>RuntimeError: features_only not implemented for Vision Transformer models.<br>1</p>
-<p>————————————————<br>版权声明：本文为CSDN博主「Adenialzz」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44966641/article/details/121364784">https://blog.csdn.net/weixin_44966641/article/details/121364784</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/06/09/1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="muyu">
-      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cabbage">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/06/09/1/" class="post-title-link" itemprop="url">【白菜】timm篇一：简单使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-06-08 22:15:14" itemprop="dateCreated datePublished" datetime="2023-06-08T22:15:14Z">2023-06-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:25:17" itemprop="dateModified" datetime="2023-03-31T10:25:17Z">2023-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="新手友好的深度学习CV入门教程-timm篇"><a href="#新手友好的深度学习CV入门教程-timm篇" class="headerlink" title="新手友好的深度学习CV入门教程-timm篇"></a>新手友好的深度学习CV入门教程-timm篇</h1><p>本文介绍一下简单的使用</p>
-<h1 id="简单常用用途"><a href="#简单常用用途" class="headerlink" title="简单常用用途"></a>简单常用用途</h1><p><a target="_blank" rel="noopener" href="https://timm.fast.ai/training">https://timm.fast.ai/training</a><br>基础介绍，了解有关 timm 内部结构的更多信息</p>
-<h1 id="查看模型信息"><a href="#查看模型信息" class="headerlink" title="查看模型信息"></a>查看模型信息</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model_list = timm.list_models()<span class="comment">#返回一个包含所有模型名称的list</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(model_list))<span class="comment">#目前是739个</span></span><br><span class="line">pretrain_model_list = timm.list_models(pretrained = <span class="literal">True</span>)<span class="comment">#筛洗出自带预训练模型的</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(pretrain_model_list))<span class="comment">#目前是592个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##使用通配符字符串来列出可用的不同 ResNet 变体</span></span><br><span class="line">resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span>)</span><br><span class="line">pretrain_resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span> , pretrained = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="创建模型"><a href="#创建模型" class="headerlink" title="创建模型"></a>创建模型</h1><p>创建模型的最简单方法是使用<code>create_model</code>; 一个可用于在 timm 库中创建任何模型的工厂函数（factory function）。这个函数各个参数有什么用，具体怎么实现的，怎么玩出花来先不用管，挖坑进阶提高</p>
-<p>model_resnet34 = timm.create_model(‘resnet34’, pretrained=True)<br>model_resnet34#打印出模型结构<br>model_resnet34.default_cfg#访问它的配置，其中包含诸如应该用于规范化输入数据的统计信息、输出类的数量和网络分类部分的名称等信息.</p>
-<p>timm 模型有方法<code>get_classifier</code> ，我们可以使用它来检索分类头，而无需查找模块名称</p>
-<h1 id="微调模型-自己运行跑一跑resnet34"><a href="#微调模型-自己运行跑一跑resnet34" class="headerlink" title="微调模型-自己运行跑一跑resnet34"></a>微调模型-自己运行跑一跑resnet34</h1><p>我的模型，用不了，维度不匹配<br>比如说我在resnet34模型传入cifar10和imagenet，分类类别不一样，输入的图片大小不一样<br>0.正常运行<br><strong>torch.randn:用来生成随机数字的tensor，这些随机数字满足标准正态分布（0~1）</strong><br>使用随机张量表示单通道图像，我们可以看到模型已经处理了图像并返回了预期的输出形状。</p>
-<p>import torch<br>x = torch.randn([1, 3, 224, 224])<br>model_resnet50 = timm.create_model(‘resnet50’, pretrained=True)<br>out = model_resnet50(x)<br>print(out.shape)# Results: torch.Size([1, 1000])</p>
-<p>1.输入维度：改变输入通道数：in_chans<br>挖坑引申进阶提高<a target="_blank" rel="noopener" href="https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights">https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights</a>?</p>
-<p>这些来自torchvision的预训练权重不能用于单通道输入图像。作为解决方案，大多数从业者通过复制单通道像素来创建3通道图像，从而将其单通道输入图像转换为3通道图像。</p>
-<p>timm has a way to handle these exceptions</p>
-<p>通过将in_chans_参数传递给 来指定输入图像的通道数<br>通道数改变后，对应的权重参数会进行相应的处理，此处不作详细说明，<br>可参照：<a target="_blank" rel="noopener" href="https://fastai.github.io/timmdocs/models%E6%88%96%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81">https://fastai.github.io/timmdocs/models或直接查看源代码</a><br>x = torch.randn([1, 1, 224, 224])<br>feature_extractor = timm.create_model(‘resnet50’,pretrained=True, in_chans=1)</p>
-<p>2.改变输出类别数目，微调模型：num_classes</p>
-<p>如果设置num_classes，表示重设全连接层，该操作通常用于迁移学习</p>
-<p>model_resnet50_finetune = timm.create_model(‘resnet50’, pretrained=True, num_classes=10)<br>out = model_resnet50_finetune (x)<br>print(out.shape)# Results: torch.Size([1, 10])</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/21/kaggle2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -992,6 +344,782 @@
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/19/5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/19/5/" class="post-title-link" itemprop="url">【白菜】timm篇五：创建模型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-18 21:27:23" itemprop="dateCreated datePublished" datetime="2023-03-18T21:27:23Z">2023-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 11:01:00" itemprop="dateModified" datetime="2023-03-31T11:01:00Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>create model</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/MengYa_Dream/article/details/126690336-%E4%B8%BB%E8%A6%81%E5%8F%82%E8%80%83">https://blog.csdn.net/MengYa_Dream/article/details/126690336-主要参考</a></p>
+<p>The model architectures included come from a wide variety of sources. Sources, including papers, original impl (“reference code”) that Ross rewrote / adapted, and PyTorch impl that he leveraged directly (“code”) are listed below.</p>
+<p>Most included models have pretrained weights. The weights are either:</p>
+<p>from their original sources<br>ported by myself from their original impl in a different framework (e.g. Tensorflow models)<br>trained from scratch using the included training script<br>The validation results for the pretrained weights can be found here.</p>
+<p>最近一年 Vision Transformer 及其相关改进的工作层出不穷，在他们开源的代码中，大部分都用到了这样一个库：timm。各位炼丹师应该已经想必已经对其无比熟悉了，本文将介绍其中最关键的函数之一：create_model 函数</p>
+<p>create_model 函数是用来创建一个网络模型（如 ResNet、ViT 等），timm 库本身可供直接调用的模型已有接近400个，用户也可以自己实现一些模型并注册进 timm （这一部分内容将在下一小节着重介绍），供自己调用</p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="create-model"><a href="#create-model" class="headerlink" title="create_model"></a>create_model</h2><p>该<code>create_model</code>函数是用来在里面创建数百个模型的<code>timm</code>。它还期望一堆<code>**kwargs</code>诸如<code>features_only</code>和<code>out_indices</code>并将这两个传递<code>**kwargs</code>给<code>create_model</code>函数来创建一个特征提取器。让我们看看如何？</p>
+<p>该<code>create_model</code>函数本身只有大约 50 行代码。所以所有的神奇的事情都必须在其他地方发生。您可能已经知道，其中的每个模型名称<code>timm.list_models()</code>实际上都是一个函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#model_name:模型的名字</span></span><br><span class="line"><span class="comment">#pretrained:是否加载预训练模型</span></span><br><span class="line"><span class="comment">#checkpoint_path:加载预训练模型的路径</span></span><br><span class="line"><span class="comment">#scriptable:是否使用脚本化</span></span><br><span class="line"><span class="comment">#exportable:是否使用导出</span></span><br><span class="line"><span class="comment">#no_jit:是否使用jit</span></span><br><span class="line"><span class="comment">#**kwargs:其他参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#首先通过split_model_name函数将模型名字分割成两部分，一部分是模型的来源，一部分是模型的名字</span></span><br><span class="line"><span class="comment">#然后通过is_model函数判断模型是否存在</span></span><br><span class="line"><span class="comment">#如果存在，通过model_entrypoint函数获取模型的入口函数</span></span><br><span class="line"><span class="comment">#然后通过set_layer_config函数设置层的配置</span></span><br><span class="line"><span class="comment">#最后通过load_checkpoint函数加载预训练模型</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_model</span>(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">        model_name,</span></span></span><br><span class="line"><span class="params"><span class="function">        pretrained=<span class="literal">False</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        checkpoint_path=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        scriptable=<span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        exportable=<span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        no_jit=<span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        **kwargs</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Create a model</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        model_name (str): name of model to instantiate</span></span><br><span class="line"><span class="string">        pretrained (bool): load pretrained ImageNet-1k weights if true</span></span><br><span class="line"><span class="string">        checkpoint_path (str): path of checkpoint to load after model is initialized</span></span><br><span class="line"><span class="string">        scriptable (bool): set layer config so that model is jit scriptable (not working for all models yet)</span></span><br><span class="line"><span class="string">        exportable (bool): set layer config so that model is traceable / ONNX exportable (not fully impl/obeyed yet)</span></span><br><span class="line"><span class="string">        no_jit (bool): set layer config so that model doesn&#x27;t utilize jit scripted layers (so far activations only)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Keyword Args:</span></span><br><span class="line"><span class="string">        drop_rate (float): dropout rate for training (default: 0.0)</span></span><br><span class="line"><span class="string">        global_pool (str): global pool type (default: &#x27;avg&#x27;)</span></span><br><span class="line"><span class="string">        **: other kwargs are model specific</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    source_name, model_name = split_model_name(model_name)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># handle backwards compat with drop_connect -&gt; drop_path change</span></span><br><span class="line">    drop_connect_rate = kwargs.pop(<span class="string">&#x27;drop_connect_rate&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">    <span class="keyword">if</span> drop_connect_rate <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span> <span class="keyword">and</span> kwargs.get(<span class="string">&#x27;drop_path_rate&#x27;</span>, <span class="literal">None</span>) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;WARNING: &#x27;drop_connect&#x27; as an argument is deprecated, please use &#x27;drop_path&#x27;.&quot;</span></span><br><span class="line">              <span class="string">&quot; Setting drop_path to %f.&quot;</span> % drop_connect_rate)</span><br><span class="line">        kwargs[<span class="string">&#x27;drop_path_rate&#x27;</span>] = drop_connect_rate</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Parameters that aren&#x27;t supported by all models or are intended to only override model defaults if set</span></span><br><span class="line">    <span class="comment"># should default to None in command line args/cfg. Remove them if they are present and not set so that</span></span><br><span class="line">    <span class="comment"># non-supporting models don&#x27;t break and default args remain in effect.</span></span><br><span class="line">    kwargs = &#123;k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> kwargs.items() <span class="keyword">if</span> v <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> source_name == <span class="string">&#x27;hf_hub&#x27;</span>:</span><br><span class="line">        <span class="comment"># For model names specified in the form `hf_hub:path/architecture_name#revision`,</span></span><br><span class="line">        <span class="comment"># load model weights + default_cfg from Hugging Face hub.</span></span><br><span class="line">        hf_default_cfg, model_name = load_model_config_from_hf(model_name)</span><br><span class="line">        kwargs[<span class="string">&#x27;external_default_cfg&#x27;</span>] = hf_default_cfg  <span class="comment"># FIXME revamp default_cfg interface someday</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> is_model(model_name):</span><br><span class="line">        create_fn = model_entrypoint(model_name)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&#x27;Unknown model (%s)&#x27;</span> % model_name)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> set_layer_config(scriptable=scriptable, exportable=exportable, no_jit=no_jit):</span><br><span class="line">        model = create_fn(pretrained=pretrained, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> checkpoint_path:</span><br><span class="line">        load_checkpoint(model, checkpoint_path)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="timm-models-registry模块"><a href="#timm-models-registry模块" class="headerlink" title="timm.models.registry模块"></a>timm.models.registry模块</h2><p>代码中有这样一行</p>
+<p>create_fn = model_entrypoint(model_name)</p>
+<p>函数获取模型的入口函数</p>
+<p>那么他是如何实现的呢，他的运行主要依赖于timm.models.registry模块</p>
+<p>有一个字典_model_entrypoints = {}  # mapping of model names to entrypoint fns</p>
+<p>包含了所有的模型名称和他们各自的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_model</span>(<span class="params">model_name</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; Check if a model name exists</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> model_name <span class="keyword">in</span> _model_entrypoints</span><br></pre></td></tr></table></figure>
+
+<p>model_entrypoint 函数从 <code>_model_entrypoints</code> 内部得到模型的构造函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">model_entrypoint</span>(<span class="params">model_name</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Fetch a model entrypoint for specified model name</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> _model_entrypoints[model_name]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints)</span><br><span class="line"><span class="built_in">print</span>(timm.models.registry._model_entrypoints.keys())</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出是下面这样子的，太多了，只贴出来一点</span></span><br><span class="line"><span class="string">&#123;&#x27;vit_tiny_patch16_224&#x27;: &lt;function vit_tiny_patch16_224 at 0x000002450498A048&gt;, &#x27;vit_tiny_patch16_384&#x27;: &lt;function vit_tiny_patch16_384 at 0x000002450498A0D0&gt;, &#x27;vit_small_patch32_224&#x27;: &lt;function vit_small_patch32_224 at 0x000002450498A158&gt;, &#x27;vit_small_patch32_384&#x27;: &lt;function vit_small_patch32_384 at 0x000002450498A1E0&gt;&#125;</span></span><br><span class="line"><span class="string">可以看到是个字典，key是模型名称，value是模型的构造函数，</span></span><br><span class="line"><span class="string">以vit为例，vit_base_patch16_224模型的构造函数，他存在于timm.models.vision_trasnformer.py</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">create_fn = model_entrypoint(model_name)</span></span><br><span class="line"><span class="string">#以model_name =  &#x27;xception71&#x27; 为例</span></span><br><span class="line"><span class="string">#&lt;function xception71 at 0x7fc0cba0eca0&gt;</span></span><br><span class="line"><span class="string">#&lt;function timm.models.xception_aligned.xception71(pretrained=False, **kwargs)&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="timm-models-vision-trasnformer模块"><a href="#timm-models-vision-trasnformer模块" class="headerlink" title="timm.models.vision_trasnformer模块"></a>timm.models.vision_trasnformer模块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@register_model</span><br><span class="line">def vit_base_patch16_224(pretrained=False, **kwargs):</span><br><span class="line">    &quot;&quot;&quot; ViT-Base (ViT-B/16) from original paper (https://arxiv.org/abs/2010.11929).</span><br><span class="line">    ImageNet-1k weights fine-tuned from in21k @ 224x224, source https://github.com/google-research/vision_transformer.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    model_kwargs = dict(patch_size=16, embed_dim=768, depth=12, num_heads=12, **kwargs)</span><br><span class="line">    model = _create_vision_transformer(&#x27;vit_base_patch16_224&#x27;, pretrained=pretrained, **model_kwargs)</span><br><span class="line">    return model</span><br></pre></td></tr></table></figure>
+
+<p>注释写了出处，模型的原论文</p>
+<p>model_kwargs把我这个模型的独特参数和传进来的**kwargs一起打包成参数字典，传给<code>_create_vision_transformer</code>函数</p>
+<p>这个函数写在文件的开头，vit的模型都是他生成的，区别就是架构参数不一样，比如层数，注意力头数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_create_vision_transformer</span>(<span class="params">variant, pretrained=<span class="literal">False</span>, **kwargs</span>):</span></span><br><span class="line">    <span class="keyword">if</span> kwargs.get(<span class="string">&#x27;features_only&#x27;</span>, <span class="literal">None</span>):</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&#x27;features_only not implemented for Vision Transformer models.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;flexi&#x27;</span> <span class="keyword">in</span> variant:</span><br><span class="line">        <span class="comment"># FIXME Google FlexiViT pretrained models have a strong preference for bilinear patch / embed</span></span><br><span class="line">        <span class="comment"># interpolation, other pretrained models resize better w/ anti-aliased bicubic interpolation.</span></span><br><span class="line">        _filter_fn = partial(checkpoint_filter_fn, interpolation=<span class="string">&#x27;bilinear&#x27;</span>, antialias=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        _filter_fn = checkpoint_filter_fn</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> build_model_with_cfg(</span><br><span class="line">        VisionTransformer, variant, pretrained,</span><br><span class="line">        pretrained_filter_fn=_filter_fn,</span><br><span class="line">        **kwargs,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>挖坑提高，星星是什么</p>
+<p>variant 变种，就是模型的名字，比如在vit类上生成的vit-base</p>
+<p>函数之中，会再调用 build_model_with_cfg 函数并将一个构造器类 VisionTransformer、变量名 resnet34、一个 default_cfg 和一些 **kwargs 传入其中。</p>
+<p> **kwargs就是之前打包的模型参数和  **kwargs</p>
+<h2 id="build-model-with-cfg"><a href="#build-model-with-cfg" class="headerlink" title="build_model_with_cfg"></a>build_model_with_cfg</h2><p>这个 build_model_with_cfg 函数负责：</p>
+<ul>
+<li>真正地实例化一个模型类来创建一个模型</li>
+<li>若 pruned=True，对模型进行剪枝</li>
+<li>若 pretrained=True，加载预训练模型参数</li>
+<li>若 features_only=True，将模型转换为特征提取器</li>
+</ul>
+<h2 id="register-model装饰器"><a href="#register-model装饰器" class="headerlink" title="register_model装饰器"></a>register_model装饰器</h2><p>以上就是读者在使用 timm 库时的基本方法，其实到这里你应该已经能够使用它训练自己的分类模型了。但是如果还想进一步搞清楚它的框架原理，并在它的基础上做修改，本节可能会帮到你。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/361837010">https://zhuanlan.zhihu.com/p/361837010</a></p>
+<p>但是问题来了，这个字典怎么来的，我写好代码之后一个一个添加进去的吗？（也不是不行hh</p>
+<p>但是太麻烦，这时候就用到我们的 <code>register_model</code> 装饰器，它可以不断地像其中添加模型名称和它对应的构造函数，一开始的字典是空的，是装饰器自动添加的，其源码如下</p>
+<p>2.5 sys.modules<br>该属性是一个字典，包含的是各种已加载的模块的模块名到模块具体位置的映射。</p>
+<p>通过手动修改这个字典，可以重新加载某些模块；但要注意，切记不要大意删除了一些基本的项，否则可能会导致 Python 整个儿无法运行。</p>
+<p>mod = sys.modules[fn.__module__]</p>
+<p>这里我print一下fn.__module__ 应该是xxx.xxx.vit_base</p>
+<p>模型名称就是vit_base</p>
+<pre><code>module_name_split = fn.__module__.split(&#39;.&#39;)
+module_name = module_name_split[-1] if len(module_name_split) else &#39;&#39;
+</code></pre>
+<p>还是打印一下，我有点分不清module_name和model_name</p>
+<p>  _model_to_module[model_name] = module_name</p>
+<p>  _module_to_models[module_name].add(model_name)</p>
+<details>
+  <summary>展开查看</summary>
+  <pre><code>
+def register_model(fn):
+    # lookup containing module
+    mod = sys.modules[fn.__module__]
+    module_name_split = fn.__module__.split('.')
+    module_name = module_name_split[-1] if len(module_name_split) else ''
+    # add model to __all__ in module
+    model_name = fn.__name__
+    if hasattr(mod, '__all__'):
+        mod.__all__.append(model_name)
+    else:
+        mod.__all__ = [model_name]
+    # add entries to registry dict/sets
+    _model_entrypoints[model_name] = fn
+    _model_to_module[model_name] = module_name
+    _module_to_models[module_name].add(model_name)
+    has_pretrained = False  # check if model has a pretrained url to allow filtering on this
+    if hasattr(mod, 'default_cfgs') and model_name in mod.default_cfgs:
+        # this will catch all models that have entrypoint matching cfg key, but miss any aliasing
+        # entrypoints or non-matching combos
+        has_pretrained = 'url' in mod.default_cfgs[model_name] and 'http' in mod.default_cfgs[model_name]['url']
+        _model_default_cfgs[model_name] = deepcopy(mod.default_cfgs[model_name])
+    if has_pretrained:
+        _model_has_pretrained.add(model_name)
+    return fn
+  </code></pre>
+</details>
+
+
+<p>重点是这一句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model_name = fn.__name__</span><br><span class="line"></span><br><span class="line">_model_entrypoints[model_name] = fn</span><br></pre></td></tr></table></figure>
+
+<p>它将给定的 <code>fn</code> 添加到 <code>_model_entrypoints</code> 其键名为 <code>fn.__name__</code></p>
+<p>查看模型定义文件</p>
+<p>我们会发现 timm 中的每个模型都有一个 @register_model</p>
+<p>例如vit-base</p>
+<p>代码很简单明了，但是我还是不懂他怎么发生作用的</p>
+<p>他是什么时候开始把构造函数加进那个空字典的？</p>
+<p>我要自己注册函数应该如何做？</p>
+<p>挖坑拓展，import</p>
+<h2 id="modelconfig"><a href="#modelconfig" class="headerlink" title="modelconfig"></a>modelconfig</h2><p>timm 中所有的模型都有一个默认的配置，包括指向它的预训练权重参数的URL、类别数、输入图像尺寸、池化尺寸等。</p>
+<p>此默认配置与其他参数（如构造函数类和一些模型参数）一起传递给 <code>build_model_with_cfg</code> 函数</p>
+<h1 id="下载pretrained"><a href="#下载pretrained" class="headerlink" title="下载pretrained"></a>下载pretrained</h1><h3 id="pretrained"><a href="#pretrained" class="headerlink" title="pretrained"></a>pretrained</h3><p>如果我们传入 <code>pretrained=True</code>，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。</p>
+<p>True:timm直接根据对应的URL下载模型权重参数并加载到模型，注意，只有本地没有对应模型参数时才会下载，也就是说，通常在第一次运行时下载对应模型参数，之后会直接从本地加载模型权重参数。（报错经验：这里容易出现的报错，就是第一次下载时，可能因为网络等原因，下载不完全，因此，有时需要删除对应文件，重新下载）</p>
+<p>model = timm.create_model(‘resnet34’, pretrained=True)</p>
+<p>Downloading: “<a target="_blank" rel="noopener" href="https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;">https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;</a> to /home/song/.cache/torch/hub/checkpoints/resnet34-43635321.pth</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/16/package3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/16/package3/" class="post-title-link" itemprop="url">package3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-15 21:34:14" itemprop="dateCreated datePublished" datetime="2023-03-15T21:34:14Z">2023-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 10:58:40" itemprop="dateModified" datetime="2023-03-31T10:58:40Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">基础操作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><table>
+<thead>
+<tr>
+<th>读写方式</th>
+<th>可否读写</th>
+<th>文件不存在</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>w</td>
+<td>覆盖写入</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>覆盖写入、可读</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>r</td>
+<td>可读</td>
+<td>报错</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>覆盖写入、可读</td>
+<td>报错</td>
+</tr>
+<tr>
+<td>a</td>
+<td>附加写入</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>附加写入、可读</td>
+<td>创建</td>
+</tr>
+</tbody></table>
+<h1 id="csv"><a href="#csv" class="headerlink" title="csv"></a>csv</h1><p>csv文件叫逗号分隔值文件</p>
+<p>每一行内容是通过逗号来区分出不同的列</p>
+<p>csv文件可以直接通过excel打开，以行列的形式保存和显示数据，但是相对excel文件，它只能存储数据，不能保存公式和函数</p>
+<p>使用时要<code>import csv</code></p>
+<h2 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h2><h3 id="1）创建打开csv文件"><a href="#1）创建打开csv文件" class="headerlink" title="1）创建打开csv文件"></a>1）创建打开csv文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">文件对象 = open()</span></span><br><span class="line"><span class="string">文件对象.close()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">with open() as 文件对象:</span></span><br><span class="line"><span class="string">    操作文件</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;file/电影.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）创建reader获取文件内容"><a href="#2）创建reader获取文件内容" class="headerlink" title="2）创建reader获取文件内容"></a>2）创建reader获取文件内容</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">csv.reader(文件对象)        -   获取文件内容，并且以列表为单位返回每一行内容</span></span><br><span class="line"><span class="string">csv.DictReader(文件对象)    -   获取文件内容，并且以字典为单位返回第2行开始的每一行内容（字典的键是第一行内容）</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;file/电影.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">reader1 = csv.reader(f)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(reader1))</span><br><span class="line">reader2 = csv.DictReader(f)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(reader2))</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、csv文件写操作"><a href="#二、csv文件写操作" class="headerlink" title="二、csv文件写操作"></a>二、csv文件写操作</h2><h3 id="（一）打开文件"><a href="#（一）打开文件" class="headerlink" title="（一）打开文件"></a>（一）打开文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;./file/data.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果没有文件，则会自动创建</strong></p>
+<h3 id="（二）创建writer对象"><a href="#（二）创建writer对象" class="headerlink" title="（二）创建writer对象"></a>（二）创建writer对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">csv.writer(文件对象，delimiter)            -   创建writer对象，这个对象在写入数据的时候一行对应一个列表</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">delimiter 指定同一行每个字段的分隔字符。若不指定，默认以英文逗号(,)分隔，在csv文件中显示的是不同单元格，若以其他符号分隔，则显示在csv同一单元格中</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">csv.DictWriter(文件对象，键列表，delimiter)        -   创建writer对象，以字典为单位写入数据</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1）以列表为单位写入一行内容"><a href="#1）以列表为单位写入一行内容" class="headerlink" title="1）以列表为单位写入一行内容"></a>1）以列表为单位写入一行内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer = csv.writer(f)</span><br></pre></td></tr></table></figure>
+
+<p><strong>一次写入一行内容</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">writer.writerow([<span class="string">&#x27;姓名&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>])</span><br><span class="line">writer.writerow([<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;2001&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;110&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>一次写入多行内容</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">writer.writerows([</span><br><span class="line">    [<span class="string">&#x27;小花&#x27;</span>, <span class="string">&#x27;2001&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="string">&#x27;110&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;小华&#x27;</span>, <span class="string">&#x27;2001&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="string">&#x27;110&#x27;</span>]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）以字典为单位写入一行内容"><a href="#2）以字典为单位写入一行内容" class="headerlink" title="2）以字典为单位写入一行内容"></a>2）以字典为单位写入一行内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer = csv.DictWriter(f, [<span class="string">&#x27;姓名&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>写入文件头（将字典的键写入到文件开头）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.writeheader()</span><br></pre></td></tr></table></figure>
+
+<p><strong>一次写入一行内容</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.writerow(&#123;<span class="string">&#x27;姓名&#x27;</span>: <span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>: <span class="string">&#x27;2000-2-3&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>: <span class="string">&#x27;112&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>一次写入多行内容</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">writer.writerows([</span><br><span class="line">    &#123;<span class="string">&#x27;姓名&#x27;</span>: <span class="string">&#x27;小花&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>: <span class="string">&#x27;2000-2-3&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>: <span class="string">&#x27;112&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;姓名&#x27;</span>: <span class="string">&#x27;小华&#x27;</span>, <span class="string">&#x27;出生日期&#x27;</span>: <span class="string">&#x27;2000-2-3&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;电话&#x27;</span>: <span class="string">&#x27;112&#x27;</span>&#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/11/4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/11/4/" class="post-title-link" itemprop="url">【白菜】timm篇四：待写</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-10 20:26:28" itemprop="dateCreated datePublished" datetime="2023-03-10T20:26:28Z">2023-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 11:00:47" itemprop="dateModified" datetime="2023-03-31T11:00:47Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="d待写"><a href="#d待写" class="headerlink" title="d待写"></a>d待写</h1><p>dddd</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/03/01/3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/01/3/" class="post-title-link" itemprop="url">【白菜】timm篇三：获取数据集</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-01 14:15:24" itemprop="dateCreated datePublished" datetime="2023-03-01T14:15:24Z">2023-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 11:01:14" itemprop="dateModified" datetime="2023-03-31T11:01:14Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>新手友好的深度学习CV入门教程-timm篇</p>
+<p>数据集很重要啊，</p>
+<p>预训练模型很省事啊</p>
+<p>那他们从哪里来呢？我所了解到的</p>
+<p>评论区也欢迎提供信息</p>
+<h1 id="下载pretrained"><a href="#下载pretrained" class="headerlink" title="下载pretrained"></a>下载pretrained</h1><h3 id="pretrained"><a href="#pretrained" class="headerlink" title="pretrained"></a>pretrained</h3><p>如果我们传入 <code>pretrained=True</code>，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。</p>
+<p>True:timm直接根据对应的URL下载模型权重参数并加载到模型，注意，只有本地没有对应模型参数时才会下载，也就是说，通常在第一次运行时下载对应模型参数，之后会直接从本地加载模型权重参数。（报错经验：这里容易出现的报错，就是第一次下载时，可能因为网络等原因，下载不完全，因此，有时需要删除对应文件，重新下载）</p>
+<p>model = timm.create_model(‘resnet34’, pretrained=True)</p>
+<p>Downloading: “<a target="_blank" rel="noopener" href="https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;">https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;</a> to /home/song/.cache/torch/hub/checkpoints/resnet34-43635321.pth</p>
+<h1 id="hugging-face"><a href="#hugging-face" class="headerlink" title="hugging face"></a>hugging face</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/02/24/project1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/24/project1/" class="post-title-link" itemprop="url">project1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-23 19:28:56" itemprop="dateCreated datePublished" datetime="2023-02-23T19:28:56Z">2023-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 10:22:52" itemprop="dateModified" datetime="2023-03-31T10:22:52Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>词2077分析<br>拼图 预测拼图完成时间</p>
+<h1 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h1><p>数据格式是2k分辨率图像的url，以及拼好所用的时间（64块，100块）</p>
+<p>初步筛掉公司提供的有缺失值的数据</p>
+<p>剩下1w张图像，时间对</p>
+<h1 id="特征提取（模型训练"><a href="#特征提取（模型训练" class="headerlink" title="特征提取（模型训练"></a>特征提取（模型训练</h1><h2 id="模型主体"><a href="#模型主体" class="headerlink" title="模型主体"></a>模型主体</h2><p>resnet34，效果不好，</p>
+<p>用vit</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>一开始选用mseloss</p>
+<p>但是训练效果很差</p>
+<p>发现是异常值有点多</p>
+<h3 id="mseloss均方误差-又称MSE、L2损失"><a href="#mseloss均方误差-又称MSE、L2损失" class="headerlink" title="mseloss均方误差(又称MSE、L2损失)"></a>mseloss均方误差(又称MSE、L2损失)</h3><p>回归问题中最常见的损失函数。如果对所有样本点只给出一个预测值，那么这个值就是所有目标值的平均值。</p>
+<p>优点：</p>
+<ul>
+<li>计算方便，逻辑清晰，衡量误差较准确。</li>
+<li>MSE 曲线的特点是光滑连续、可导，便于使用梯度下降算法。梯度随着误差增大或减小，收敛效果好</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>对异常点会赋予较大的权重，如果异常点不属于考虑范围，是由于某种错误导致的，则此函数指导方向将出现偏差。模型会更加偏向于惩罚较大的点，赋予其更大的权重，忽略掉较小的点的作用，无法避免离群点可能导致的梯度爆炸问题。如果样本中存在离群点，MSE 会给离群点赋予更高的权重，但是却是以牺牲其他正常数据点的预测效果为代价，因此会导致降低模型的整体性能。</li>
+</ul>
+<h3 id="平均绝对值误差-又称MAE，L1损失"><a href="#平均绝对值误差-又称MAE，L1损失" class="headerlink" title="平均绝对值误差(又称MAE，L1损失)"></a>平均绝对值误差(又称MAE，L1损失)</h3><p>优点：</p>
+<ul>
+<li>对异常值具有较好鲁棒性</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>梯度不变是个严重问题，MAE训练中梯度始终很大，且在0点连续但不可导，这意味着即使对于小的损失值，其梯度也是大的。这不利于函数的收敛和模型的学习，模型学习速度慢，同时也会导致使用梯度下降训练模型时，在结束时可能会遗漏全局最小值。</li>
+</ul>
+<p>解决办法，可变lr与warmup</p>
+<p>容易受离群点影响，也可能是过拟合了，加正则化</p>
+<h2 id="lr"><a href="#lr" class="headerlink" title="lr"></a>lr</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/524650878">https://zhuanlan.zhihu.com/p/524650878</a></p>
+<p>可变学习率</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37085158/article/details/122536201">https://blog.csdn.net/qq_37085158/article/details/122536201</a></p>
+<p>pytorch中优化器optimizer.param_groups[0]是什么</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36670529/article/details/107531773">https://blog.csdn.net/weixin_36670529/article/details/107531773</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/378822530">https://zhuanlan.zhihu.com/p/378822530</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI1MjQ2OTQ3Ng==&amp;mid=2247582694&amp;idx=1&amp;sn=d8ec63b98581155f90963d4414892b37&amp;chksm=e9e08a6dde97037bdec0781a4481959d94fe8bc961ea57573c22edd41afd1f2ce963e1a53cc8&amp;scene=27">https://mp.weixin.qq.com/s?__biz=MzI1MjQ2OTQ3Ng==&amp;mid=2247582694&amp;idx=1&amp;sn=d8ec63b98581155f90963d4414892b37&amp;chksm=e9e08a6dde97037bdec0781a4481959d94fe8bc961ea57573c22edd41afd1f2ce963e1a53cc8&amp;scene=27</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45085051/article/details/127308481">https://blog.csdn.net/weixin_45085051/article/details/127308481</a></p>
+<p><img src="project1/image-20230329222008475.png" alt="image-20230329222008475"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/02/23/2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/23/2/" class="post-title-link" itemprop="url">【白菜】timm篇二：获取模型运行过程中的特征</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-22 23:15:01" itemprop="dateCreated datePublished" datetime="2023-02-22T23:15:01Z">2023-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 11:01:26" itemprop="dateModified" datetime="2023-03-31T11:01:26Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="新手友好的深度学习CV入门教程-timm篇2"><a href="#新手友好的深度学习CV入门教程-timm篇2" class="headerlink" title="新手友好的深度学习CV入门教程-timm篇2"></a>新手友好的深度学习CV入门教程-timm篇2</h1><p>获取模型运行过程中的特征</p>
+<p>+hook技术</p>
+<h2 id="获取特征-（一篇）"><a href="#获取特征-（一篇）" class="headerlink" title="获取特征 （一篇）"></a>获取特征 （一篇）</h2><p>可以通过多种方式获得倒数第二个模型层的特征，而无需进行模型手术（尽管可以随意进行手术）。人们必须首先决定他们是想要池化的还是非池化的特征。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41917697/article/details/115026308">https://blog.csdn.net/qq_41917697/article/details/115026308</a><br>获取分类层前（倒数第二层）的特征</p>
+<p>直接创建没有池化和分类层的模型，对于基于CNN的模型可以这样做<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn">https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn</a><br>检查分类器，我们可以看到 timm 已经用一个新的、未经训练的、具有所需类别数量的线性层替换了最后一层；准备微调我们的数据集！<br>如果我们想避免完全创建最后一层，我们可以将类的数量设置为 0，这将创建一个具有恒等函数的模型作为最后一层；这对于检查倒数第二层的输出很有用。<br>identity（）</p>
+<p>直接调用forward_features()函数<br>x = torch.randn([1, 3, 224, 224])<br>Backbone1 = timm.create_model(‘vit_base_patch16_224’)<br>Backbone2 = timm.create_model(‘resnet50’)<br>feature1 = Backbone1.forward_features(x)<br>feature2 = Backbone2.forward_features(x)<br>print(‘vit_feature:’, feature1.shape, ‘resnet_feature:’, feature2.shape)# Results: vit_feature: torch.Size([1, 768])    resnet_feature: torch.Size([1, 2048, 7, 7])<br>————————————————<br>版权声明：本文为CSDN博主「ZhangChen@BJTU」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823">https://blog.csdn.net/qq_42003943/article/details/118382823</a></p>
+<p>通过移除层来获得<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn">https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn</a></p>
+<p>获取中间层特征-注意并非所有model都有此选项<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn">https://blog.csdn.net/qq_42003943/article/details/118382823?login=from_csdn</a><br>可通过out_indices参数指定从哪个level获取feature</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn([1, 3, 224, 224])</span><br><span class="line">feature_extractor = timm.create_model(&#x27;resnet50&#x27;, features_only=True)  # 并非所有model都有此选项</span><br><span class="line">feature_list = feature_extractor(x)</span><br><span class="line">for a in feature_list:</span><br><span class="line">    print(a.shape)</span><br><span class="line"># Results:</span><br><span class="line"># torch.Size([1, 64, 112, 112])</span><br><span class="line"># torch.Size([1, 256, 56, 56])</span><br><span class="line"># torch.Size([1, 512, 28, 28])</span><br><span class="line"># torch.Size([1, 1024, 14, 14])</span><br><span class="line"># torch.Size([1, 2048, 7, 7])</span><br><span class="line"></span><br><span class="line">##可通过out_indices参数指定从哪个level获取feature</span><br><span class="line">feature_extractor = timm.create_model(&#x27;resnet50&#x27;, features_only=True, out_indices=[1, 3, 4])</span><br><span class="line">feature_list = feature_extractor(x)</span><br><span class="line">for a in feature_list:</span><br><span class="line">    print(a.shape)</span><br><span class="line"># Results:</span><br><span class="line"># torch.Size([1, 256, 56, 56])</span><br><span class="line"># torch.Size([1, 1024, 14, 14])</span><br><span class="line"># torch.Size([1, 2048, 7, 7])</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「ZhangChen@BJTU」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/qq_42003943/article/details/118382823</span><br></pre></td></tr></table></figure>
+
+
+
+<p>接下来我们来看一下这些特征提取器究竟是什么类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import timm</span><br><span class="line">feature_extractor = timm.create_model(&#x27;resnet34&#x27;, features_only=True, out_indices=[3])</span><br><span class="line"></span><br><span class="line">print(&#x27;type:&#x27;, type(feature_extractor))</span><br><span class="line">print(&#x27;len: &#x27;, len(feature_extractor))</span><br><span class="line">for item in feature_extractor:</span><br><span class="line">    print(item)</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「Adenialzz」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/weixin_44966641/article/details/121364784</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<p>type: &lt;class ‘timm.models.features.FeatureListNet’&gt;<br>len:  7<br>conv1<br>bn1<br>act1<br>maxpool<br>layer1<br>layer2<br>layer3</p>
+<p>可以看到，feature_extractor 其实也是一个神经网络，在 timm 中称为 FeatureListNet，而我们通过 out_indices 参数来指定截取到哪一层特征。</p>
+<p>需要注意的是，ViT 模型并不支持 features_only 选项（0.4.12版本）。</p>
+<p>extractor = timm.create_model(‘vit_base_patch16_224’, features_only=True)<br>1<br>输出：</p>
+<p>RuntimeError: features_only not implemented for Vision Transformer models.<br>1</p>
+<p>————————————————<br>版权声明：本文为CSDN博主「Adenialzz」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44966641/article/details/121364784">https://blog.csdn.net/weixin_44966641/article/details/121364784</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muyu42.github.io/2023/02/19/1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="muyu">
+      <meta itemprop="description" content="菜鸟写给小白的教程，新手友好，带你快速入门深度学习，领略ai魅力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cabbage">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/19/1/" class="post-title-link" itemprop="url">【白菜】timm篇一：简单使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-18 22:15:14" itemprop="dateCreated datePublished" datetime="2023-02-18T22:15:14Z">2023-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-31 11:01:42" itemprop="dateModified" datetime="2023-03-31T11:01:42Z">2023-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/timm/" itemprop="url" rel="index"><span itemprop="name">timm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="新手友好的深度学习CV入门教程-timm篇"><a href="#新手友好的深度学习CV入门教程-timm篇" class="headerlink" title="新手友好的深度学习CV入门教程-timm篇"></a>新手友好的深度学习CV入门教程-timm篇</h1><p>本文介绍一下简单的使用</p>
+<h1 id="简单常用用途"><a href="#简单常用用途" class="headerlink" title="简单常用用途"></a>简单常用用途</h1><p><a target="_blank" rel="noopener" href="https://timm.fast.ai/training">https://timm.fast.ai/training</a><br>基础介绍，了解有关 timm 内部结构的更多信息</p>
+<h1 id="查看模型信息"><a href="#查看模型信息" class="headerlink" title="查看模型信息"></a>查看模型信息</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model_list = timm.list_models()<span class="comment">#返回一个包含所有模型名称的list</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(model_list))<span class="comment">#目前是739个</span></span><br><span class="line">pretrain_model_list = timm.list_models(pretrained = <span class="literal">True</span>)<span class="comment">#筛洗出自带预训练模型的</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(pretrain_model_list))<span class="comment">#目前是592个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##使用通配符字符串来列出可用的不同 ResNet 变体</span></span><br><span class="line">resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span>)</span><br><span class="line">pretrain_resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span> , pretrained = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="创建模型"><a href="#创建模型" class="headerlink" title="创建模型"></a>创建模型</h1><p>创建模型的最简单方法是使用<code>create_model</code>; 一个可用于在 timm 库中创建任何模型的工厂函数（factory function）。这个函数各个参数有什么用，具体怎么实现的，怎么玩出花来先不用管，挖坑进阶提高</p>
+<p>model_resnet34 = timm.create_model(‘resnet34’, pretrained=True)<br>model_resnet34#打印出模型结构<br>model_resnet34.default_cfg#访问它的配置，其中包含诸如应该用于规范化输入数据的统计信息、输出类的数量和网络分类部分的名称等信息.</p>
+<p>timm 模型有方法<code>get_classifier</code> ，我们可以使用它来检索分类头，而无需查找模块名称</p>
+<h1 id="微调模型-自己运行跑一跑resnet34"><a href="#微调模型-自己运行跑一跑resnet34" class="headerlink" title="微调模型-自己运行跑一跑resnet34"></a>微调模型-自己运行跑一跑resnet34</h1><p>我的模型，用不了，维度不匹配<br>比如说我在resnet34模型传入cifar10和imagenet，分类类别不一样，输入的图片大小不一样<br>0.正常运行<br><strong>torch.randn:用来生成随机数字的tensor，这些随机数字满足标准正态分布（0~1）</strong><br>使用随机张量表示单通道图像，我们可以看到模型已经处理了图像并返回了预期的输出形状。</p>
+<p>import torch<br>x = torch.randn([1, 3, 224, 224])<br>model_resnet50 = timm.create_model(‘resnet50’, pretrained=True)<br>out = model_resnet50(x)<br>print(out.shape)# Results: torch.Size([1, 1000])</p>
+<p>1.输入维度：改变输入通道数：in_chans<br>挖坑引申进阶提高<a target="_blank" rel="noopener" href="https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights">https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights</a>?</p>
+<p>这些来自torchvision的预训练权重不能用于单通道输入图像。作为解决方案，大多数从业者通过复制单通道像素来创建3通道图像，从而将其单通道输入图像转换为3通道图像。</p>
+<p>timm has a way to handle these exceptions</p>
+<p>通过将in_chans_参数传递给 来指定输入图像的通道数<br>通道数改变后，对应的权重参数会进行相应的处理，此处不作详细说明，<br>可参照：<a target="_blank" rel="noopener" href="https://fastai.github.io/timmdocs/models%E6%88%96%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81">https://fastai.github.io/timmdocs/models或直接查看源代码</a><br>x = torch.randn([1, 1, 224, 224])<br>feature_extractor = timm.create_model(‘resnet50’,pretrained=True, in_chans=1)</p>
+<p>2.改变输出类别数目，微调模型：num_classes</p>
+<p>如果设置num_classes，表示重设全连接层，该操作通常用于迁移学习</p>
+<p>model_resnet50_finetune = timm.create_model(‘resnet50’, pretrained=True, num_classes=10)<br>out = model_resnet50_finetune (x)<br>print(out.shape)# Results: torch.Size([1, 10])</p>
+
       
     </div>
 
