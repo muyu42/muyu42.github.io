@@ -31,7 +31,7 @@
 <meta property="og:description" content="create model https:&#x2F;&#x2F;blog.csdn.net&#x2F;MengYa_Dream&#x2F;article&#x2F;details&#x2F;126690336-主要参考  The model architectures included come from a wide variety of sources. Sources, including papers, original impl (“referen">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-18T21:27:23.000Z">
-<meta property="article:modified_time" content="2023-03-31T11:08:37.046Z">
+<meta property="article:modified_time" content="2023-05-21T03:48:58.093Z">
 <meta property="article:author" content="muyu">
 <meta property="article:tag" content="提高">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 11:08:37" itemprop="dateModified" datetime="2023-03-31T11:08:37Z">2023-03-31</time>
+                <time title="修改时间：2023-05-21 03:48:58" itemprop="dateModified" datetime="2023-05-21T03:48:58Z">2023-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -335,10 +335,6 @@ def register_model(fn):
 <p>挖坑拓展，import</p>
 <h2 id="modelconfig"><a href="#modelconfig" class="headerlink" title="modelconfig"></a>modelconfig</h2><p>timm 中所有的模型都有一个默认的配置，包括指向它的预训练权重参数的URL、类别数、输入图像尺寸、池化尺寸等。</p>
 <p>此默认配置与其他参数（如构造函数类和一些模型参数）一起传递给 <code>build_model_with_cfg</code> 函数</p>
-<h1 id="下载pretrained"><a href="#下载pretrained" class="headerlink" title="下载pretrained"></a>下载pretrained</h1><h3 id="pretrained"><a href="#pretrained" class="headerlink" title="pretrained"></a>pretrained</h3><p>如果我们传入 <code>pretrained=True</code>，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。</p>
-<p>True:timm直接根据对应的URL下载模型权重参数并加载到模型，注意，只有本地没有对应模型参数时才会下载，也就是说，通常在第一次运行时下载对应模型参数，之后会直接从本地加载模型权重参数。（报错经验：这里容易出现的报错，就是第一次下载时，可能因为网络等原因，下载不完全，因此，有时需要删除对应文件，重新下载）</p>
-<p>model = timm.create_model(‘resnet34’, pretrained=True)</p>
-<p>Downloading: “<a target="_blank" rel="noopener" href="https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;">https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;</a> to /home/song/.cache/torch/hub/checkpoints/resnet34-43635321.pth</p>
 
     </div>
 
@@ -422,7 +418,7 @@ def register_model(fn):
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#create-model"><span class="nav-number">1.1.</span> <span class="nav-text">create_model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timm-models-registry%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">timm.models.registry模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timm-models-vision-trasnformer%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">timm.models.vision_trasnformer模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-model-with-cfg"><span class="nav-number">1.4.</span> <span class="nav-text">build_model_with_cfg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#register-model%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.5.</span> <span class="nav-text">register_model装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#modelconfig"><span class="nav-number">1.6.</span> <span class="nav-text">modelconfig</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDpretrained"><span class="nav-number">2.</span> <span class="nav-text">下载pretrained</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pretrained"><span class="nav-number">2.0.1.</span> <span class="nav-text">pretrained</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#create-model"><span class="nav-number">1.1.</span> <span class="nav-text">create_model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timm-models-registry%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">timm.models.registry模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timm-models-vision-trasnformer%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">timm.models.vision_trasnformer模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-model-with-cfg"><span class="nav-number">1.4.</span> <span class="nav-text">build_model_with_cfg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#register-model%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.5.</span> <span class="nav-text">register_model装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#modelconfig"><span class="nav-number">1.6.</span> <span class="nav-text">modelconfig</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

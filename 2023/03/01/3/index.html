@@ -23,15 +23,15 @@
     var CONFIG = {"hostname":"muyu42.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="新手友好的深度学习CV入门教程-timm篇 数据集很重要啊， 预训练模型很省事啊 那他们从哪里来呢？我所了解到的 评论区也欢迎提供信息 下载pretrainedpretrained如果我们传入 pretrained&#x3D;True，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。 True:timm直接">
+  <meta name="description" content="模型架构部分的PyTorch模型及其对应arxiv链接如下： 所有的来源可以查看timm官方repo  Aggregating Nested Transformers - https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2105.12723 BEiT - https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2106.08254 Bottleneck Transformers - https:&#x2F;&#x2F;arxiv.o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【白菜】timm篇三：获取数据集">
+<meta property="og:title" content="【白菜】timm篇三：获取相关资源">
 <meta property="og:url" content="https://muyu42.github.io/2023/03/01/3/index.html">
 <meta property="og:site_name" content="cabbage">
-<meta property="og:description" content="新手友好的深度学习CV入门教程-timm篇 数据集很重要啊， 预训练模型很省事啊 那他们从哪里来呢？我所了解到的 评论区也欢迎提供信息 下载pretrainedpretrained如果我们传入 pretrained&#x3D;True，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。 True:timm直接">
+<meta property="og:description" content="模型架构部分的PyTorch模型及其对应arxiv链接如下： 所有的来源可以查看timm官方repo  Aggregating Nested Transformers - https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2105.12723 BEiT - https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2106.08254 Bottleneck Transformers - https:&#x2F;&#x2F;arxiv.o">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-01T14:15:24.000Z">
-<meta property="article:modified_time" content="2023-03-31T11:01:14.057Z">
+<meta property="article:modified_time" content="2023-05-21T07:34:05.023Z">
 <meta property="article:author" content="muyu">
 <meta property="article:tag" content="提高">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>【白菜】timm篇三：获取数据集 | cabbage</title>
+  <title>【白菜】timm篇三：获取相关资源 | cabbage</title>
   
 
 
@@ -188,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【白菜】timm篇三：获取数据集
+          【白菜】timm篇三：获取相关资源
         </h1>
 
         <div class="post-meta">
@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 11:01:14" itemprop="dateModified" datetime="2023-03-31T11:01:14Z">2023-03-31</time>
+                <time title="修改时间：2023-05-21 07:34:05" itemprop="dateModified" datetime="2023-05-21T07:34:05Z">2023-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,16 +228,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>新手友好的深度学习CV入门教程-timm篇</p>
-<p>数据集很重要啊，</p>
-<p>预训练模型很省事啊</p>
-<p>那他们从哪里来呢？我所了解到的</p>
-<p>评论区也欢迎提供信息</p>
-<h1 id="下载pretrained"><a href="#下载pretrained" class="headerlink" title="下载pretrained"></a>下载pretrained</h1><h3 id="pretrained"><a href="#pretrained" class="headerlink" title="pretrained"></a>pretrained</h3><p>如果我们传入 <code>pretrained=True</code>，那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。</p>
-<p>True:timm直接根据对应的URL下载模型权重参数并加载到模型，注意，只有本地没有对应模型参数时才会下载，也就是说，通常在第一次运行时下载对应模型参数，之后会直接从本地加载模型权重参数。（报错经验：这里容易出现的报错，就是第一次下载时，可能因为网络等原因，下载不完全，因此，有时需要删除对应文件，重新下载）</p>
-<p>model = timm.create_model(‘resnet34’, pretrained=True)</p>
-<p>Downloading: “<a target="_blank" rel="noopener" href="https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;">https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth&quot;</a> to /home/song/.cache/torch/hub/checkpoints/resnet34-43635321.pth</p>
-<h1 id="hugging-face"><a href="#hugging-face" class="headerlink" title="hugging face"></a>hugging face</h1>
+        <h1 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h1><p><strong>部分的PyTorch模型及其对应arxiv链接如下：</strong></p>
+<p>所有的来源可以查看timm官方repo</p>
+<ul>
+<li>Aggregating Nested Transformers - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2105.12723">https://arxiv.org/abs/2105.12723</a></li>
+<li>BEiT - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.08254">https://arxiv.org/abs/2106.08254</a></li>
+<li>Bottleneck Transformers - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2101.11605">https://arxiv.org/abs/2101.11605</a></li>
+<li>CaiT (Class-Attention in Image Transformers) - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.17239">https://arxiv.org/abs/2103.17239</a></li>
+<li>ConvNeXt - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.03545">https://arxiv.org/abs/2201.03545</a></li>
+<li>ConvNeXt-V2 - <a target="_blank" rel="noopener" href="http://arxiv.org/abs/2301.00808">http://arxiv.org/abs/2301.00808</a></li>
+<li>ConViT (Soft Convolutional Inductive Biases Vision Transformers)- <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.10697">https://arxiv.org/abs/2103.10697</a></li>
+<li>DeiT - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2012.12877">https://arxiv.org/abs/2012.12877</a></li>
+<li>DeiT-III - <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2204.07118.pdf">https://arxiv.org/pdf/2204.07118.pdf</a></li>
+<li>DenseNet - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1608.06993">https://arxiv.org/abs/1608.06993</a></li>
+<li>DPN (Dual-Path Network) - <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1707.01629">https://arxiv.org/abs/1707.01629</a></li>
+</ul>
+<h1 id="result"><a href="#result" class="headerlink" title="result"></a>result</h1><p>各种timm库模型在 ImageNet 数据集训练结果</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/huggingface/pytorch-image-models/blob/main/results/README.md">https://github.com/huggingface/pytorch-image-models/blob/main/results/README.md</a></p>
+<h1 id="下载pretrained-model"><a href="#下载pretrained-model" class="headerlink" title="下载pretrained model"></a>下载pretrained model</h1><h3 id="pretrained"><a href="#pretrained" class="headerlink" title="pretrained"></a>pretrained</h3><p>在创建模型时<code>create_model</code>如果我们传入 <code>pretrained=True</code></p>
+<p>那么 timm 会从对应的 URL 下载模型权重参数并载入模型，只有当第一次（即本地还没有对应模型参数时）会去下载，之后会直接从本地加载模型权重参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = timm.create_model(&#x27;vit_small_patch16_224&#x27;, pretrained=True)</span><br></pre></td></tr></table></figure>
+
+<p>Downloading: “<a target="_blank" rel="noopener" href="https://storage.googleapis.com/vit_models/augreg/S_16-i21k-300ep-lr_0.001-aug_light1-wd_0.03-do_0.0-sd_0.0--imagenet2012-steps_20k-lr_0.03-res_224.npz&quot;">https://storage.googleapis.com/vit_models/augreg/S_16-i21k-300ep-lr_0.001-aug_light1-wd_0.03-do_0.0-sd_0.0--imagenet2012-steps_20k-lr_0.03-res_224.npz&quot;</a> to /home/xxx/.cache/torch/hub/checkpoints/xxx.pth</p>
+<p>下载的时候从model.default_cfg.url中下载权重</p>
+<p>模型下载到当前用户root下的.cache/torch/hub/checkpoints/中</p>
+<p>如果服务器网不好，可以手动下载再上传到相应位置</p>
+<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1>
     </div>
 
     
@@ -320,7 +336,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDpretrained"><span class="nav-number">1.</span> <span class="nav-text">下载pretrained</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pretrained"><span class="nav-number">1.0.1.</span> <span class="nav-text">pretrained</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hugging-face"><span class="nav-number">2.</span> <span class="nav-text">hugging face</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">模型架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#result"><span class="nav-number">2.</span> <span class="nav-text">result</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDpretrained-model"><span class="nav-number">3.</span> <span class="nav-text">下载pretrained model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pretrained"><span class="nav-number">3.0.1.</span> <span class="nav-text">pretrained</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">数据集</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

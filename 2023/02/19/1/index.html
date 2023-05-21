@@ -23,15 +23,15 @@
     var CONFIG = {"hostname":"muyu42.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="新手友好的深度学习CV入门教程-timm篇本文介绍一下简单的使用 简单常用用途https:&#x2F;&#x2F;timm.fast.ai&#x2F;training基础介绍，了解有关 timm 内部结构的更多信息 查看模型信息12345678910model_list &#x3D; timm.list_models()#返回一个包含所有模型名称的listprint(len(model_list))#目前是739个pretrain_mo">
+  <meta name="description" content="省流：使用timm加载CNN进行图像分类，调整CNN使之更适合你的任务  问：使用timm搭建一个可以使用的CNN或ViT拢共需要几步？ 答：4步 0.安装 timm 1.import timm 2.创建model 3.运行model 这一节很基础，会的兄弟们可以跳过看后面的 接下来具体讲一下如何使用，代码codebook会之后给出 安装、导入准备自己python环境，建议用anconda来管理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【白菜】timm篇一：简单使用">
 <meta property="og:url" content="https://muyu42.github.io/2023/02/19/1/index.html">
 <meta property="og:site_name" content="cabbage">
-<meta property="og:description" content="新手友好的深度学习CV入门教程-timm篇本文介绍一下简单的使用 简单常用用途https:&#x2F;&#x2F;timm.fast.ai&#x2F;training基础介绍，了解有关 timm 内部结构的更多信息 查看模型信息12345678910model_list &#x3D; timm.list_models()#返回一个包含所有模型名称的listprint(len(model_list))#目前是739个pretrain_mo">
+<meta property="og:description" content="省流：使用timm加载CNN进行图像分类，调整CNN使之更适合你的任务  问：使用timm搭建一个可以使用的CNN或ViT拢共需要几步？ 答：4步 0.安装 timm 1.import timm 2.创建model 3.运行model 这一节很基础，会的兄弟们可以跳过看后面的 接下来具体讲一下如何使用，代码codebook会之后给出 安装、导入准备自己python环境，建议用anconda来管理">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-18T22:15:14.000Z">
-<meta property="article:modified_time" content="2023-03-31T11:01:42.063Z">
+<meta property="article:modified_time" content="2023-05-21T07:50:12.679Z">
 <meta property="article:author" content="muyu">
 <meta property="article:tag" content="入门">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 11:01:42" itemprop="dateModified" datetime="2023-03-31T11:01:42Z">2023-03-31</time>
+                <time title="修改时间：2023-05-21 07:50:12" itemprop="dateModified" datetime="2023-05-21T07:50:12Z">2023-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,22 +228,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="新手友好的深度学习CV入门教程-timm篇"><a href="#新手友好的深度学习CV入门教程-timm篇" class="headerlink" title="新手友好的深度学习CV入门教程-timm篇"></a>新手友好的深度学习CV入门教程-timm篇</h1><p>本文介绍一下简单的使用</p>
-<h1 id="简单常用用途"><a href="#简单常用用途" class="headerlink" title="简单常用用途"></a>简单常用用途</h1><p><a target="_blank" rel="noopener" href="https://timm.fast.ai/training">https://timm.fast.ai/training</a><br>基础介绍，了解有关 timm 内部结构的更多信息</p>
-<h1 id="查看模型信息"><a href="#查看模型信息" class="headerlink" title="查看模型信息"></a>查看模型信息</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model_list = timm.list_models()<span class="comment">#返回一个包含所有模型名称的list</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(model_list))<span class="comment">#目前是739个</span></span><br><span class="line">pretrain_model_list = timm.list_models(pretrained = <span class="literal">True</span>)<span class="comment">#筛洗出自带预训练模型的</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(pretrain_model_list))<span class="comment">#目前是592个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##使用通配符字符串来列出可用的不同 ResNet 变体</span></span><br><span class="line">resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span>)</span><br><span class="line">pretrain_resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span> , pretrained = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>省流：使用timm加载CNN进行图像分类，调整CNN使之更适合你的任务</p>
+</blockquote>
+<p>问：使用timm搭建一个可以使用的CNN或ViT拢共需要几步？</p>
+<p>答：4步</p>
+<p>0.安装 timm</p>
+<p>1.import timm</p>
+<p>2.创建model</p>
+<p>3.运行model</p>
+<p>这一节很基础，会的兄弟们可以跳过看后面的</p>
+<p>接下来具体讲一下如何使用，代码codebook会之后给出</p>
+<h2 id="安装、导入"><a href="#安装、导入" class="headerlink" title="安装、导入"></a>安装、导入</h2><p>准备自己python环境，建议用anconda来管理，然后安装上torch 和cuda</p>
+<p>对于小白，可以先不安装cuda，只在cpu上跑代码</p>
+<p>配置环境网上有很多教程，环境准备好了之后就可以在cmd安装timm包了，很简单：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda imstall timm</span><br><span class="line">#or</span><br><span class="line">pip install timm</span><br><span class="line">#or</span><br><span class="line">git clone https://github.com/rwightman/pytorch-image-models</span><br><span class="line">cd pytorch-image-models &amp;&amp; pip install -e .</span><br></pre></td></tr></table></figure>
 
-<h1 id="创建模型"><a href="#创建模型" class="headerlink" title="创建模型"></a>创建模型</h1><p>创建模型的最简单方法是使用<code>create_model</code>; 一个可用于在 timm 库中创建任何模型的工厂函数（factory function）。这个函数各个参数有什么用，具体怎么实现的，怎么玩出花来先不用管，挖坑进阶提高</p>
-<p>model_resnet34 = timm.create_model(‘resnet34’, pretrained=True)<br>model_resnet34#打印出模型结构<br>model_resnet34.default_cfg#访问它的配置，其中包含诸如应该用于规范化输入数据的统计信息、输出类的数量和网络分类部分的名称等信息.</p>
-<p>timm 模型有方法<code>get_classifier</code> ，我们可以使用它来检索分类头，而无需查找模块名称</p>
-<h1 id="微调模型-自己运行跑一跑resnet34"><a href="#微调模型-自己运行跑一跑resnet34" class="headerlink" title="微调模型-自己运行跑一跑resnet34"></a>微调模型-自己运行跑一跑resnet34</h1><p>我的模型，用不了，维度不匹配<br>比如说我在resnet34模型传入cifar10和imagenet，分类类别不一样，输入的图片大小不一样<br>0.正常运行<br><strong>torch.randn:用来生成随机数字的tensor，这些随机数字满足标准正态分布（0~1）</strong><br>使用随机张量表示单通道图像，我们可以看到模型已经处理了图像并返回了预期的输出形状。</p>
-<p>import torch<br>x = torch.randn([1, 3, 224, 224])<br>model_resnet50 = timm.create_model(‘resnet50’, pretrained=True)<br>out = model_resnet50(x)<br>print(out.shape)# Results: torch.Size([1, 1000])</p>
-<p>1.输入维度：改变输入通道数：in_chans<br>挖坑引申进阶提高<a target="_blank" rel="noopener" href="https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights">https://timm.fast.ai/models#So-how-is-timm-able-to-load-these-weights</a>?</p>
-<p>这些来自torchvision的预训练权重不能用于单通道输入图像。作为解决方案，大多数从业者通过复制单通道像素来创建3通道图像，从而将其单通道输入图像转换为3通道图像。</p>
-<p>timm has a way to handle these exceptions</p>
-<p>通过将in_chans_参数传递给 来指定输入图像的通道数<br>通道数改变后，对应的权重参数会进行相应的处理，此处不作详细说明，<br>可参照：<a target="_blank" rel="noopener" href="https://fastai.github.io/timmdocs/models%E6%88%96%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81">https://fastai.github.io/timmdocs/models或直接查看源代码</a><br>x = torch.randn([1, 1, 224, 224])<br>feature_extractor = timm.create_model(‘resnet50’,pretrained=True, in_chans=1)</p>
-<p>2.改变输出类别数目，微调模型：num_classes</p>
-<p>如果设置num_classes，表示重设全连接层，该操作通常用于迁移学习</p>
-<p>model_resnet50_finetune = timm.create_model(‘resnet50’, pretrained=True, num_classes=10)<br>out = model_resnet50_finetune (x)<br>print(out.shape)# Results: torch.Size([1, 10])</p>
+<p>新建文件</p>
+<p>在文件开头导入必要的包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import timm</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="创建、使用模型"><a href="#创建、使用模型" class="headerlink" title="创建、使用模型"></a>创建、使用模型</h2><p>创建模型的最简单方法是使用<code>create_model</code>;</p>
+<p>这一个可用于在 timm 库中创建任何模型的工厂函数</p>
+<p>这个函数各个参数有什么用，内部具体怎么实现的，怎么玩出花来的之后再讲，先只用它来创建一个CNN用来做分类任务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model_resnet34 = timm.create_model(&#x27;resnet34&#x27;, pretrained=True)</span><br></pre></td></tr></table></figure>
+
+<p>‘resnet34’是模型架构的名字</p>
+<p>pretrained=True则会自动从网上下载训练好的模型权重加载到resnet34上</p>
+<p>然后模型就创建好了，可以直接使用了</p>
+<p>这里我们使用随机张量表示图像</p>
+<p><strong>torch.randn:用来生成随机数字的tensor，这些随机数字满足标准正态分布（0~1）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn([1, 1, 224, 224])#创建一个tensor 代表 一张3x224x224的图片</span><br><span class="line">out = model_resnet50(x)#out就是x所对应的表示类别的一个tensor</span><br><span class="line">print(out.shape)# Results: torch.Size([1, 1000])代表1000个类别</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到模型已经处理了图像并返回了预期的输出形状。</p>
+<h2 id="查看模型信息"><a href="#查看模型信息" class="headerlink" title="查看模型信息"></a>查看模型信息</h2><p>那么怎么知道timm都可以导入哪些模型来使用呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">model_list = timm.list_models()<span class="comment">#返回一个包含所有模型名称的list</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(model_list))<span class="comment">#964</span></span><br><span class="line">pretrain_model_list = timm.list_models(pretrained = <span class="literal">True</span>)<span class="comment">#筛选出带预训练模型的</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(pretrain_model_list))<span class="comment">#770</span></span><br><span class="line"><span class="comment">##使用通配符字符串来列出可用的不同 ResNet 变体</span></span><br><span class="line">resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span>)</span><br><span class="line">pretrain_resnet_model_list = timm.list_models(<span class="string">&#x27;*resnet*&#x27;</span> , pretrained = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="调整模型-创建适合自己的模型"><a href="#调整模型-创建适合自己的模型" class="headerlink" title="调整模型-创建适合自己的模型"></a>调整模型-创建适合自己的模型</h2><p>直接导入训练好的模型并不是万能的，经常会有维度不匹配的情况<br>比如说我的resnet34模型在cifar10和imagenet两个数据集上进行训练，分类类别不一样，输入的图片大小不一样，那我应该怎么创建合适的模型呢？</p>
+<h3 id="改变输出类别数目"><a href="#改变输出类别数目" class="headerlink" title="改变输出类别数目"></a>改变输出类别数目</h3><p>分类类别数量：num_classes</p>
+<p>model的主体提取特征，之后往往会接一个mlp层用作分类</p>
+<p>如果设置num_classes，表示重设全连接层，num_classes设置为你需要分类的类别数量即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">x = torch.randn([1, 3, 224, 224])</span><br><span class="line"></span><br><span class="line">model_resnet34_out10 = timm.create_model(&#x27;resnet34&#x27;, pretrained=True, num_classes=10)</span><br><span class="line">out = model_resnet34_out10 (x)</span><br><span class="line">print(out.shape)# Results: torch.Size([1, 10])</span><br></pre></td></tr></table></figure>
+
+<h3 id="改变输入通道数"><a href="#改变输入通道数" class="headerlink" title="改变输入通道数"></a>改变输入通道数</h3><p>输入通道数：in_chans  </p>
+<p>对图片的大小，可以在输入model之前进行resize处理到统一大小</p>
+<p>但是如果输入的图片不是传统rgb图片，通道不是3怎么办</p>
+<p>当然，我们可以复制单通道像素来创建3通道图像，从而将其单通道输入图像转换为3通道图像。但是对于timm，他又一套申请的参数加载模式，我们可以直接改变in_chans  来指定输入图像的通道数</p>
+<p>通道数改变后，对应的权重参数会进行相应的处理，此处不作详细说明<br>可参照：<a target="_blank" rel="noopener" href="https://fastai.github.io/timmdocs/models%E6%88%96%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81">https://fastai.github.io/timmdocs/models或直接查看源代码</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn([1, 1, 224, 224])</span><br><span class="line">model_resnet34_in1 = timm.create_model(&#x27;resnet50&#x27;,pretrained=True, in_chans=1)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p><strong>用timm有什么好处吗，下面是一些功能特性</strong></p>
+<p>所有model都有一个通用的默认配置接口和API</p>
+<p>所有模型都支持通过create_model提取中间特征（vit除外）</p>
+<p>所有型号都有一个预训练重量加载器，可调整最后一个线性层，也可调整3通道输入为1个通道输入</p>
+<p>并且我们还可以直接复用timm的功能模块或者一些训练tricks（Learning rate schedulers/Optimizers/Augment），简直是百宝箱</p>
 
     </div>
 
@@ -266,8 +310,8 @@
       <i class="fa fa-chevron-left"></i> 【白菜】timm篇零：带你认识timm
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/02/23/2/" rel="next" title="【白菜】timm篇二：获取模型运行过程中的特征">
-      【白菜】timm篇二：获取模型运行过程中的特征 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/02/23/2/" rel="next" title="【白菜】timm篇二：训练自己的model">
+      【白菜】timm篇二：训练自己的model <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -327,7 +371,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E6%89%8B%E5%8F%8B%E5%A5%BD%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0CV%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-timm%E7%AF%87"><span class="nav-number">1.</span> <span class="nav-text">新手友好的深度学习CV入门教程-timm篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%B8%B8%E7%94%A8%E7%94%A8%E9%80%94"><span class="nav-number">2.</span> <span class="nav-text">简单常用用途</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%A8%A1%E5%9E%8B%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">查看模型信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">创建模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AE%E8%B0%83%E6%A8%A1%E5%9E%8B-%E8%87%AA%E5%B7%B1%E8%BF%90%E8%A1%8C%E8%B7%91%E4%B8%80%E8%B7%91resnet34"><span class="nav-number">5.</span> <span class="nav-text">微调模型-自己运行跑一跑resnet34</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E3%80%81%E5%AF%BC%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">安装、导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E3%80%81%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">创建、使用模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%A8%A1%E5%9E%8B%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">查看模型信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E6%A8%A1%E5%9E%8B-%E5%88%9B%E5%BB%BA%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">调整模型-创建适合自己的模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E8%BE%93%E5%87%BA%E7%B1%BB%E5%88%AB%E6%95%B0%E7%9B%AE"><span class="nav-number">4.1.</span> <span class="nav-text">改变输出类别数目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E8%BE%93%E5%85%A5%E9%80%9A%E9%81%93%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">改变输入通道数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">特性</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -202,7 +202,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 11:05:03" itemprop="dateModified" datetime="2023-03-31T11:05:03Z">2023-03-31</time>
+                <time title="修改时间：2023-05-21 08:04:54" itemprop="dateModified" datetime="2023-05-21T08:04:54Z">2023-05-21</time>
               </span>
 
           
@@ -222,25 +222,18 @@
 <p>你是否曾经为了复现一篇论文的结果而苦苦寻找代码和权重，却发现官方没有提供或者提供的不完整？</p>
 </blockquote>
 <p><strong>如果你有以上的困惑，那么我要向你推荐一个神奇的库：timm。</strong></p>
-<h2 id="啥是timm？"><a href="#啥是timm？" class="headerlink" title="啥是timm？"></a>啥是timm？</h2><p>timm 是 PyTorch Image Models 的缩写，它是一个巨大的 PyTorch 代码集合，包括了一系列：</p>
-<ul>
-<li>image models</li>
-<li>layers</li>
-<li>utilities</li>
-<li>optimizers</li>
-<li>schedulers</li>
-<li>data-loaders / augmentations</li>
-<li>training / validation scripts</li>
-</ul>
-<p>timm 库实现了最新的几乎所有的具有影响力的视觉模型，它不仅提供了模型的权重，还提供了一个很棒的分布式训练和评估的代码框架，方便后人开发。更难能可贵的是它还在不断地更新迭代新的训练方法，新的视觉模型和优化代码。</p>
-<p>timm 库是由 Ross Wightman 开发和维护的，在此向大佬致敬！他是一位来自加拿大温哥华的自由职业者，在 GitHub 上分享了他对各种视觉模型和技术的理解和实现，并且欢迎大家给他反馈和赞助。当然，timm 库现在归属于抱脸了，这个我们之后再说。</p>
+<h2 id="啥是timm？"><a href="#啥是timm？" class="headerlink" title="啥是timm？"></a>啥是timm？</h2><p>timm 是 PyTorch Image Models 的缩写</p>
+<p>is a collection of SOTA computer vision models, layers, utilities, optimizers, schedulers, data-loaders, augmentations and also training/validating scripts with ability to reproduce ImageNet training results.</p>
+<p>timm 库实现了最新的几乎所有的具有影响力的视觉模型，它不仅提供了模型的权重，还提供了一个很棒的分布式训练和评估的代码框架，方便后人开发。</p>
+<p>timm 库是由 Ross Wightman 开发和维护的</p>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/huggingface/pytorch-image-models">https://github.com/huggingface/pytorch-image-models</a></p>
 <h2 id="写文原因："><a href="#写文原因：" class="headerlink" title="写文原因："></a>写文原因：</h2><p>我之所以写这篇文章，主要是出于以下几点：</p>
 <ol>
-<li><p>深度学习大势所趋。随着计算机技术和数据量的增长，深度学习已经成为了人工智能领域最前沿和最活跃的分支之一。它在各个领域都取得了令人惊叹的成就，比如自然语言处理、计算机视觉、AIGC等。作为一个对人工智能感兴趣并且想要从事相关工作或研究的人，我认为有必要掌握深度学习相关知识，并且跟进最新进展。</p>
+<li><p>深度学习在各个领域都取得了令人惊叹的成就，比如自然语言处理、计算机视觉、AIGC等。作为一个对人工智能感兴趣并且想要从事相关工作或研究的人，我认为有必要掌握深度学习相关知识，并且跟进最新进展。</p>
 </li>
-<li><p>互联网共享精神。互联网是一个开放、自由、平等、协作、创新、分享、进步 的平台。在这里我们可以获取海量信息资源，并且与志同道合者交流互动。我非常欣赏并支持开源社区中那种无私奉献、相互帮助、共同成长的氛围。我也希望通过我的文章来分享我所学到或者感兴趣的东西，并且与读者们交流心得。</p>
+<li><p>互联网是一个开放、自由、分享、进步 的平台。我非常欣赏并支持开源社区中那种无私奉献、相互帮助、共同成长的氛围。我也希望通过我的文章来分享我所学到或者感兴趣的东西，并且与读者们交流心得。</p>
 </li>
-<li><p>我入门时费尽辛苦。当我刚开始接触深度学习时，我遇到了很多困难和挫折。比如找不到合适的教程，网上信息良莠不齐，解决一个问题要搞好久。虽然我现在也还是菜鸡hh，但是我想把自己的学习经历和心得分享给那些想要入门CV的小白们，希望能够对你们有所帮助。同时，也欢迎各位大佬或者有兴趣的同学给我提出宝贵的意见和建议，让我们一起进步。</p>
+<li><p>当我刚开始接触深度学习时，我遇到了很多困难和挫折。比如找不到合适的教程，网上信息良莠不齐，解决一个问题要搞好久。虽然我现在也还是菜鸡hh，但是我想把自己的学习经历和心得分享给那些想要入门CV的小白们，希望能够对你们有所帮助。同时，也欢迎各位大佬或者有兴趣的同学给我提出宝贵的意见和建议，让我们一起进步。</p>
 </li>
 <li><p>本来是想写完发，但是可能又会拖延，就先发出来一点，欢迎大家监督。可以加我的QQ：7914675，一起交流入门心得</p>
 </li>
@@ -250,7 +243,21 @@
 <h2 id="本系列的目录结构和跳转链接"><a href="#本系列的目录结构和跳转链接" class="headerlink" title="本系列的目录结构和跳转链接"></a>本系列的目录结构和跳转链接</h2><p>如下：</p>
 <p>0.引言</p>
 <p>1.简单的使用</p>
-<p>分为几个大块，入门，提高，源码解析系列</p>
+<p>2.训练自己的</p>
+<p>3.pth下载到哪里了</p>
+<p>4.修改模型 获取特征</p>
+<p>5.create _model代码解读以及创建自己的模型</p>
+<p>5.create_transform以及resolve_data_config代码解读</p>
+<p>后续更新计划： 1.简单的使用model 2.训练自己的model 3.pth下载到哪里了 4.修改model 获取中间特征 5.create _model代码解读以及创建自己的模型 6.create_transform以及resolve_data_config代码解读 7.及以后 更多的tricks</p>
+<p>帖子代码基于 timm0.54</p>
+<p>之后放出codebook</p>
+<h1 id="wx"><a href="#wx" class="headerlink" title="wx"></a>wx</h1><p><a target="_blank" rel="noopener" href="https://github.com/huggingface/pytorch-image-models">https://github.com/huggingface/pytorch-image-models</a></p>
+<p><a target="_blank" rel="noopener" href="https://huggingface.co/docs/hub/timm">https://huggingface.co/docs/hub/timm</a></p>
+<p><a target="_blank" rel="noopener" href="https://huggingface.co/docs/timm/index">https://huggingface.co/docs/timm/index</a></p>
+<p><a target="_blank" rel="noopener" href="https://timm.fast.ai/training">https://timm.fast.ai/training</a></p>
+<p><a target="_blank" rel="noopener" href="https://towardsdatascience.com/getting-started-with-pytorch-image-models-timm-a-practitioners-guide-4e77b4bf9055">https://towardsdatascience.com/getting-started-with-pytorch-image-models-timm-a-practitioners-guide-4e77b4bf9055</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/404107277">https://zhuanlan.zhihu.com/p/404107277</a></p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/tutorials/">https://pytorch.org/tutorials/</a></p>
 
       
     </div>
@@ -769,7 +776,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-31 10:59:44" itemprop="dateModified" datetime="2023-03-31T10:59:44Z">2023-03-31</time>
+                <time title="修改时间：2023-05-21 13:25:31" itemprop="dateModified" datetime="2023-05-21T13:25:31Z">2023-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -804,6 +811,103 @@
 <p>但使用上，我们无须调用构造函数。所用模型都可以通过 <code>create_model</code> 函数来将创建。</p>
 <h1 id="画图，话一个相互之间构成联系的图"><a href="#画图，话一个相互之间构成联系的图" class="headerlink" title="画图，话一个相互之间构成联系的图"></a>画图，话一个相互之间构成联系的图</h1><p>whiteboard</p>
 <p>boardmix</p>
+<h1 id="0521"><a href="#0521" class="headerlink" title="0521"></a>0521</h1><p>create_dataset</p>
+<p>Dataset factory method 创建数据集，返回一个数据集对象</p>
+<h2 id="支持加载的数据集"><a href="#支持加载的数据集" class="headerlink" title="支持加载的数据集"></a>支持加载的数据集</h2><p>1.folder类型：基于文件夹结构组织的数据集（比如说imagenet）</p>
+<p>2.torch类型：基于torchvision的数据集（cifar10/100/MNIST/places365）</p>
+<p>3.TFDS类型：通过IterableImageDataset在IterabeDataset接口中的Tensorflow数据集包装器</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def create_dataset(</span><br><span class="line">        name,</span><br><span class="line">        root,</span><br><span class="line">        split=&#x27;validation&#x27;,</span><br><span class="line">        search_split=True,</span><br><span class="line">        class_map=None,</span><br><span class="line">        load_bytes=False,</span><br><span class="line">        is_training=False,</span><br><span class="line">        download=False,</span><br><span class="line">        batch_size=None,</span><br><span class="line">        repeats=0,</span><br><span class="line">        **kwargs</span><br><span class="line">):</span><br></pre></td></tr></table></figure>
+
+<p>看的头大？没事，下面带你一个一个看，给出解释和建议的参数，一般也用不到这么多参数啦，按照参数重要性讲解</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><h3 id="name-数据集名称（重要）"><a href="#name-数据集名称（重要）" class="headerlink" title="name 数据集名称（重要）"></a>name 数据集名称（重要）</h3><p>数据集名称</p>
+<p>对于基于文件夹的数据集（folder）可以为空</p>
+<p>有坑，如果是想加载cifar10，则name需要写为<code>torch/CIFAR10</code>  这也是我为什么不太喜欢封装的太深的</p>
+<h3 id="root-数据集的根文件夹（必需）"><a href="#root-数据集的根文件夹（必需）" class="headerlink" title="root:数据集的根文件夹（必需）"></a>root:数据集的根文件夹（必需）</h3><p>数据集所在位置根目录</p>
+<p>如果没有该数据集，启用download参数会自动下载文件夹在该路径</p>
+<h3 id="split-划分数据集（必需-默认为val）"><a href="#split-划分数据集（必需-默认为val）" class="headerlink" title="split 划分数据集（必需-默认为val）"></a>split 划分数据集（必需-默认为val）</h3><p>train 和 val的数据集都由这个create_dataset函数确立，那么如何区分呢，重点就是这个参数。</p>
+<p>不同数据集有不同的划分，这里不用管，他有一个字典。不管你输入是train还是training，都会自动识别，并根据数据集给出正确的划分</p>
+<p>val/valid/validation/eval/evaluation也一样</p>
+<h3 id="download-自动下载数据集（重要-torch-TFDS类型）"><a href="#download-自动下载数据集（重要-torch-TFDS类型）" class="headerlink" title="download 自动下载数据集（重要-torch/TFDS类型）"></a>download 自动下载数据集（重要-torch/TFDS类型）</h3><p>默认为Fasle，第一次的话可以指定为True自动下载数据集</p>
+<p>如果之前指定的root路径中没有数据集</p>
+<p>则自动下载数据集到root目录，仅支持torch类型和TFDS类型</p>
+<p>imagenet需要自己下载</p>
+<p>cifar10我试了一下，大概20min下好，之后就可以快了的使用了</p>
+<h3 id="search-split-自主找到划分（folder）"><a href="#search-split-自主找到划分（folder）" class="headerlink" title="_search_split 自主找到划分（folder）"></a>_search_split 自主找到划分（folder）</h3><p>默认为True不用改</p>
+<p>如果是folder类型，则调用<code>_search_split()</code> 函数</p>
+<p>从根目录中搜索拆分特定的子文件夹，以便指定<code>imagenet/</code>而不是<code>/imagenet/val</code>等</p>
+<h3 id="class-map-索引映射（folder）"><a href="#class-map-索引映射（folder）" class="headerlink" title="class_map 索引映射（folder）"></a>class_map 索引映射（folder）</h3><p>把输出的tensor映射成实际的类别</p>
+<p>一般不用，不用管，默认为None</p>
+<h3 id="load-bytes（folder）"><a href="#load-bytes（folder）" class="headerlink" title="load_bytes（folder）"></a>load_bytes（folder）</h3><p>加载数据，以未编码字节的形式返回图像</p>
+<p>一般不用，不用管</p>
+<h3 id="batch-size-is-training-repeats（TFDS类型）"><a href="#batch-size-is-training-repeats（TFDS类型）" class="headerlink" title="batch_size/is_training/repeats（TFDS类型）"></a>batch_size/is_training/repeats（TFDS类型）</h3><p>一般用不到，不管了</p>
+<h1 id="0521-create-loader"><a href="#0521-create-loader" class="headerlink" title="0521-create_loader"></a>0521-create_loader</h1><h2 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h2><p>def create_loader(</p>
+<p>​    dataset,</p>
+<p>​    <strong>input_size,</strong></p>
+<p>​    batch_size,</p>
+<p>​    <strong>is_training=False,</strong></p>
+<p>​    <strong>use_prefetcher=True,</strong></p>
+<p>​    <strong>no_aug=False,</strong></p>
+<p>​    <strong>re_prob=0.,</strong></p>
+<p>​    <strong>re_mode=’const’,</strong></p>
+<p>​    <strong>re_count=1,</strong></p>
+<p>​    re_split=False,<strong>（re_num_splits = 0 if re_split:  re_num_splits = num_aug_splits or 2）</strong></p>
+<p>​    <strong>scale=None,</strong></p>
+<p>​    <strong>ratio=None,</strong></p>
+<p>​    <strong>hflip=0.5,</strong></p>
+<p>​    <strong>vflip=0.,</strong></p>
+<p>​    <strong>color_jitter=0.4,</strong></p>
+<p>​    <strong>auto_augment=None,</strong></p>
+<p>​    **num_aug_repeats=0,**（re_num_splits = 0 if re_split:  re_num_splits = num_aug_splits or 2）</p>
+<p>​    **num_aug_splits=0,**（separate=num_aug_splits &gt; 0,）</p>
+<p>​    <strong>interpolation=’bilinear’,</strong></p>
+<p>​    <strong>mean=IMAGENET_DEFAULT_MEAN,</strong></p>
+<p>​    <strong>std=IMAGENET_DEFAULT_STD,</strong></p>
+<p>​    num_workers=1,</p>
+<p>​    distributed=False,</p>
+<p>​    <strong>crop_pct=None,</strong></p>
+<p>​    collate_fn=None,</p>
+<p>​    pin_memory=False,</p>
+<p>​    fp16=False,</p>
+<p>​    <strong>tf_preprocessing=False,</strong></p>
+<p>​    use_multi_epochs_loader=False,</p>
+<p>​    persistent_workers=True,</p>
+<p>​    worker_seeding=’all’,</p>
+<p>):</p>
+<h1 id="0522-create-transform"><a href="#0522-create-transform" class="headerlink" title="0522-create_transform"></a>0522-create_transform</h1><p>def create_transform(</p>
+<p>​    input_size,</p>
+<p>​    is_training=False,</p>
+<p>​    use_prefetcher=False,</p>
+<p>​    no_aug=False,</p>
+<p>​    scale=None,</p>
+<p>​    ratio=None,</p>
+<p>​    hflip=0.5,</p>
+<p>​    vflip=0.,</p>
+<p>​    color_jitter=0.4,</p>
+<p>​    auto_augment=None,</p>
+<p>​    interpolation=’bilinear’,</p>
+<p>​    mean=IMAGENET_DEFAULT_MEAN,</p>
+<p>​    std=IMAGENET_DEFAULT_STD,</p>
+<p>​    re_prob=0.,</p>
+<p>​    re_mode=’const’,</p>
+<p>​    re_count=1,</p>
+<p>​    re_num_splits=0,</p>
+<p>​    crop_pct=None,</p>
+<p>​    tf_preprocessing=False,</p>
+<p>​    separate=False):</p>
+<p>dataloader内部代码中，实际还是基于torch的加载</p>
+<p>loader_class = torch.utils.data.DataLoader</p>
+<p>loader = loader_class(dataset, **loader_args)</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43118280/article/details/124005396">(26条消息) timm.data.create_transform_alien丿明天的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/YJYS_ZHX/article/details/115680643">(26条消息) 【transformer】【pytorch】DeiT的数据增强_create_transform_剑宇2022的博客-CSDN博客</a></p>
+<h1 id="0522"><a href="#0522" class="headerlink" title="0522-"></a>0522-</h1><p>#这里加载cifar数据集<br>#3套方法timm/ torch/加载自己数据集<br>#基于torch在这个时候就transformer了（getitem）/timm的在loader的时候才（dataset.transform = create_transform）<br>#和分布式 pin memory</p>
+<h1 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/183243079">pytorch训练步骤总结 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cs230-stanford/cs230-code-examples/tree/master/pytorch/nlp">cs230-code-examples/pytorch/nlp at master · cs230-stanford/cs230-code-examples · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cs230-stanford/cs230-code-examples/blob/master/pytorch/vision/train.py">cs230-code-examples/train.py at master · cs230-stanford/cs230-code-examples · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/396666255">深度学习pytorch训练代码模板(个人习惯) - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/396666255">深度学习pytorch训练代码模板(个人习惯) - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/352525266">(6 封私信 / 80 条消息) 如何提高自己的代码能力以达到熟练使用pytorch? - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44493291/article/details/111932895">(27条消息) 【Pytorch】学习笔记（训练代码框架）_Chaossll的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/FUTEROX/article/details/122724634">(27条消息) Pytorch模型训练&amp;保存/加载（搭建完整流程）_pytorch训练模型_Huterox的博客-CSDN博客</a></p>
 
       
     </div>
